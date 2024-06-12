@@ -1,0 +1,64 @@
+:root {
+    --main-color: #2713D4;
+    --main-color-2: #005dff;
+    --main-color-3: #00a3ff;
+    --main-color-4: #b4f4ff;
+    --bs-navbar-padding-y: 0;
+}
+
+body{
+	margin:0;
+	box-sizing: border-box;
+	font-family: "Kalam", cursive;
+	background-color: white;
+	color: var(--main-color);
+}
+
+.justify{
+    text-align: justify;
+}
+
+.logo{
+    max-width: 12vw;
+    height: auto;
+	position: absolute;
+	margin: 0.5rem;
+}
+
+.firstP{
+    margin-top: 3rem;
+}
+
+#homeArticle>p>a{
+	text-decoration: none;
+	color: var(--main-color);
+    font-weight: bolder;
+}
+
+#homeArticle>p>a:hover{
+    text-decoration: underline;
+}
+
+strong{
+    font-weight: normal;
+}
+
+#homeActu,
+#nav1{
+    background-color: var(--main-color);
+    color: var(--main-color-4);
+}
+
+#logoNav{
+    max-width: 5rem;
+}
+
+.navbarLink,
+.navbarLink:hover{
+    color: white;
+    font-weight: bolder;
+}
+
+#navbar-icon{
+    color: white;
+}

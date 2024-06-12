@@ -2,16 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Luttes Enchantées{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="stylesheet" href="https://bootswatch.com/5/cosmo/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/js/scripts.js') }}" defer></script>
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% include 'partials/navbar.html.twig' %}
+        {% if app.user and app.user.isVerified == false %}
+            <div class ="container alert alert-warning alert-dismissible" id="flashMess" role="alert">
+                <button type="button" classe="btn-close" data-bs-dismiss="alert"><i class="fa-solid fa-xmark"></i></button>
+                <div class="alert-message">
+                    <strong>Votre compte n'est pas activé</strong>, <a href="{{ path('resend_verify') }}">renvoyez le lien d'activation reçu par mail</a>
+                </div>
+            </div>
+        {% endif %}
+        {# {% include 'partials/flash.html.twig' %} #}
+
+        <main class="container justify-content-center mt-5">
+			<figure class="logo">
+				<img class="w-75 h-auto mx-auto object-fit-contain" src="{{ asset('img/Logo.png') }}" alt="Logo des Luttes Enchantées">
+			</figure>
+
+            {% block body %}{% endblock %}
+
+        </main>
+
+        {# {% include 'partials/footer.html.twig' %} #}
+        
     </body>
 </html>
