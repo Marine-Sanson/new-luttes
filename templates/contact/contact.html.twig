@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Contact{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-9 row">
+				<h1 class="text-center fw-bolder">Nous contacter</h1>
+            </div>
+
+	<?php
+	require "./templates/_messages.phtml";
+	?>
+
+	<p class="text-center firstP">Nous sommes au complet pour l'instant, nous n'acceptons donc pas de nouvelles choristes.</p>
+	<p class="text-center">Vous pouvez nous contacter si vous voulez nous proposer de chanter lors d'un évenement que vous organisez.</p>
+	<p class="text-center">Pour cela merci de remplir le formulaire ci dessous, nous vous répondrons dans les meilleurs délais.</p>
+
+    {{ form_errors(contactForm) }}
+
+    {{ form_start(contactForm) }}
+        {{ form_row(contactForm.mail) }}
+        {{ form_row(contactForm.object) }}
+        {{ form_row(contactForm.content) }}
+
+        <p class="text-center">Afin de vérifiez que vous n'êtes pas un robot, merci de répondre à cette question :</p>
+        <p class="text-center">Combien font cinq + 2 (en chiffre) ? {{ form_row(contactForm.result) }}</p>
+
+        <button type="submit" class="btn btn-lg btn-primary mt-5">{{ button_label|default('Envoyer') }}</button>
+
+    {{ form_end(contactForm) }}
+
+
+{% endblock %}
