@@ -53,10 +53,15 @@ strong{
     max-width: 5rem;
 }
 
-.navbarLink,
+.navbarLink{
+    color: white;
+    font-weight: bolder;
+}
+
 .navbarLink:hover{
     color: white;
     font-weight: bolder;
+    text-decoration: underline;
 }
 
 #navbar-icon{

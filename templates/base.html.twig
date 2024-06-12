@@ -17,14 +17,14 @@
     </head>
     <body>
         {% include 'partials/navbar.html.twig' %}
-        {% if app.user and app.user.isVerified == false %}
+        {# {% if app.user and app.user.isVerified == false %}
             <div class ="container alert alert-warning alert-dismissible" id="flashMess" role="alert">
                 <button type="button" classe="btn-close" data-bs-dismiss="alert"><i class="fa-solid fa-xmark"></i></button>
                 <div class="alert-message">
                     <strong>Votre compte n'est pas activé</strong>, <a href="{{ path('resend_verify') }}">renvoyez le lien d'activation reçu par mail</a>
                 </div>
             </div>
-        {% endif %}
+        {% endif %} #}
         {# {% include 'partials/flash.html.twig' %} #}
 
         <main class="container justify-content-center mt-5">
