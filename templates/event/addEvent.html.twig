@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Gérer les dates{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-9 row">
+				<h1 class="text-center fw-bolder">Gérer les dates</h1>
+            </div>
+            <div class="col-5 mt-5">
+                {{ form_errors(eventForm) }}
+
+                {{ form_start(eventForm) }}
+                    {{ form_row(eventForm.dateprov) }}
+                    {{ form_row(eventForm.privateDetails) }}
+                    {{ form_row(eventForm.publicDetails) }}
+                    {{ form_row(eventForm.status) }}
+                    {{ form_row(eventForm.EventCategory) }}
+
+                    <button type="submit" class="btn btn-lg btn-primary mt-5">{{ button_label|default('Envoyer') }}</button>
+
+                {{ form_end(eventForm) }}
+            </div>
+
+{% endblock %}

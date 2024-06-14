@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Agenda{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-9 row">
+				<h1 class="text-center fw-bolder">Agenda</h1>
+                <h2 class="text-center fw-bolder">Voici les évenements à venir :</h2>
+
+            </div>
+            <div class="col-5 mt-5">
+                {% if events %}
+                    {% for event in events %}
+
+				<article class=membersEventsItem>
+					<h3 class="membEvDate">{{ event.date }}</h3>
+    				<p class="membEvCatName">{{ event.eventCategory }}</p>
+
+					<p class="membEvStat">Evenement {{ event.status }}</p>
+                        
+					<p class="membEvPres">Présentes : {{ event.oui }}</p>
+					<p class="membEvAbs">Absentes : {{ event.non }}</p>
+					<p class="membEvNSP">Ne savent pas : {{ event.nsp }}</p>
+					<p class="membEvNRep">Non répondu : {{ event.pasrep }}</p>
+					
+					<p class="membEvPrivDet">{{ event.privateDetails }}</p>
+
+					<?php
+					$id = intval($event["id"]);
+					?>
+<a href="{{ path('app_event_detail', { id: event.id }) }}" class="text-decoration-none text-left">
+                            Voir le détail
+                        </a>
+					<form class="displayUpdateEventForm"
+						action="/Luttes-Enchantees/detail-date/<?= $id; ?>"
+						method="post">
+
+						<input type="hidden"
+							id="route"
+							name="route"
+							value="param">
+						<input type="hidden"
+							id="eventDetail"
+							name="action"
+							value="eventDetail">
+						<input type="hidden"
+							id="eventId"
+							name="eventId"
+							value="<?= $id; ?>">
+						<input class="button"
+							type="submit"
+							value="Voir le détail">
+					</form>
+				</article>
+			<?php
+			}
+		}
+				
+		?>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">Aucun évenement prévu pour l'instant, reviens plus tard</p>
+            {% endif %}
+            </div>
+
+{% endblock %}

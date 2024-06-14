@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Agenda{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-9 row">
+
+				<h1 class="text-center fw-bolder">{{ event.eventCategory }} du {{ event.date }}</h1>
+
+	<h2>Infos internes : </h2>
+
+	<p>{{ event.privateDetails }}</p>
+
+	<h2>Infos publiques : </h2>
+
+	<p>{{ event.publicDetails }}</p>
+
+	<h2>Participantes</h2>
+
+	<h3>Présentes : {{ event.participationOui|length }}</h3>
+
+	<ul>
+		{% for name in event.participationOui %}
+      
+			<li>{{name}}</li>
+		{% endfor %}
+	</ul>
+
+	<h3>Absentes : {{ event.participationNon|length }}</h3>
+
+	<ul>
+		{% for name in event.participationNon %}
+      
+			<li>{{name}}</li>
+		{% endfor %}
+	</ul>
+
+	<h3>Ne savent pas : {{ event.participationNsp|length }}</h3>
+
+	<ul>
+		{% for name in event.participationNsp %}
+      
+			<li>{{name}}</li>
+		{% endfor %}
+	</ul>
+
+	<h3>Non répondu : {{ event.participationPasrep|length }}</h3>
+
+	<ul>
+		{% for name in event.participationPasrep %}
+      
+			<li>{{name}}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

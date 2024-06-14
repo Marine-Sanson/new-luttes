@@ -47,11 +47,11 @@ class Event
      * @var Collection<int, Participation>
      */
     #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'Event', orphanRemoval: true)]
-    private Collection $user;
+    private Collection $participation;
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->participation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,7 +119,7 @@ class Event
         return $this;
     }
 
-    public function isStatus(): ?bool
+    public function getStatus(): ?bool
     {
         return $this->status;
     }
@@ -158,27 +158,27 @@ class Event
     /**
      * @return Collection<int, Participation>
      */
-    public function getUser(): Collection
+    public function getParticipation(): Collection
     {
-        return $this->user;
+        return $this->participation;
     }
 
-    public function addUser(Participation $user): static
+    public function addParticipation(Participation $participation): static
     {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-            $user->setEvent($this);
+        if (!$this->participation->contains($participation)) {
+            $this->participation->add($participation);
+            $participation->setEvent($this);
         }
 
         return $this;
     }
 
-    public function removeUser(Participation $user): static
+    public function removeParticipation(Participation $participation): static
     {
-        if ($this->user->removeElement($user)) {
+        if ($this->participation->removeElement($participation)) {
             // set the owning side to null (unless already changed)
-            if ($user->getEvent() === $this) {
-                $user->setEvent(null);
+            if ($participation->getEvent() === $this) {
+                $participation->setEvent(null);
             }
         }
 
