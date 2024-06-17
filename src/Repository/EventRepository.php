@@ -16,10 +16,12 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    public function saveEvent($event)
+    public function saveEvent($event): Event
     {
         $this->getEntityManager()->persist($event);
         $this->getEntityManager()->flush();
+
+        return $event;
     }
 
 

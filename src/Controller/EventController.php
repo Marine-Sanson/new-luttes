@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Form\EventType;
 use App\Service\EventService;
+use App\Service\ParticipationService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -14,7 +15,8 @@ class EventController extends AbstractController
 {
     
     public function __construct(
-        private readonly EventService $eventService
+        private readonly EventService $eventService,
+        private readonly ParticipationService $participationService
     ) {
 
     }
@@ -50,10 +52,11 @@ class EventController extends AbstractController
 
         if ($eventForm->isSubmitted() && $eventForm->isValid()) {
             $user = $this->getUser();
-            $event
-                ->setDate(date_format($eventForm->get('dateprov')->getData(),"d-m-Y"));
+            $event->setDate(date_format($eventForm->get('dateprov')->getData(),"d-m-Y"));
 
-            $this->eventService->addEvent($event, $user);
+            $savedEvent = $this->eventService->addEvent($event, $user);
+
+            $this->participationService->addParticipations($savedEvent);
         }
 
         return $this->render('event/addEvent.html.twig', [
