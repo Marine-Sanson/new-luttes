@@ -17,20 +17,23 @@ class ParticipationService
 
     }
 
-    public function countParticipation(int $id)
+    public function countParticipation(int $eventId, int $id)
     {
-        return $this->participationRepository->countParticipation($id);
+        return $this->participationRepository->countParticipation($eventId, $id);
     }
 
-    public function findParticipationByStatus(int $status): ?array
+    public function findParticipationByStatus(int $eventId, int $status): ?array
     {
-        $userIds = $this->participationRepository->findParticipationByStatus($status);
-        return array_map(
-            function (Participation $userId) {
-                return $this->userRepository->findOneById($userId->getId())->getName();
-            },
-            $userIds
-        );
+        $participations = $this->participationRepository->findParticipationByStatus($eventId, $status);
+        if($participations){
+            return array_map(
+                function (Participation $participation) {
+                    return $this->userRepository->findOneById($participation->getUser())->getName();
+                },
+                $participations
+            );
+        }
+        return [];
 
     }
 

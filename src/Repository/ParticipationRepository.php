@@ -16,24 +16,28 @@ class ParticipationRepository extends ServiceEntityRepository
         parent::__construct($registry, Participation::class);
     }
 
-    public function countParticipation(int $id): int
+    public function countParticipation(int $eventId, int $id): int
     {
         return $this->createQueryBuilder('q')
                     ->select('count(q.id)')
                     ->where('q.status = :id')
+                    ->andWhere('q.event = :eventId')
                     ->setParameter('id', $id)
+                    ->setParameter('eventId', $eventId)
                     ->getQuery()
                     ->getSingleScalarResult()
                     ;
     }
 
-   public function findParticipationByStatus(int $status): array
+   public function findParticipationByStatus(int $eventId, int $status): ?array
    {
        return $this->createQueryBuilder('p')
-           ->andWhere('p.status = :status')
-           ->setParameter('status', $status)
-           ->getQuery()
-           ->getResult()
+                   ->where('p.status = :status')
+                   ->andWhere('p.event = :eventId')
+                   ->setParameter('status', $status)
+                   ->setParameter('eventId', $eventId)
+                   ->getQuery()
+                   ->getResult()
        ;
    }
 

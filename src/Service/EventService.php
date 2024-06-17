@@ -7,6 +7,7 @@ use App\Entity\Event;
 use DateTimeImmutable;
 use App\Model\EventDetail;
 use App\Mapper\EventMapper;
+use App\Model\EventForHome;
 use App\Model\EventForAgenda;
 use App\Repository\EventRepository;
 use App\Service\ParticipationService;
@@ -21,6 +22,22 @@ class EventService
         private readonly EventMapper $eventMapper,
     ) {
 
+    }
+
+    public function getPublicEvents()
+    {
+        $publicEvents = $this->eventRepository->findByStatus(0);
+        return array_map(
+            function (Event $event) {
+                return $this->getEventForHome($event);
+            },
+            $publicEvents
+        );
+    }
+
+    public function getEventForHome(Event $event): EventForHome
+    {
+    return $this->eventMapper->transformToEventsForHome($event);
     }
 
     public function getAllEventsForAgenda()
@@ -38,10 +55,10 @@ class EventService
     public function getEventForAgenda(Event $event): EventForAgenda
     {
         $cat = $this->eventCategoryRepository->findOneById($event->getEventCategory())->getName();
-        $oui = $this->participationService->countParticipation(1);
-        $non = $this->participationService->countParticipation(2);
-        $nsp = $this->participationService->countParticipation(3);
-        $pasrep = $this->participationService->countParticipation(4);
+        $oui = $this->participationService->countParticipation($event->getId(), 1);
+        $non = $this->participationService->countParticipation($event->getId(), 2);
+        $nsp = $this->participationService->countParticipation($event->getId(), 3);
+        $pasrep = $this->participationService->countParticipation($event->getId(), 4);
 
         return $this->eventMapper->transformToEventForAgenda($event, $cat, $oui, $non, $nsp, $pasrep);
     }
@@ -65,10 +82,10 @@ class EventService
         {
             $status = "public";
         }
-        $participationOui = $this->participationService->findParticipationByStatus(1);
-        $participationNon = $this->participationService->findParticipationByStatus(2);
-        $participationNsp = $this->participationService->findParticipationByStatus(3);
-        $participationPasrep = $this->participationService->findParticipationByStatus(4);
+        $participationOui = $this->participationService->findParticipationByStatus($id, 1);
+        $participationNon = $this->participationService->findParticipationByStatus($id, 2);
+        $participationNsp = $this->participationService->findParticipationByStatus($id, 3);
+        $participationPasrep = $this->participationService->findParticipationByStatus($id, 4);
 
         return (new EventDetail())
             ->setId($id)
