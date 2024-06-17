@@ -109,19 +109,18 @@ class EventService
 
         $timestamp = strtotime($event->getDate());
 
-        $event
-            ->setDate($event->getDate())
-            ->setTimestamp($timestamp)
-            ->setCreatedAt(DateTimeImmutable::createFromMutable($now))
-            ->setUpdatedAt(DateTimeImmutable::createFromMutable($now))
-            ->setUpdateUser($user);
+        $event->setDate($event->getDate())
+              ->setTimestamp($timestamp)
+              ->setCreatedAt(DateTimeImmutable::createFromMutable($now))
+              ->setUpdatedAt(DateTimeImmutable::createFromMutable($now))
+              ->setUpdateUser($user);
 
-        $this->saveEvent($event);
+        return $this->saveEvent($event);
  
     }
 
-    public function saveEvent(Event $event): void
+    public function saveEvent(Event $event): Event
     {
-        $this->eventRepository->saveEvent($event);
+        return $this->eventRepository->saveEvent($event);
     }
 }

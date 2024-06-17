@@ -16,6 +16,12 @@ class ParticipationRepository extends ServiceEntityRepository
         parent::__construct($registry, Participation::class);
     }
 
+    public function saveParticipation($participation): void
+    {
+        $this->getEntityManager()->persist($participation);
+        $this->getEntityManager()->flush();
+    }
+
     public function countParticipation(int $eventId, int $id): int
     {
         return $this->createQueryBuilder('q')
