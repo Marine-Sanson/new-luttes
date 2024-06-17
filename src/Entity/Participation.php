@@ -15,7 +15,7 @@ class Participation
 
     #[ORM\ManyToOne(inversedBy: 'participations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Event $Event = null;
+    private ?Event $event = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -34,12 +34,12 @@ class Participation
 
     public function getEvent(): ?Event
     {
-        return $this->Event;
+        return $this->event;
     }
 
-    public function setEvent(?Event $Event): static
+    public function setEvent(?Event $event): static
     {
-        $this->Event = $Event;
+        $this->event = $event;
 
         return $this;
     }

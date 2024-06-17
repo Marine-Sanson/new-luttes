@@ -67,3 +67,11 @@ strong{
 #navbar-icon{
     color: white;
 }
+
+button>a{
+	color: var(--main-color);
+}
+
+button>a:hover{
+    color: var(--main-color-4);
+}

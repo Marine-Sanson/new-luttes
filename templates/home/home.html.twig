@@ -58,7 +58,18 @@
 		
 		<section class="container w-75 p-3" id="homeActu">
 			<h2 class="my-3 fw-bolder text-center">Nos actualités :</h2>
-			<p class="empty">Aucune actualité pour le moment, revenez plus tard.</p>
+			{% if events %}
+				<ul>
+					{% for event in events %}
+					<li class ="row">
+						<h3 class="col-3">{{ event.date }} :</h3>
+						<p class="col-9">{{ event.publicDetails }}</p>
+					</li>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p class="empty">Aucune actualité pour le moment, revenez plus tard.</p>
+			{% endif %}
 		</section>
 
 		<section id="homeChants">

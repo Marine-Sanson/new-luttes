@@ -18,6 +18,7 @@ class EventController extends AbstractController
     ) {
 
     }
+
     #[Route('/agenda', name: 'app_event')]
     public function event(Request $request): Response
     {
