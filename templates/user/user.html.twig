@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-9 row">
+				<h1 class="text-center fw-bolder">Enregistrer une nouvelle choriste</h1>
+            </div>
+            <div class="col-5 mt-5">
+                {{ form_errors(userForm) }}
+
+                {{ form_start(userForm) }}
+                    {{ form_row(userForm.email) }}
+                    {{ form_row(userForm.role) }}
+                    {{ form_row(userForm.plainPassword) }}
+                    {{ form_row(userForm.name) }}
+                    {{ form_row(userForm.tel) }}
+                    {{ form_row(userForm.agreement) }}
+
+                    <button type="submit" class="btn btn-lg btn-primary mt-5">{{ button_label|default('Envoyer') }}</button>
+
+                {{ form_end(userForm) }}
+            </div>
+
+{% endblock %}

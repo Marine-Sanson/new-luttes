@@ -14,7 +14,7 @@ class ContactController extends AbstractController
 {
 
     public function __construct(
-        private readonly ContactService $contactsService
+        private readonly ContactService $contactService
     ) {
 
     }
@@ -31,7 +31,7 @@ class ContactController extends AbstractController
             if($contactForm->get('result')->getData() === 7)
             {
 
-                $this->contactsService->manageContact($contact->getMail(), $contact->getObject(), $contact->getContent());
+                $this->contactService->manageContact($contact->getMail(), $contact->getObject(), $contact->getContent());
             }
         }
 
