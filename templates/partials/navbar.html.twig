@@ -11,26 +11,34 @@
                     <ul class="navbar-nav me-auto">
                         {% if app.user %}
                             <li class="nav-item">
-                                {# <a class="nav-link" href="{{ path('app_admin_tricks_add') }}">Nouveau trick</a> #}
-                            </li>
-                            <li class="nav-item">
-                                {# <a class="nav-link" href="{{ path('app_admin_profil_index') }}">Profil</a> #}
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link navbarLink" href="{{ path('app_add_event') }}">Gérer les dates</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link navbarLink" href="{{ path('app_event') }}">Agenda</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link navbarLink" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </li>
+                            {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                                <li class="nav-item">
+                                    {# <a class="nav-link" href="{{ path('app_admin_tricks_add') }}">Nouveau trick</a> #}
+                                </li>
+                                <li class="nav-item">
+                                    {# <a class="nav-link" href="{{ path('app_admin_profil_index') }}">Profil</a> #}
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link navbarLink" href="{{ path('app_add_event') }}">Gérer les dates</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link navbarLink" href="{{ path('app_new_user') }}">Gérer les membres</a>
+                                </li>
+                            {% endif %}
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link navbarLink" href="{{ path('app_contact') }}">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link navbarLink" href="{{ path('app_login') }}">Espace membres</a>
+                            </li>
+                        {% endif %}
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link navbarLink" href="{{ path('app_logout') }}">Déconnexion</a>
                             </li>
                         {% endif %}
                     </ul>
