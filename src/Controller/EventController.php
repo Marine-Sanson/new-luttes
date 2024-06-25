@@ -31,7 +31,7 @@ class EventController extends AbstractController
         ]);
     }
 
-    #[Route('/detail_evenement/{id}', name: 'app_event_detail')]
+    #[Route('/detail-evenement/{id}', name: 'app_event_detail')]
     public function eventDetail(int $id, Request $request): Response
     {
         $eventDetail = $this->eventService->getEventDetail($id);
@@ -41,7 +41,7 @@ class EventController extends AbstractController
         ]);
     }
     
-    #[Route('/add_event', name: 'app_add_event')]
+    #[Route('/ajout-evenement', name: 'app_add_event')]
     public function addEvent(Request $request): Response
     {
         $event = new Event();

@@ -18,7 +18,7 @@ class UserController extends AbstractController
 
     }
 
-    #[Route('/newuser', name: 'app_new_user')]
+    #[Route('/ajout-membre', name: 'app_new_user')]
     public function index(Request $request): Response
     {
         $user = new User();

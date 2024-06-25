@@ -94,7 +94,8 @@ class UserType extends AbstractType
                 'attr' => [
                     'class' => 'form-control mb-3'
                 ],
-                'label' => 'Telephone'
+                'label' => 'Telephone',
+                'required' => false
             ])
             ->add('agreement', ChoiceType::class, [
                 'choices'  => [

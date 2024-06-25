@@ -76,6 +76,7 @@ class EventService
     public function getEventDetail(int $id)
     {
         $event = $this->eventRepository->findOneById($id);
+
         $cat = $this->eventCategoryRepository->findOneById($event->getEventCategory())->getName();
         $status = "privé";
         if ($event->getStatus() === 0)

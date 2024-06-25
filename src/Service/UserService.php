@@ -34,7 +34,7 @@ class UserService
 
     //     $userCreated = $this->userRepository->saveUser($user);
 
-    public function manageNewUser(string $email, string $role, string $plainPassword, string $name, string $tel, int $agreement): User
+    public function manageNewUser(string $email, string $role, string $plainPassword, string $name, ?string $tel, int $agreement): User
     {
         $arrayRole = ['ROLE_USER'];
         if($role === 'ADMIN'){
@@ -49,10 +49,13 @@ class UserService
             ->setEmail($email)
             ->setRoles($arrayRole)
             ->setName($name)
-            ->setTel($tel)
             ->setAgreement($agreement)
             ->setCreatedAt(DateTimeImmutable::createFromMutable($now))
         ;
+
+        if($tel){
+            $user->setTel($tel);
+        }
 
         $user->setPassword(
             $this->userPasswordHasher->hashPassword(
