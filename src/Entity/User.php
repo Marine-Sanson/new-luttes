@@ -2,16 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity('email', message: 'Cet email est déjà utilisé')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use CreatedAtTrait;
@@ -21,7 +24,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
+    #[Assert\Email(message: 'Cet email n\'est pas valide')]
+    #[Assert\Length(
+        min: 8,
+        minMessage: 'L\'email doit contenir au moins {{ limit }} caractères',
+        max: 180,
+        maxMessage: 'L\'email ne doit pas faire plus de {{ limit }} caractères'
+    )]
     private ?string $email = null;
 
     /**
@@ -34,9 +44,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotCompromisedPassword()]
+    #[Assert\PasswordStrength(minScore: Assert\PasswordStrength::STRENGTH_STRONG)]
+    #[Assert\Regex('/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,32}$/')]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        min: 2,
+        minMessage: 'Le nom doit contenir au moins {{ limit }} caractères',
+        max: 255,
+        maxMessage: 'Le nom ne doit pas faire plus de {{ limit }} caractères'
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]

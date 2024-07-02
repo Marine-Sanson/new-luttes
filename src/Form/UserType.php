@@ -40,7 +40,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'attr' => [
-                    'class' => 'm-3'
+                    'class' => 'form-control m-3 border-0'
                 ],
                 'label' => 'Role',
                 'mapped' => false
@@ -107,7 +107,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'attr' => [
-                    'class' => 'm-3'
+                    'class' => 'form-control m-3 border-0'
                 ],
                 'label' => 'Accord sur les coordonnées'
             ])

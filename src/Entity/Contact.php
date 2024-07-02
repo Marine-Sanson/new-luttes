@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ContactRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -17,12 +18,29 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Email(message: 'Cet email n\'est pas valide')]
+    #[Assert\Length(
+        min: 8,
+        minMessage: 'L\'email doit contenir au moins {{ limit }} caractères',
+        max: 255,
+        maxMessage: 'L\'email ne doit pas faire plus de {{ limit }} caractères'
+    )]
     private ?string $mail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        min: 8,
+        minMessage: 'L\'objet doit contenir au moins {{ limit }} caractères',
+        max: 255,
+        maxMessage: 'L\'objet ne doit pas faire plus de {{ limit }} caractères'
+    )]
     private ?string $object = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length(
+        min: 5,
+        minMessage: 'Attention vous essayez d\'envoyer un texte vide ou presque. Ce message doit faire au moins {{ limit }} caractères',
+    )]
     private ?string $content = null;
 
     public function getId(): ?int

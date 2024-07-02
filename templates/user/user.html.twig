@@ -3,25 +3,26 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-        <section class="container row d-flex justify-content-center mt-3">
+        <section class="container row d-flex justify-content-center mt-3 mx-auto">
 			
-			<div class="col-9 row">
-				<h1 class="text-center fw-bolder">Enregistrer une nouvelle choriste</h1>
-            </div>
-            <div class="col-5 mt-5">
-                {{ form_errors(userForm) }}
+        <div class="col-md-7 col-11">
+            <h1 class="text-center fw-bolder">Enregistrer une nouvelle choriste</h1>
+        </div>
+        <div class="col-md-7 col-11 mt-5">
+            {{ form_errors(userForm) }}
 
-                {{ form_start(userForm) }}
-                    {{ form_row(userForm.email) }}
-                    {{ form_row(userForm.role) }}
-                    {{ form_row(userForm.plainPassword) }}
-                    {{ form_row(userForm.name) }}
-                    {{ form_row(userForm.tel) }}
-                    {{ form_row(userForm.agreement) }}
+            {{ form_start(userForm) }}
+                {{ form_row(userForm.email) }}
+                {{ form_row(userForm.role) }}
+                {{ form_row(userForm.plainPassword) }}
+                {{ form_row(userForm.name) }}
+                {{ form_row(userForm.tel) }}
+                {{ form_row(userForm.agreement) }}
 
+                <div class="d-flex justify-content-center justify-content-md-start">
                     <button type="submit" class="btn btn-lg btn-primary mt-5">{{ button_label|default('Envoyer') }}</button>
-
-                {{ form_end(userForm) }}
-            </div>
+                </div>
+            {{ form_end(userForm) }}
+        </div>
 
 {% endblock %}

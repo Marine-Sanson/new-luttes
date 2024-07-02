@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EventRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -28,13 +30,24 @@ class Event
     private ?EventCategory $EventCategory = null;
 
     #[ORM\Column(length: 2024)]
+    #[Assert\NotBlank(message: 'Renseigner les détails ici')]
+    #[Assert\Length(
+        min: 5,
+        minMessage: 'Les détails doivent contenir au moins {{ limit }} caractères',
+        max: 2024,
+        maxMessage: 'Les détails ne doivent pas faire plus de {{ limit }} caractères'
+    )]
     private ?string $privateDetails = null;
 
     #[ORM\Column(length: 2024)]
+    #[Assert\Length(
+        max: 2024,
+        maxMessage: 'Les détails ne doivent pas faire plus de {{ limit }} caractères'
+    )]
     private ?string $publicDetails = null;
 
     #[ORM\Column]
-    private ?bool $status = null;
+    private ?bool $status = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;

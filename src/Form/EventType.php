@@ -44,7 +44,7 @@ class EventType extends AbstractType
                     'privé' => 1,
                 ],
                 'attr' => [
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3 border-0'
                 ],
                 'label' => 'Status'
             ])
