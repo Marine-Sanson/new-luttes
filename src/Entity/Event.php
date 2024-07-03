@@ -27,6 +27,7 @@ class Event
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\Choice(['New York', 'Berlin', 'Tokyo'])]
     private ?EventCategory $EventCategory = null;
 
     #[ORM\Column(length: 2024)]
