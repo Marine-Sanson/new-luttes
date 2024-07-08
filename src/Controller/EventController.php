@@ -9,8 +9,11 @@ use App\Service\ParticipationService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/evenement')]
+#[IsGranted('ROLE_DATES')]
 class EventController extends AbstractController
 {
     
@@ -21,7 +24,7 @@ class EventController extends AbstractController
 
     }
 
-    #[Route('/agenda', name: 'app_event')]
+    #[Route('', name: 'app_event')]
     public function event(Request $request): Response
     {
         $eventsForAgenda = $this->eventService->getAllEventsForAgenda();
@@ -31,7 +34,7 @@ class EventController extends AbstractController
         ]);
     }
 
-    #[Route('/detail-evenement/{id}', name: 'app_event_detail')]
+    #[Route('/detail/{id}', name: 'app_event_detail')]
     public function eventDetail(int $id, Request $request): Response
     {
         $eventDetail = $this->eventService->getEventDetail($id);
@@ -41,7 +44,7 @@ class EventController extends AbstractController
         ]);
     }
     
-    #[Route('/ajout-evenement', name: 'app_add_event')]
+    #[Route('/ajout', name: 'app_add_event')]
     public function addEvent(Request $request): Response
     {
         $event = new Event();

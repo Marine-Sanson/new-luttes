@@ -13,10 +13,15 @@
                             <li class="nav-item">
                                 <a class="nav-link navbarLink" href="{{ path('app_event') }}">Agenda</a>
                             </li>
-                            {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                            {% if app.user.roles[0] == "ROLE_DATES" or app.user.roles[0] == "ROLE_ADMIN" %}
                                 <li class="nav-item">
                                     <a class="nav-link navbarLink" href="{{ path('app_add_event') }}">Gérer les dates</a>
                                 </li>
+                            {% endif %}
+                            {% if app.user.roles[0] == "ROLE_CHANTS" or app.user.roles[0] == "ROLE_ADMIN" %}
+
+                            {% endif %}
+                            {% if app.user.roles[0] == "ROLE_ADMIN" %}
                                 <li class="nav-item">
                                     <a class="nav-link navbarLink" href="{{ path('app_new_user') }}">Gérer les membres</a>
                                 </li>

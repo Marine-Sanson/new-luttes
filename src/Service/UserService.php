@@ -37,6 +37,14 @@ class UserService
     public function manageNewUser(string $email, string $role, string $plainPassword, string $name, ?string $tel, int $agreement): User
     {
         $arrayRole = ['ROLE_USER'];
+        if($role === 'DATES'){
+            $arrayRole = [];
+            $arrayRole = ['ROLE_DATES'];
+        }
+        if($role === 'CHANTS'){
+            $arrayRole = [];
+            $arrayRole = ['ROLE_CHANTS'];
+        }
         if($role === 'ADMIN'){
             $arrayRole = [];
             $arrayRole = ['ROLE_ADMIN'];
