@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/membre')]
 class UserController extends AbstractController
 {
     public function __construct(
@@ -18,7 +19,7 @@ class UserController extends AbstractController
 
     }
 
-    #[Route('/ajout-membre', name: 'app_new_user')]
+    #[Route('/ajout', name: 'app_new_user')]
     public function index(Request $request): Response
     {
         $user = new User();

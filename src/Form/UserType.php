@@ -36,6 +36,8 @@ class UserType extends AbstractType
                 'choices'  => [
                     'User' => 'USER',
                     'Admin' => 'ADMIN',
+                    'Dates' => 'DATES',
+                    'Chants' => 'CHANTS'
                 ],
                 'expanded' => true,
                 'multiple' => false,
