@@ -84,4 +84,19 @@ class UserService
     {
         return $this->userRepository->findOneById($id)->getName();
     }
+
+    public function findUserById(int $id): ?User
+    {
+        return $this->userRepository->findOneById($id);
+    }
+
+    public function saveUser(User $user): void{
+        $this->userRepository->saveUser($user);
+    }
+
+    Public function findUserByEmail(string $email): ?User
+    {
+        return $this->userRepository->findOneByEmail($email);
+    }
+
 }
