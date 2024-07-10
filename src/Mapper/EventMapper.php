@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Model\EventForHome;
 use App\Entity\EventCategory;
 use App\Model\EventForAgenda;
+use App\Model\EventForMembersHome;
 
 class EventMapper
 {
@@ -36,7 +37,17 @@ class EventMapper
             ->setNsp($nsp)
             ->setPasrep($pasrep)
             ;
+    }
 
+    public function transformToEventForMembersHome(Event $event, int $participationId): EventForMembersHome
+    {
+        return (new EventForMembersHome())
+            ->setEventId($event->getId())
+            ->setParticipationId($participationId)
+            ->setCategory($event->getEventCategory()->getName())
+            ->setDate($event->getDate())
+            ->setPrivateDetails($event->getPrivateDetails())
+        ;
     }
 
 }

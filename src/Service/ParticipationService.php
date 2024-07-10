@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Entity\Event;
 use App\Entity\Status;
 use DateTimeImmutable;
+use App\Mapper\EventMapper;
 use App\Service\UserService;
 use App\Entity\Participation;
 use App\Repository\StatusRepository;
@@ -19,6 +20,7 @@ class ParticipationService
         private readonly ParticipationRepository $participationRepository,
         private readonly UserService $userService,
         private readonly StatusRepository $statusRepository,
+        private readonly EventMapper $eventMapper
     ) {
 
     }
@@ -42,7 +44,17 @@ class ParticipationService
 
     }
 
-    public function countParticipation(int $eventId, int $id)
+    public function getParticipationById(int $participationId): Participation
+    {
+        return $this->participationRepository->findOneById($participationId);
+    }
+
+    public function saveParticipation(Participation $participation)
+    {
+        $this->participationRepository->saveParticipation($participation);
+    }
+
+    public function countParticipation(int $eventId, int $id): int
     {
         return $this->participationRepository->countParticipation($eventId, $id);
     }
@@ -60,6 +72,27 @@ class ParticipationService
         }
         return [];
 
+    }
+
+    public function findEventsByParticipation(User $user, int $status): array
+    {
+        $participations = $this->participationRepository->findByParticipationStatus($user, $status);
+        if($participations){
+            return array_map(
+                function (Participation $participation) {
+                    $event = $participation->getEvent();
+                    $participationId = $participation->getId();
+                    return $this->eventMapper->transformToEventForMembersHome($event, $participationId);
+                },
+                $participations
+            );
+        }
+        return [];
+    }
+
+    public function getStatusByName(string $name): Status
+    {
+        return $this->statusRepository->findOneByName($name);
     }
 
 }

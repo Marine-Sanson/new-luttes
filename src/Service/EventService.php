@@ -24,6 +24,16 @@ class EventService
 
     }
 
+    public function getEventsByParticipation(User $user, int $status): array
+    {
+        return $this->participationService->findEventsByParticipation($user, $status);
+    }
+
+    public function getEventById(int $eventId): Event
+    {
+        return $this->eventRepository->findOneById($eventId);
+    }
+
     public function getPublicEvents()
     {
         $publicEvents = $this->eventRepository->findByStatus(0);
@@ -66,11 +76,6 @@ class EventService
     public function getAllEvents()
     {
         return $this->eventRepository->findAll();
-    }
-
-    public function getAllCats()
-    {
-        return $this->eventCategoryRepository->findAll();
     }
 
     public function getEventDetail(int $id)

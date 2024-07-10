@@ -47,6 +47,18 @@ class ParticipationRepository extends ServiceEntityRepository
        ;
    }
 
+   public function findByParticipationStatus($user, $status): ?array
+   {
+        return $this->createQueryBuilder('p')
+            ->where('p.user = :user')
+            ->andWhere('p.status = :status')
+            ->setParameter('user', $user)
+            ->setParameter('status', $status)
+            ->getQuery()
+            ->getResult()
+        ;
+   }
+
 //    /**
 //     * @return Participation[] Returns an array of Participation objects
 //     */

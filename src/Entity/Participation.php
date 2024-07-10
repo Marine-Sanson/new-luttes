@@ -13,18 +13,18 @@ class Participation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'participations')]
+    #[ORM\ManyToOne(inversedBy: 'participation', fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Event $event = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Status $status = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'participations')]
+    #[ORM\ManyToOne(inversedBy: 'participations', fetch: 'EAGER')]
     private ?User $user = null;
 
     public function getId(): ?int

@@ -16,6 +16,11 @@ class StatusRepository extends ServiceEntityRepository
         parent::__construct($registry, Status::class);
     }
 
+    // public function FindOneByName(string $name): Status
+    // {
+
+    // }
+
     //    /**
     //     * @return Status[] Returns an array of Status objects
     //     */
