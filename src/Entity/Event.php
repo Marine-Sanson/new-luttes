@@ -25,10 +25,10 @@ class Event
     #[ORM\Column]
     private ?int $timestamp = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Assert\Choice(['New York', 'Berlin', 'Tokyo'])]
-    private ?EventCategory $EventCategory = null;
+    // #[Assert\Choice(['New York', 'Berlin', 'Tokyo'])]
+    private ?EventCategory $eventCategory = null;
 
     #[ORM\Column(length: 2024)]
     #[Assert\NotBlank(message: 'Renseigner les détails ici')]
@@ -40,7 +40,7 @@ class Event
     )]
     private ?string $privateDetails = null;
 
-    #[ORM\Column(length: 2024)]
+    #[ORM\Column(length: 2024, nullable:true)]
     #[Assert\Length(
         max: 2024,
         maxMessage: 'Les détails ne doivent pas faire plus de {{ limit }} caractères'
@@ -99,12 +99,12 @@ class Event
 
     public function getEventCategory(): ?EventCategory
     {
-        return $this->EventCategory;
+        return $this->eventCategory;
     }
 
-    public function setEventCategory(?EventCategory $EventCategory): static
+    public function setEventCategory(?EventCategory $eventCategory): static
     {
-        $this->EventCategory = $EventCategory;
+        $this->eventCategory = $eventCategory;
 
         return $this;
     }

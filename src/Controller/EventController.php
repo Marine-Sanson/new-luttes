@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/evenement')]
-#[IsGranted('ROLE_DATES')]
+#[IsGranted('ROLE_USER')]
 class EventController extends AbstractController
 {
     
@@ -45,6 +45,7 @@ class EventController extends AbstractController
     }
     
     #[Route('/ajout', name: 'app_add_event')]
+    #[IsGranted('ROLE_DATES')]
     public function addEvent(Request $request): Response
     {
         $event = new Event();
@@ -60,6 +61,9 @@ class EventController extends AbstractController
             $savedEvent = $this->eventService->addEvent($event, $user);
 
             $this->participationService->addParticipations($savedEvent);
+
+            $this->addFlash('success', 'Évènement enregistré avec succès');
+            return $this->redirectToRoute('app_members_home');
         }
 
         return $this->render('event/addEvent.html.twig', [

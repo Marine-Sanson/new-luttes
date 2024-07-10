@@ -75,3 +75,7 @@ button>a{
 button>a:hover{
     color: var(--main-color-4);
 }
+
+li{
+    list-style-type: none;
+}

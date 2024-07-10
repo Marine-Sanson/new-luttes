@@ -24,7 +24,6 @@ class EventRepository extends ServiceEntityRepository
         return $event;
     }
 
-
     //    /**
     //     * @returnh Event[] Returns an array of Event objects
     //     */

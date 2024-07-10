@@ -18,9 +18,9 @@ class UserController extends AbstractController
     ) {
 
     }
-
+    
     #[Route('/ajout', name: 'app_new_user')]
-    public function index(Request $request): Response
+    public function addUser(Request $request): Response
     {
         $user = new User();
 
@@ -37,7 +37,17 @@ class UserController extends AbstractController
                 $user->getTel(),
                 $user->getAgreement()
             );
+            $this->addFlash('success', 'Nouvelle membre enregistrée avec succès');
+            return $this->redirectToRoute('app_members_home');
+
+        // *************************************************************
+        // Gérer la création de participation
+        //***************************************************************** */
         }
+
+        // *************************************************************
+        // Changer la redirect pour list
+        //***************************************************************** */
 
         return $this->render('user/user.html.twig', [
             'userForm' => $userForm,

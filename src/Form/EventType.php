@@ -34,7 +34,8 @@ class EventType extends AbstractType
                 'attr' => [
                     'class' => 'form-control mb-3'
                 ],
-                'label' => 'Description publique'
+                'label' => 'Description publique',
+                'required' => false
             ])
             ->add('status', ChoiceType::class, [
                 'multiple' => false,
