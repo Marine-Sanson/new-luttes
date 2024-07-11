@@ -16,6 +16,9 @@
                             <li class="nav-item">
                                 <a class="nav-link navbarLink" href="{{ path('app_event') }}">Agenda</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link navbarLink" href="{{ path('app_user_list') }}">Liste</a>
+                            </li>
                             {% if app.user.roles[0] == "ROLE_DATES" or app.user.roles[0] == "ROLE_ADMIN" %}
                                 <li class="nav-item">
                                     <a class="nav-link navbarLink" href="{{ path('app_add_event') }}">Gérer les dates</a>

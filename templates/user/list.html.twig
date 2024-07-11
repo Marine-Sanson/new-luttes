@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des choristes{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3 mx-auto">
+			
+        <div class="col-sm-7 col-11">
+            <h1 class="text-center fw-bolder">Liste des choristes</h1>
+        </div>
+        <div class="col-sm-7 col-md-11 mt-5">
+            <ul class="card-deck row mx-auto">
+                {% for user in usersForList %}
+                    <li class="card mx-auto my-5" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h2 class="card-title text-center text-white bg-secondary mx-auto">{{ user.name|capitalize }}</h2>
+                        </div>
+                        <div class="card-body row">
+                            <div class="col-8">
+                                {% if user.agreement == 0 %}
+                                    <p class="card-text">-</p>
+                                    <p class="card-text">-</p>
+                                {% elseif user.agreement == 1 %}
+                                    <p class="card-text">{{ user.email }}</p>
+                                    <p class="card-text">-</p>
+                                {% elseif user.agreement == 2 %}
+                                    <p class="card-text">{{ user.email }}</p>
+                                    <p class="card-text">{{ user.tel }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="col-4">
+                                {% if user.photoName == false %}
+                                    <img class="w-100 h-auto mx-auto object-fit-contain" src="{{ asset('img/Logo.png') }}">
+                                {% else %}
+                                    <img class="w-100 h-auto mx-auto object-fit-contain" src="{{ asset('img/profil/') ~  user.photoName }}.jpg">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+{% endblock %}

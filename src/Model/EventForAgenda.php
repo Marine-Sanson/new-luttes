@@ -2,10 +2,6 @@
 
 namespace App\Model;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\EventRepository;
-
-#[ORM\Entity(repositoryClass: EventRepository::class)]
 class EventForAgenda
 {
 
