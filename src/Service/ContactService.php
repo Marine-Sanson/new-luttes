@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use DateTimeZone;
+use DateTimeImmutable;
 use App\Service\MailService;
 use App\Repository\ContactRepository;
 
@@ -17,9 +19,7 @@ class ContactService
     public function manageContact(string $email, string $object, string $content)
     {
 
-        $eur = new \DateTimeZone("Europe/Paris");
-        $date = new \DateTime("now", $eur);
-        $savedContact = $this->saveContact($email, $object, $content, $date);
+        $savedContact = $this->saveContact($email, $object, $content, new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")));
         if ($savedContact)
         {
 

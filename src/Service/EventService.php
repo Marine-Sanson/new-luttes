@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use DateTimeZone;
 use App\Entity\User;
 use App\Entity\Event;
 use DateTimeImmutable;
@@ -109,16 +110,12 @@ class EventService
 
     public function addEvent(Event $event, User $user)
     {
-
-        $eur = new \DateTimeZone("Europe/Paris");
-        $now = new \DateTime("now", $eur);
-
         $timestamp = strtotime($event->getDate());
 
         $event->setDate($event->getDate())
               ->setTimestamp($timestamp)
-              ->setCreatedAt(DateTimeImmutable::createFromMutable($now))
-              ->setUpdatedAt(DateTimeImmutable::createFromMutable($now))
+              ->setCreatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
+              ->setUpdatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
               ->setUpdateUser($user);
 
         return $this->saveEvent($event);

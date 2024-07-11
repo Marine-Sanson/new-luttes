@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use DateTimeZone;
 use App\Entity\User;
 use DateTimeImmutable;
 use App\Mapper\UserMapper;
@@ -52,15 +53,13 @@ class UserService
             $arrayRole = ['ROLE_ADMIN'];
         }
 
-        $eur = new \DateTimeZone("Europe/Paris");
-        $now = new \DateTime("now", $eur);
-
         $user = (new User())
             ->setEmail($email)
             ->setRoles($arrayRole)
             ->setName($name)
             ->setAgreement($agreement)
-            ->setCreatedAt(DateTimeImmutable::createFromMutable($now))
+            ->setCreatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
+            ->setLastConnection(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
         ;
 
         if($tel){
@@ -75,6 +74,11 @@ class UserService
         );
 
         return $this->userRepository->saveNewUser($user);
+    }
+
+    public function saveLastConnection(?User $user): void
+    {
+        $this->userRepository->saveUser($user);
     }
 
     public function getAllUsers(): array

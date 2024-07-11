@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use DateTime;
 use DateTimeZone;
 use App\Entity\User;
 use App\Entity\Event;
@@ -28,15 +27,13 @@ class ParticipationService
     public function addParticipations(Event $event)
     {
         $users = $this->userService->getAllUsers();
-        $eur = new DateTimeZone("Europe/Paris");
-        $now = new DateTime("now", $eur);
         $status = $this->statusRepository->findOneById(4);
 
         foreach ($users as $key => $user){
             $participation = (new Participation())
                     ->setEvent($event)
                     ->setStatus($status)
-                    ->setUpdatedAt(DateTimeImmutable::createFromMutable($now))
+                    ->setUpdatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
                     ->setUser($user)
             ;
             $this->participationRepository->saveParticipation($participation);

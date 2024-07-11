@@ -97,6 +97,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'user')]
     private Collection $participations;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $lastConnection = null;
+
     public function __construct()
     {
         $this->chatItems = new ArrayCollection();
@@ -375,6 +378,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $participation->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLastConnection(): ?\DateTimeImmutable
+    {
+        return $this->lastConnection;
+    }
+
+    public function setLastConnection(\DateTimeImmutable $lastConnection): static
+    {
+        $this->lastConnection = $lastConnection;
 
         return $this;
     }
