@@ -11,12 +11,12 @@
         <div class="col-sm-7 col-md-11 mt-5">
             <ul class="card-deck row mx-auto">
                 {% for user in usersForList %}
-                    <li class="card mx-auto my-5" style="max-width: 18rem;">
+                    <li class="card mx-auto my-5" style="max-width: 20rem;">
                         <div class="card-header">
                             <h2 class="card-title text-center text-white bg-secondary mx-auto">{{ user.name|capitalize }}</h2>
                         </div>
                         <div class="card-body row">
-                            <div class="col-8">
+                            <div class="col-7">
                                 {% if user.agreement == 0 %}
                                     <p class="card-text">-</p>
                                     <p class="card-text">-</p>
@@ -28,7 +28,7 @@
                                     <p class="card-text">{{ user.tel }}</p>
                                 {% endif %}
                             </div>
-                            <div class="col-4">
+                            <div class="col-5">
                                 {% if user.photoName == false %}
                                     <img class="w-100 h-auto mx-auto object-fit-contain" src="{{ asset('img/Logo.png') }}">
                                 {% else %}
