@@ -27,7 +27,7 @@ class ParticipationService
 
     public function addParticipations(Event $event)
     {
-        $users = $this->userService->getAllUsersIds();
+        $users = $this->userService->getAllUsers();
         $eur = new DateTimeZone("Europe/Paris");
         $now = new DateTime("now", $eur);
         $status = $this->statusRepository->findOneById(4);

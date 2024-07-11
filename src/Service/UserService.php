@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\User;
 use DateTimeImmutable;
+use App\Mapper\UserMapper;
 use App\Repository\UserRepository;
 use App\Repository\ParticipationRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -14,6 +15,7 @@ class UserService
         private readonly ParticipationRepository $participationRepository,
         private readonly UserRepository $userRepository,
         private readonly UserPasswordHasherInterface $userPasswordHasher,
+        private readonly UserMapper $userMapper,
     ) {
 
     }
@@ -75,9 +77,21 @@ class UserService
         return $this->userRepository->saveNewUser($user);
     }
 
-    public function getAllUsersIds(): array
+    public function getAllUsers(): array
     {
         return $this->userRepository->findAll();
+    }
+
+    public function getUsersForList(): array
+    {
+        $users = $this->getAllUsers();
+
+        return array_map(
+            function (User $user) {
+                return $this->userMapper->transformToUserForList($user);
+            },
+            $users
+        );
     }
 
     public function findUserNameById(int $id): string

@@ -8,9 +8,11 @@ use App\Service\UserService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/membre')]
+#[IsGranted('ROLE_USER')]
 class UserController extends AbstractController
 {
     public function __construct(
@@ -18,8 +20,19 @@ class UserController extends AbstractController
     ) {
 
     }
-    
+
+    #[Route('', name: 'app_user_list')]
+    public function listUser(): Response
+    {
+        $usersForList = $this->userService->getUsersForList();
+
+        return $this->render('user/list.html.twig', [
+            'usersForList' => $usersForList,
+        ]);
+    }
+
     #[Route('/ajout', name: 'app_new_user')]
+    #[IsGranted('ROLE_ADMIN')]
     public function addUser(Request $request): Response
     {
         $user = new User();

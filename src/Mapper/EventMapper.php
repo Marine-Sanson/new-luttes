@@ -4,7 +4,6 @@ namespace App\Mapper;
 
 use App\Entity\Event;
 use App\Model\EventForHome;
-use App\Entity\EventCategory;
 use App\Model\EventForAgenda;
 use App\Model\EventForMembersHome;
 
@@ -18,6 +17,7 @@ class EventMapper
             ->setPublicDetails($event->getPublicDetails())
         ;
     }
+
     public function transformToEventForAgenda(Event $event, string $cat, int $oui, int $non, int $nsp, int $pasrep): EventForAgenda
     {
         $status = "privé";

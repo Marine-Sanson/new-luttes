@@ -65,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $agreement = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Photo $Photo = null;
+    private ?Photo $photo = null;
 
     /**
      * @var Collection<int, ChatItem>
@@ -219,12 +219,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getPhoto(): ?Photo
     {
-        return $this->Photo;
+        return $this->photo;
     }
 
-    public function setPhoto(?Photo $Photo): static
+    public function setPhoto(?Photo $photo): static
     {
-        $this->Photo = $Photo;
+        $this->photo = $photo;
 
         return $this;
     }
