@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Service\UserService;
+use App\Service\EventService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -16,7 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     public function __construct(
-        private readonly UserService $userService
+        private readonly UserService $userService,
+        private readonly EventService $eventService,
     ) {
 
     }
@@ -42,25 +44,22 @@ class UserController extends AbstractController
 
         if ($userForm->isSubmitted() && $userForm->isValid()) {
 
+            $events = $this->eventService->getAllEvents();
+
             $this->userService->manageNewUser(
                 $user->getEmail(),
                 $userForm->get('role')->getData(),
                 $userForm->get('plainPassword')->getData(),
                 $user->getName(),
                 $user->getTel(),
-                $user->getAgreement()
+                $user->getAgreement(),
+                $events
             );
+
             $this->addFlash('success', 'Nouvelle membre enregistrée avec succès');
-            return $this->redirectToRoute('app_members_home');
+            return $this->redirectToRoute('app_user_list');
 
-        // *************************************************************
-        // Gérer la création de participation
-        //***************************************************************** */
         }
-
-        // *************************************************************
-        // Changer la redirect pour list
-        //***************************************************************** */
 
         return $this->render('user/user.html.twig', [
             'userForm' => $userForm,

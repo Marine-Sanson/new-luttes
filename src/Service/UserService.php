@@ -6,7 +6,9 @@ use DateTimeZone;
 use App\Entity\User;
 use DateTimeImmutable;
 use App\Mapper\UserMapper;
+use App\Entity\Participation;
 use App\Repository\UserRepository;
+use App\Repository\StatusRepository;
 use App\Repository\ParticipationRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -17,27 +19,12 @@ class UserService
         private readonly UserRepository $userRepository,
         private readonly UserPasswordHasherInterface $userPasswordHasher,
         private readonly UserMapper $userMapper,
+        private readonly StatusRepository $statusRepository,
     ) {
 
     }
 
-    // public function register(UserRegister $userRegister): string
-    // {
-
-    //     $user = (new User())
-    //         ->setUsername($userRegister->getUsername())
-    //         ->setEmail($userRegister->getEmail());
-
-    //     $user->setPassword(
-    //         $this->userPasswordHasher->hashPassword(
-    //             $user,
-    //             $userRegister->getPlainPassword()
-    //         )
-    //     );
-
-    //     $userCreated = $this->userRepository->saveUser($user);
-
-    public function manageNewUser(string $email, string $role, string $plainPassword, string $name, ?string $tel, int $agreement): User
+    public function manageNewUser(string $email, string $role, string $plainPassword, string $name, ?string $tel, int $agreement, array $events): User
     {
         $arrayRole = ['ROLE_USER'];
         if($role === 'DATES'){
@@ -53,13 +40,15 @@ class UserService
             $arrayRole = ['ROLE_ADMIN'];
         }
 
+        $now = new DateTimeImmutable("now", new DateTimeZone("Europe/Paris"));
+
         $user = (new User())
             ->setEmail($email)
             ->setRoles($arrayRole)
             ->setName($name)
             ->setAgreement($agreement)
-            ->setCreatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
-            ->setLastConnection(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
+            ->setCreatedAt($now)
+            ->setLastConnection($now)
         ;
 
         if($tel){
@@ -73,7 +62,21 @@ class UserService
             )
         );
 
-        return $this->userRepository->saveNewUser($user);
+        $newUser = $this->userRepository->saveNewUser($user);
+
+        $status = $this->statusRepository->findOneById(4);
+
+        foreach($events as $event){
+            $participation = (new Participation())
+                ->setEvent($event)
+                ->setStatus($status)
+                ->setUser($newUser)
+                ->setUpdatedAt($now)
+            ;
+            $this->participationRepository->saveParticipation($participation);
+        }
+
+        return $newUser;
     }
 
     public function saveLastConnection(?User $user): void
