@@ -74,7 +74,7 @@ class EventService
         return $this->eventMapper->transformToEventForAgenda($event, $cat, $oui, $non, $nsp, $pasrep);
     }
 
-    public function getAllEvents()
+    public function getAllEvents(): array
     {
         return $this->eventRepository->findAll();
     }
