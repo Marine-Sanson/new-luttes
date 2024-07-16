@@ -7,82 +7,82 @@
             <div class="col-md-7 col-11">
                 <h1 class="text-center fw-bolder">Bonjour {{ user.name|capitalize }}, bienvenue sur l'espace réservé aux membres des Luttes Enchantées</h1>
             </div>
-            <div class="col-md-7 col-11 mt-5">
+            <div class="col-md-8 col-11 mt-5">
                 <h2 class="text-center fw-bolder">Voici les évenements à venir :</h2>
                 <h3 class="text-center fw-bolder mt-5">Ceux où tu n'as pas encore répondu :</h3>
                     {% if eventsWithoutAnswer %}
-                        <ul>
+                        <ul class="membersHome mx-auto">
                             {% for event in eventsWithoutAnswer %}
                                 <li class="mt-5">
-                                    <h4>{{ event.category }} du {{ event.date }}</h4>
-                                    <p>{{ event.privateDetails }}</p>
-                                    <button type="button" class="btn btn-outline-primary">
-                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none text-left">
-                                            Répondre
+                                    <h4 class="text-center mt-3 fw-bolder">{{ event.category }} du {{ event.date }}</h4>
+                                    <p class="justify">{{ event.privateDetails }}</p>
+                                    <div class="d-flex">
+                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none mx-auto">
+                                            <button type="button" class="btn btn-lg btn-primary rounded btn-sm">Répondre</button>
                                         </a>
-                                    </button>
+                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <h4>Aucun</h4>
+                        <h4 class="text-center">Aucun</h4>
                     {% endif %}
 
                 <h3 class="text-center fw-bolder mt-5">Ceux où tu as répondu "je ne sais pas" :</h3>
                     {% if eventsDontKnow %}
-                        <ul>
+                        <ul class="membersHome">
                             {% for event in eventsDontKnow %}
                                 <li class="mt-5">
-                                    <h4>{{ event.category }} du {{ event.date }}</h4>
-                                    <p>{{ event.privateDetails }}</p>
-                                    <button type="button" class="btn btn-outline-primary">
-                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none text-left">
-                                            Modifier ma réponse
+                                    <h4 class="text-center mt-3 fw-bolder">{{ event.category }} du {{ event.date }}</h4>
+                                    <p class="justify">{{ event.privateDetails }}</p>
+                                    <div class="d-flex">
+                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none mx-auto">
+                                            <button type="button" class="btn btn-lg btn-primary rounded btn-sm">Modifier ma réponse</button>
                                         </a>
-                                    </button>
+                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <h4>Aucun</h4>
+                        <h4 class="text-center">Aucun</h4>
                     {% endif %}
 
                 <h3 class="text-center fw-bolder mt-5">Ceux où tu as répondu "non" :</h3>
                     {% if eventsNo %}
-                        <ul>
+                        <ul class="membersHome">
                             {% for event in eventsNo %}
                                 <li class="mt-5">
-                                    <h4>{{ event.category }} du {{ event.date }}</h4>
-                                    <p>{{ event.privateDetails }}</p>
-                                    <button type="button" class="btn btn-outline-primary">
-                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none text-left">
-                                            Modifier ma réponse
+                                    <h4 class="text-center mt-3 fw-bolder">{{ event.category }} du {{ event.date }}</h4>
+                                    <p class="justify">{{ event.privateDetails }}</p>
+                                    <div class="d-flex">
+                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none mx-auto">
+                                            <button type="button" class="btn btn-lg btn-primary rounded btn-sm">Modifier ma réponse</button>
                                         </a>
-                                    </button>
+                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <h4>Aucun</h4>
+                        <h4 class="text-center">Aucun</h4>
                     {% endif %}
 
                 <h3 class="text-center fw-bolder mt-5">Ceux où tu as répondu "oui" :</h3>
                     {% if eventsYes %}
-                        <ul>
+                        <ul class="membersHome">
                             {% for event in eventsYes %}
                                 <li class="mt-5">
-                                    <h4>{{ event.category }} du {{ event.date }}</h4>
-                                    <p>{{ event.privateDetails }}</p>
-                                    <button type="button" class="btn btn-outline-primary">
-                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none text-left">
-                                            Modifier ma réponse
+                                    <h4 class="text-center mt-3 fw-bolder">{{ event.category }} du {{ event.date }}</h4>
+                                    <p class="justify">{{ event.privateDetails }}</p>
+                                    <div class="d-flex">
+                                        <a href="{{ path('app_participation', { participationId: event.participationId }) }}" class="text-decoration-none mx-auto">
+                                            <button type="button" class="btn btn-lg btn-primary rounded btn-sm">Modifier ma réponse</button>
                                         </a>
-                                    </button>
+                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <h4>Aucun</h4>
+                        <h4 class="text-center">Aucun</h4>
                     {% endif %}
             </div>
         </section>

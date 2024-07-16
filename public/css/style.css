@@ -79,3 +79,49 @@ button>a:hover{
 li{
     list-style-type: none;
 }
+
+.btn-primary{
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    border-width: 2px;
+    color: var(--main-color-4);
+    font-weight: bold;}
+
+.btn-primary:hover{
+    background-color: var(--main-color-4);
+    border-color: var(--main-color);
+    border-width: 2px;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.membersHome>li+li{
+    border-top: 4px solid var(--main-color);
+}
+
+ul{
+    padding-left: 0;
+}
+
+.card{
+    border: 4px solid var(--main-color);
+    padding: 2rem;
+}
+
+.card-title{
+    background-color: var(--main-color);
+}
+
+.card-header{
+    color:white;
+    border-bottom: 2px solid var(--main-color);
+}
+
+.card-body{
+    color: var(--main-color);
+    font-size: large;
+}
+
+.bgmain{
+    background-color: var(--main-color);
+}
