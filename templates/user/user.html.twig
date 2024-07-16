@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Enregistrer une nouvelle choriste{% endblock %}
 
 {% block body %}
         <section class="container row d-flex justify-content-center mt-3 mx-auto">
@@ -20,7 +20,7 @@
                 {{ form_row(userForm.agreement) }}
 
                 <div class="d-flex justify-content-center justify-content-md-start">
-                    <button type="submit" class="btn btn-lg btn-primary mt-5">{{ button_label|default('Envoyer') }}</button>
+                    <button type="submit" class="btn btn-lg btn-primary rounded mt-5">{{ button_label|default('Envoyer') }}</button>
                 </div>
             {{ form_end(userForm) }}
         </div>
