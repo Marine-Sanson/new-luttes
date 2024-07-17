@@ -90,7 +90,6 @@ class UserType extends AbstractType
                         ]
                     ),
                 ],
-
             ])
             ->add('tel', TextType::class, [
                 'attr' => [

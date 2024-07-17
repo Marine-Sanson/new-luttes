@@ -20,6 +20,9 @@ class HomeController extends AbstractController
     {
         $publicEvents = $this->eventService->getPublicEvents();
 
+        // A faire *******************************************************************
+        // $currentSong = $this->songService->getCurrentSong(;)
+
         return $this->render('home/home.html.twig', [
             'events' => $publicEvents
         ]);
