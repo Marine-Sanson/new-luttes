@@ -21,17 +21,17 @@ class Song
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $urlVideo = null;
 
     #[ORM\Column]
-    private ?bool $currentSong = null;
+    private ?bool $currentSong = false;
 
-    #[ORM\ManyToOne(inversedBy: 'songs')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'songs', fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?SongCategory $category = null;
 
     /**
@@ -67,7 +67,7 @@ class Song
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 

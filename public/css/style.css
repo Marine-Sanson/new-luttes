@@ -14,8 +14,22 @@ body{
 	color: var(--main-color);
 }
 
+body>*,
+.form-control{
+    font-size: 1.2rem;
+}
+
 .justify{
     text-align: justify;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-weight: bolder;
 }
 
 .logo{
@@ -41,6 +55,9 @@ body{
 
 strong{
     font-weight: normal;
+}
+.navbar{
+    font-size: 1.2rem;
 }
 
 #homeActu,
@@ -124,4 +141,16 @@ ul{
 
 .bgmain{
     background-color: var(--main-color);
+}
+
+.card-body{
+    font-style: inherit;
+}
+
+.border-colored{
+    border: 2px solid var(--main-color);
+}
+
+#chooseASong ul li:nth-child(even){
+    background-color: var(--main-color-4);
 }

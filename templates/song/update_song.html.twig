@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un chant{% endblock %}
+
+{% block body %}
+    <section class="container row d-flex justify-content-center mt-3">
+        
+        <div class="col-md-7 col-11">
+
+            <h1 class="text-center fw-bolder">Gérer le chant "{{ song.title }}"</h1>
+        </div>
+        <div class="col-md-7 col-11 mt-5">
+
+            {{ form_errors(songDetailsForm) }}
+
+            {{ form_start(songDetailsForm) }}
+                {{ form_row(songDetailsForm.title) }}
+                {{ form_row(songDetailsForm.description) }}
+                {{ form_row(songDetailsForm.currentSong) }}
+                {{ form_row(songDetailsForm.categoryId) }}
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-lg btn-primary rounded mt-3">{{ button_label|default('Enregistrer') }}</button>
+                </div>
+
+            {{ form_end(songDetailsForm) }}
+
+        </div>
+
+    </section>
+
+{% endblock %}
