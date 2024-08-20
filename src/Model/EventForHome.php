@@ -7,7 +7,7 @@ class EventForHome
 
     private string $date;
 
-    private string $publicDetails;
+    private ?string $publicDetails = null;
 
     public function getDate(): string
     {
@@ -21,12 +21,12 @@ class EventForHome
         return $this;
     }
 
-    public function getPublicDetails(): string
+    public function getPublicDetails(): ?string
     {
         return $this->publicDetails;
     }
 
-    public function setPublicDetails(string $publicDetails): static
+    public function setPublicDetails(?string $publicDetails): static
     {
         $this->publicDetails = $publicDetails;
 

@@ -9,10 +9,12 @@ use DateTimeImmutable;
 use App\Model\EventDetail;
 use App\Mapper\EventMapper;
 use App\Model\EventForHome;
+use App\Model\EventToManage;
 use App\Model\EventForAgenda;
 use App\Repository\EventRepository;
 use App\Service\ParticipationService;
 use App\Repository\EventCategoryRepository;
+use App\Repository\ParticipationRepository;
 
 class EventService
 {
@@ -20,6 +22,7 @@ class EventService
         private readonly EventRepository $eventRepository,
         private readonly EventCategoryRepository $eventCategoryRepository,
         private readonly ParticipationService $participationService,
+        private readonly ParticipationRepository $participationRepository,
         private readonly EventMapper $eventMapper,
     ) {
 
@@ -63,6 +66,63 @@ class EventService
         );
     }
 
+    public function getEventsToManage()
+    {
+        $events = $this->getAllEvents();
+
+        return array_map(
+            function (Event $event) {
+                return $this->eventMapper->transformToEventToManage($event);
+            },
+            $events
+        );
+    }
+
+    public function getEventToManage(int $id): EventToManage
+    {
+
+        $event = $this->getEventById($id);
+
+        return $this->eventMapper->transformToEventToManage($event);
+
+    }
+
+    public function manageEvent(EventToManage $eventToManage): Event
+    {
+        $eventToUpdate = $this->eventRepository->findOneById($eventToManage->getId());
+
+        if ($eventToUpdate->getEventCategory() !== $eventToManage->getEventCategory()){
+            $updatedEvent = $eventToUpdate->setEventCategory($eventToManage->getEventCategory());
+        }
+
+        if ($eventToUpdate->getPrivateDetails() !== $eventToManage->getPrivateDetails()){
+            $updatedEvent = $eventToUpdate->setPrivateDetails($eventToManage->getPrivateDetails());
+        }
+
+        if ($eventToUpdate->getPublicDetails() !== $eventToManage->getPublicDetails()){
+            $publicDetails = null;
+            if ($eventToManage->getPublicDetails()){
+                $publicDetails =  $eventToManage->getPublicDetails();
+            }
+            $updatedEvent = $eventToUpdate->setPublicDetails($publicDetails);
+        }
+
+        if ($eventToUpdate->getStatus() !== $eventToManage->getStatus()){
+            $updatedEvent = $eventToUpdate->setStatus($eventToManage->getStatus());
+        }
+
+        if ($eventToUpdate->getEventCategory() == $eventToManage->getEventCategory()
+            and $eventToUpdate->getPrivateDetails() == $eventToManage->getPrivateDetails()
+            and $eventToUpdate->getPublicDetails() == $eventToManage->getPublicDetails()
+            and $eventToUpdate->getStatus() == $eventToManage->getStatus()
+        ){
+            $updatedEvent = $eventToUpdate;
+        }
+
+        return $this->saveEvent($updatedEvent);
+
+    }
+
     public function getEventForAgenda(Event $event): EventForAgenda
     {
         $cat = $this->eventCategoryRepository->findOneById($event->getEventCategory())->getName();
@@ -76,7 +136,19 @@ class EventService
 
     public function getAllEvents(): array
     {
-        return $this->eventRepository->findAll();
+        return $this->eventRepository->findAllEvents();
+    }
+
+    public function getAllEventsIds(): array
+    {
+        $events = $this->eventRepository->findAll();
+
+        return array_map(
+            function (Event $event) {
+                return $event->getId();
+            },
+            $events
+        );
     }
 
     public function getEventDetail(int $id)
@@ -126,4 +198,17 @@ class EventService
     {
         return $this->eventRepository->saveEvent($event);
     }
+
+    public function deleteEvent(int $id): bool
+    {
+        $event = $this->eventRepository->findOneById($id);
+
+        if ($event === null) {
+            return false;
+        }
+
+        $this->eventRepository->deleteEvent($event);
+        return true;
+    }
+
 }

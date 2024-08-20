@@ -4,6 +4,7 @@ namespace App\Mapper;
 
 use App\Entity\Event;
 use App\Model\EventForHome;
+use App\Model\EventToManage;
 use App\Model\EventForAgenda;
 use App\Model\EventForMembersHome;
 
@@ -12,9 +13,26 @@ class EventMapper
 
     public function transformToEventsForHome(Event $event): EventForHome
     {
+        $publicDetails = null;
+        if ($event->getPublicDetails()){
+            $publicDetails = $event->getPublicDetails();
+        }
         return (new EventForHome())
             ->setDate($event->getDate())
+            ->setPublicDetails($publicDetails)
+        ;
+    }
+
+    public function transformToEventToManage($event): EventToManage
+    {
+
+        return (new EventToManage())
+            ->setId($event->getId())
+            ->setDate($event->getDate())
+            ->setEventCategory($event->getEventCategory())
+            ->setPrivateDetails($event->getPrivateDetails())
             ->setPublicDetails($event->getPublicDetails())
+            ->setStatus($event->getStatus())
         ;
     }
 
