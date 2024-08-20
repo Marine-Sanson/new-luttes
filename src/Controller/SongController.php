@@ -40,7 +40,7 @@ class SongController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/{id}', name: 'app_song_details')]
+    #[Route('/detail/{id}', name: 'app_song_details')]
     public function displaySongDetails(int $id): Response
     {
         $song = $this->songService->getSongDetails($id);
