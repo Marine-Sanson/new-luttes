@@ -92,4 +92,9 @@ class ParticipationService
         return $this->statusRepository->findOneByName($name);
     }
 
+    public function getParticipationByEvent($event): array
+    {
+        return $this->participationRepository->findByEvent($event);
+    }
+
 }

@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Event;
 use App\Entity\Participation;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Participation>
@@ -35,8 +36,8 @@ class ParticipationRepository extends ServiceEntityRepository
                     ;
     }
 
-   public function findParticipationByStatus(int $eventId, int $status): ?array
-   {
+    public function findParticipationByStatus(int $eventId, int $status): ?array
+    {
        return $this->createQueryBuilder('p')
                    ->where('p.status = :status')
                    ->andWhere('p.event = :eventId')
@@ -45,10 +46,10 @@ class ParticipationRepository extends ServiceEntityRepository
                    ->getQuery()
                    ->getResult()
        ;
-   }
+    }
 
-   public function findByParticipationStatus($user, $status): ?array
-   {
+    public function findByParticipationStatus($user, $status): ?array
+    {
         return $this->createQueryBuilder('p')
             ->where('p.user = :user')
             ->andWhere('p.status = :status')
@@ -57,7 +58,23 @@ class ParticipationRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-   }
+    }
+
+    public function findByEvent(Event $event): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.event = :event')
+            ->setParameter('event', $event)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function deleteParticipation(Participation $participation): void
+    {
+        $this->getEntityManager()->remove($participation);
+        $this->getEntityManager()->flush();
+    }
 
 //    /**
 //     * @return Participation[] Returns an array of Participation objects

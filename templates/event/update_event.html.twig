@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Mettre à jour une date{% endblock %}
+
+{% block body %}
+    <section class="container row d-flex justify-content-center mt-3 mx-auto">
+        <div class="col-md-7 col-11">
+            <h1 class="text-center fw-bolder">Mettre à jour le {{ event.date }}</h1>
+        </div>
+        <div class="col-md-7 col-11 mt-5">
+            {{ form_errors(eventForm) }}
+
+            {{ form_start(eventForm) }}
+                {{ form_row(eventForm.EventCategory) }}
+                {{ form_row(eventForm.privateDetails) }}
+                {{ form_row(eventForm.publicDetails) }}
+                {{ form_row(eventForm.status) }}
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-lg btn-primary rounded mt-3">{{ button_label|default('Envoyer') }}</button>
+                </div>
+
+            {{ form_end(eventForm) }}
+        </div>
+    </section>
+{% endblock %}

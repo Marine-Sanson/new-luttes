@@ -19,6 +19,40 @@ class SongController extends AbstractController
 
     }
 
+    #[IsGranted('ROLE_USER')]
+    #[Route('', name: 'app_song')]
+    public function displaySongs(): Response
+    {
+        $outOfCatSongs = $this->songService->getSongsWithoutCats();
+        $currentYearSongs = $this->songService->getSongsByCats(1);
+        $sharedSongs = $this->songService->getSongsByCats(2);
+        $oldSongs = $this->songService->getSongsByCats(3);
+        $livrets = $this->songService->getSongsByCats(4);
+
+
+        return $this->render('song/song.html.twig', [
+            'outOfCatSongs' => $outOfCatSongs,
+            'currentYearSongs' => $currentYearSongs,
+            'sharedSongs' => $sharedSongs,
+            'oldSongs' => $oldSongs,
+            'livrets' => $livrets,
+        ]);
+    }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/{id}', name: 'app_song_details')]
+    public function displaySongDetails(int $id): Response
+    {
+        $song = $this->songService->getSongDetails($id);
+
+        // A faire *******************************************************************
+        // Reste à récupérer les voix et les textes
+
+        return $this->render('song/song_details.html.twig', [
+            'song' => $song,
+        ]);
+    }
+
     #[IsGranted('ROLE_CHANTS')]
     #[Route('/gestion', name: 'app_manage_songs')]
     public function manageSongs(): Response
@@ -66,7 +100,7 @@ class SongController extends AbstractController
     {
 
         $song = $this->songService->getSongDetails($id);
-        $songDetailsForm =$this->createForm(SongDetailsType::class, $song);
+        $songDetailsForm = $this->createForm(SongDetailsType::class, $song);
         $songDetailsForm->handleRequest($request);
         if ($songDetailsForm->isSubmitted() && $songDetailsForm->isValid()) {
             $song = $this->songService->manageSong($song);
@@ -78,40 +112,6 @@ class SongController extends AbstractController
         return $this->render('song/update_song.html.twig', [
             'song' => $song,
             'songDetailsForm' => $songDetailsForm,
-        ]);
-    }
-
-    #[IsGranted('ROLE_USER')]
-    #[Route('', name: 'app_song')]
-    public function displaySongs(): Response
-    {
-        $outOfCatSongs = $this->songService->getSongsWithoutCats();
-        $currentYearSongs = $this->songService->getSongsByCats(1);
-        $sharedSongs = $this->songService->getSongsByCats(2);
-        $oldSongs = $this->songService->getSongsByCats(3);
-        $livrets = $this->songService->getSongsByCats(4);
-
-
-        return $this->render('song/song.html.twig', [
-            'outOfCatSongs' => $outOfCatSongs,
-            'currentYearSongs' => $currentYearSongs,
-            'sharedSongs' => $sharedSongs,
-            'oldSongs' => $oldSongs,
-            'livrets' => $livrets,
-        ]);
-    }
-
-    #[IsGranted('ROLE_USER')]
-    #[Route('/{id}', name: 'app_song_details')]
-    public function displaySongDetails(int $id): Response
-    {
-        $song = $this->songService->getSongDetails($id);
-
-        // A faire *******************************************************************
-        // Reste à récupérer les voix et les textes
-
-        return $this->render('song/song_details.html.twig', [
-            'song' => $song,
         ]);
     }
 

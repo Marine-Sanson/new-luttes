@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des dates{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+            <div class="col-11 col-lg-9 row">
+				<h1 class="text-center fw-bolder">Gestion des dates</h1>
+                <h2 class="text-center fw-bolder">Permet d'ajouter une nouvelle date ou de modifier les dates existantes</h2>
+            </div>
+            <div class="col-11 mt-5">
+                <section id="addNewEvent">
+
+                    <h2 class="text-center">Ajouter une nouvelle date</h2>
+
+                        <div class="d-flex mt-3">
+                            <a href="{{ path('app_add_event') }}" class="text-decoration-none mx-auto">
+                                <button type="button" class="btn btn-sm btn-primary rounded mx-auto">Pour ajouter une nouvelle date, clique ici</button>
+                            </a>
+                        </div>
+
+                </section>
+
+                <section id="updateEvents">
+                    {% if events %}
+                        {% for event in events %}
+
+                            <article class="card mx-auto my-5 rounded">
+                                <div class="card-header row bgmain rounded">
+                                    <h3 class="card-title text-start text-white m-auto p-2 col-9">{{ event.eventCategory.name }} du {{ event.date }}</h3>
+                                    <p class="text-end col-3 m-auto">Evenement {% if event.status == false %} public {% else %} privé {% endif %}</p>
+                                </div>
+                                <div class="card-body row mt-3">
+
+                                    <p class="justify">Infos membres : {{ event.privateDetails }}</p>
+                                    <p class="justify">Infos publiques : {{ event.publicDetails }}</p>
+                                    
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col d-flex justify-content-center">
+                                            <a href="{{ path('app_event_update', { id: event.id }) }}" class="text-decoration-none text-left">
+                                                <button type="button" class="btn btn-lg btn-primary rounded mt-3">Modifier</button>
+                                            </a>
+                                        </div>
+                                        {% if 'ROLE_DATES' in app.user.roles or 'ROLE_ADMIN' in app.user.roles %}
+                                        <div class="col d-flex justify-content-center">
+                                            <a href="{{ path('app_event_delete', { id: event.id }) }}" class="text-decoration-none text-left">
+                                                <button type="button" class="btn btn-lg btn-primary rounded mt-3">Supprimer</button>
+                                            </a>
+                                        </div>
+                                        {% endif %}
+                                        <div class="col"></div>
+
+                                    </div>
+                                </div>
+
+                            </article>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-center">Aucun évenement prévu pour l'instant, reviens plus tard</p>
+                    {% endif %}
+                </section>
+            </div>
+            
+
+{% endblock %}

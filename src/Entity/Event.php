@@ -53,15 +53,15 @@ class Event
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $updateUser = null;
 
     /**
      * @var Collection<int, Participation>
      */
-    #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'Event', orphanRemoval: true)]
-    private Collection $participation;
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Participation::class, orphanRemoval: true)]
+    private ?Collection $participation = null;
 
     public function __construct()
     {
@@ -126,7 +126,7 @@ class Event
         return $this->publicDetails;
     }
 
-    public function setPublicDetails(string $publicDetails): static
+    public function setPublicDetails(?string $publicDetails): static
     {
         $this->publicDetails = $publicDetails;
 

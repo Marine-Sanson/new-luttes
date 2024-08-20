@@ -16,7 +16,7 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    public function saveEvent($event): Event
+    public function saveEvent(Event $event): Event
     {
         $this->getEntityManager()->persist($event);
         $this->getEntityManager()->flush();
@@ -24,8 +24,23 @@ class EventRepository extends ServiceEntityRepository
         return $event;
     }
 
+       public function findAllEvents(): array
+       {
+           return $this->createQueryBuilder('e')
+               ->orderBy('e.timestamp', 'ASC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+
+    public function deleteEvent(Event $event): void
+    {
+        $this->getEntityManager()->remove($event);
+        $this->getEntityManager()->flush();
+    }
+
     //    /**
-    //     * @returnh Event[] Returns an array of Event objects
+    //     * @return Event[] Returns an array of Event objects
     //     */
     //    public function findByExampleField($value): array
     //    {

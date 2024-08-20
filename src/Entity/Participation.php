@@ -14,7 +14,6 @@ class Participation
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'participation', fetch: 'EAGER')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Event $event = null;
 
     #[ORM\ManyToOne(fetch: 'EAGER')]

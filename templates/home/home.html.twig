@@ -63,7 +63,7 @@
 					{% for event in events %}
 					<li class ="row">
 						<h3 class="col-3">{{ event.date }} :</h3>
-						<p class="col-9">{{ event.publicDetails }}</p>
+						<p class="col-9">{% if event.publicDetails %}{{ event.publicDetails|capitalize }}{% else %}Plus d'infos à venir{% endif %}</p>
 					</li>
 					{% endfor %}
 				</ul>
