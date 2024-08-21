@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Répondre à un message{% endblock %}
+
+{% block body %}
+
+    <section class="container d-flex row justify-content-center mt-3 mx-auto">
+        
+        <div class="col-md-7 col-11">
+            <h1 class="text-center fw-bolder">Répondre à un message</h1>
+        </div>
+
+        <section id="sendNewChatAnswer">
+
+            <div class="col-md-7 col-11 mt-5 mx-auto">
+
+                <h2 class="title text-center text-white mx-auto p-2 rounded">{{ chatItem.title|capitalize }}</h2>
+                <p class="justify">{{ chatItem.message }}</p>
+                <div class="row">
+                    <p class="col">{{ chatItem.user.name|capitalize }}</p>
+                    <p class="col text-end">{{ chatItem.createdAt|date("d/m/Y H:i") }}</p>
+                </div>
+                {% for chatAnswer in chatItem.chatAnswers %}
+                <div class="p-3">
+                    <p class="mx-5 justify">{{ chatAnswer.content }}</p>
+                    <div class="row">
+                        <p class="col card-text mx-5">{{ chatAnswer.user.name|capitalize }}</p>
+                        <p class="col card-text text-end">{{ chatAnswer.createdAt|date("d/m/Y H:i") }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {{ form_errors(chatAnswerForm) }}
+
+                {{ form_start(chatAnswerForm) }}
+                    {{ form_row(chatAnswerForm.content) }}
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-lg btn-primary rounded mt-3">Répondre</button>
+                    </div>
+
+                {{ form_end(chatAnswerForm) }}
+
+            </div>
+
+        </section>
+
+    </section>
+
+{% endblock %}

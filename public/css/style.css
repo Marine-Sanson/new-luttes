@@ -123,6 +123,7 @@ ul{
 .card{
     border: 4px solid var(--main-color);
     padding: 2rem;
+    font-size: 1.2rem;
 }
 
 .card-title{
@@ -134,9 +135,14 @@ ul{
     border-bottom: 2px solid var(--main-color);
 }
 
+.chatItemCard>.card-header{
+    border-bottom: none;
+    background-color: transparent;
+}
+
 .card-body{
     color: var(--main-color);
-    font-size: large;
+    font-size: 1.2rem;
 }
 
 .bgmain{
@@ -153,4 +159,19 @@ ul{
 
 #chooseASong ul li:nth-child(even){
     background-color: var(--main-color-4);
+}
+
+.card-footer{
+    border-top: none;
+    background-color: transparent;
+}
+
+.card-footer-art{
+    color: var(--main-color);
+    margin-left: 5;
+    background-color: var(--main-color-4);
+}
+
+.card-footer-art:first-of-type{
+    border-top: 2px solid var(--main-color);
 }

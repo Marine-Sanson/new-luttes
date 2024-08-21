@@ -20,7 +20,7 @@ class ChatAnswer
     #[ORM\JoinColumn(nullable: false)]
     private ?ChatItem $chatItem = null;
 
-    #[ORM\ManyToOne(inversedBy: 'chatAnswers')]
+    #[ORM\ManyToOne(inversedBy: 'chatAnswers', fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

@@ -84,9 +84,6 @@ class EventController extends AbstractController
             return $this->redirectToRoute('app_manage_event');
         }
 
-
-
-
     }
     
     #[IsGranted('ROLE_DATES')]

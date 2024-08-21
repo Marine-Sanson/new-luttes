@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau message{% endblock %}
+
+{% block body %}
+
+    <section class="container d-flex row justify-content-center mt-3 mx-auto">
+        
+        <div class="col-md-7 col-11">
+            <h1 class="text-center fw-bolder">Nouveau message</h1>
+            <p class="text-center">Les messages envoyés ici seront visibles par l'ensemble des adhérentes.</p>
+        </div>
+
+        <section id="sendNewChatItems">
+
+            <div class="col-md-7 col-11 mt-5 mx-auto">
+
+                {{ form_errors(chatItemForm) }}
+
+                {{ form_start(chatItemForm) }}
+                    {{ form_row(chatItemForm.title) }}
+                    {{ form_row(chatItemForm.message) }}
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-lg btn-primary rounded mt-3">Envoyer</button>
+                    </div>
+
+                {{ form_end(chatItemForm) }}
+
+            </div>
+
+        </section>
+
+    </section>
+
+{% endblock %}

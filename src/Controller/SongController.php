@@ -77,7 +77,7 @@ class SongController extends AbstractController
     public function addSong(Request $request): Response
     {
         $song = new Song();
-        $songForm =$this->createForm(SongType::class, $song);
+        $songForm = $this->createForm(SongType::class, $song);
 
         $songForm->handleRequest($request);
 
