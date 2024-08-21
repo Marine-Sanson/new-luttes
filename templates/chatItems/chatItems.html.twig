@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+
+    <section class="container d-flex row justify-content-center mt-3 mx-auto">
+        
+        <div class="col-md-7 col-11">
+            <h1 class="text-center fw-bolder">Messages</h1>
+            <p class="text-center">Les messages envoyés ici seront visibles par l'ensemble des adhérentes.</p>
+        </div>
+
+            <section id="sendNewChatItems" class="container row justify-content-center mt-5 mx-auto">
+
+                <h2 class="text-center mt-3">Envoyer un message</h2>
+
+                <div class="d-flex mt-3">
+                    <a href="{{ path('app_newChatItem') }}" class="text-decoration-none mx-auto">
+                        <button type="button" class="btn btn-sm btn-primary rounded mx-auto">Pour ajouter un nouveau message, clique ici</button>
+                    </a>
+                </div>
+
+            </section>
+
+            {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                <section id="cleanChatItems" class="container row justify-content-center mt-5 mx-auto">
+
+                    <h2 class="text-center mt-3">Nettoyer les messages</h2>
+
+                    <div class="d-flex mt-3">
+                        <a href="{{ path('app_deleteOldChatItem') }}" class="text-decoration-none mx-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded mx-auto">Pour supprimer les messages qui ont plus de 4 mois, clique ici</button>
+                        </a>
+                    </div>
+
+                </section>
+            {% endif %}
+
+            <section id="displayAllMessages" class="container row justify-content-center mt-5 mx-auto">
+
+                <h2 class="text-center">Liste des messages</h2>
+
+                <ul>
+                {% for chatItem in chatItems %}
+                    <li class="card mx-auto my-5 rounded chatItemCard">
+                        <div class="card-header">
+                            <h2 class="card-title text-center text-white mx-auto p-2 rounded">{{ chatItem.title|capitalize }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text justify">{{ chatItem.message }}</p>
+                            <div class="row">
+                                <p class="col card-text">{{ chatItem.user.name|capitalize }}</p>
+                                <p class="col card-text text-end">{{ chatItem.createdAt|date("d/m/Y H:i") }}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            {% for chatAnswer in chatItem.chatAnswers %}
+                            <div class="card-footer-art p-3">
+                                <p class="card-text mx-5 justify">{{ chatAnswer.content }}</p>
+                                <div class="row">
+                                    <p class="col card-text mx-5">{{ chatAnswer.user.name|capitalize }}</p>
+                                    <p class="col card-text text-end">{{ chatAnswer.createdAt|date("d/m/Y H:i") }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="d-flex mt-3">
+                                <a href="{{ path('app_newChatAnswer', { chatItemId: chatItem.id }) }}" class="text-decoration-none mx-auto">
+                                    <button type="button" class="btn btn-sm btn-primary rounded mx-auto">Pour répondre clique ici</button>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                {% endfor %}
+                </ul>
+
+            </section>
+
+    </section>
+
+{% endblock %}
+

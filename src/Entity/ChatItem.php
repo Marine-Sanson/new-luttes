@@ -18,7 +18,7 @@ class ChatItem
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'chatItems')]
+    #[ORM\ManyToOne(inversedBy: 'chatItems', fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -31,7 +31,7 @@ class ChatItem
     /**
      * @var Collection<int, ChatAnswer>
      */
-    #[ORM\OneToMany(targetEntity: ChatAnswer::class, mappedBy: 'chatItem', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: ChatAnswer::class, mappedBy: 'chatItem', orphanRemoval: true, fetch: 'EAGER')]
     private Collection $chatAnswers;
 
     public function __construct()
