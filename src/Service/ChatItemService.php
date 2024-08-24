@@ -19,6 +19,32 @@ class ChatItemService
 
     }
 
+    public function checkNewChatItems(User $user): bool
+    {
+        $now = new DateTimeImmutable("now", new DateTimeZone("Europe/Paris"));
+        $lastConnection = $user->getLastConnection();
+
+        if($lastConnection < $now->add(new DateInterval('PT3H')))
+        {
+            $previousConnection = $user->getPreviousConnection();
+
+            $chatItems = $this->getChatItems();
+    
+            foreach($chatItems as $chatItem){
+
+                if($chatItem->getCreatedAt() > $previousConnection || $previousConnection === null){
+
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+    
+    
+
+    
     public function manageNewChatItem($title, $message, $user)
     {
         $chatItem = (new ChatItem())

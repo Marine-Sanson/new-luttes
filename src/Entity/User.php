@@ -99,6 +99,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $lastConnection = null;
+    
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $previousConnection = null;
 
     public function __construct()
     {
@@ -390,6 +393,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastConnection(\DateTimeImmutable $lastConnection): static
     {
         $this->lastConnection = $lastConnection;
+
+        return $this;
+    }
+
+    public function getPreviousConnection(): ?\DateTimeImmutable
+    {
+        return $this->previousConnection;
+    }
+
+    public function setPreviousConnection(\DateTimeImmutable $previousConnection): static
+    {
+        $this->previousConnection = $previousConnection;
 
         return $this;
     }

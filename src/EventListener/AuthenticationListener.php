@@ -20,8 +20,9 @@ final class AuthenticationListener
     {
         $user = $event->getAuthenticationToken()->getUser();
         if ($user instanceof User) {
+            $user->setPreviousConnection($user->getLastConnection());
             $user->setLastConnection(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")));
-            $this->userService->saveLastConnection($user);
+            $this->userService->saveUser($user);
         }
     }
 

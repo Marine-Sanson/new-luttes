@@ -79,11 +79,6 @@ class UserService
         return $newUser;
     }
 
-    public function saveLastConnection(?User $user): void
-    {
-        $this->userRepository->saveUser($user);
-    }
-
     public function getAllUsers(): array
     {
         return $this->userRepository->findAll();
