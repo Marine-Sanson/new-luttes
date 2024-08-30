@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Echanges{% endblock %}
+
+{% block body %}
+
+    <section class="container d-flex row justify-content-center mt-3 mx-auto">
+        
+        <div class="col-md-7 col-11">
+            <h1 class="text-center fw-bolder">Espace d'échange</h1>
+            <p class="text-center">Ici un espace pour s'échanger des recettes, idées de lecture, spectacles, films...</p>
+        </div>
+
+            <section class="container row justify-content-center mt-5 mx-auto">
+
+                <h2 class="text-center mt-3">Ajouter un échange</h2>
+                <p class="text-center">Pour créer un nouvel échange, clique sur la catégorie concernée :</p>
+
+                <ul class="row w-75 mx-auto">
+                    {% for category in sharingCategories %}
+                        <li class="col">
+                            <div class="d-flex mt-3">
+                                <a href="{{ path('add_new_sharing_item_by_cat', { catId: category.id }) }}" class="text-decoration-none mx-auto">
+                                    <button type="button" class="btn btn-sm btn-primary rounded mx-auto">{{ category.name }}</button>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </section>
+
+            <section class="container row justify-content-center mt-5 mx-auto">
+
+                <h2 class="text-center mt-3">Choisir une catégorie</h2>
+                <p class="text-center">Voici l'ensemble des échanges, si tu veux voir uniquement ceux d'une catégorie, clique sur la catégorie concernée</p>
+
+                <ul class="row w-75 mx-auto">
+                    {% for category in sharingCategories %}
+                        <li class="col">
+                            <div class="d-flex mt-3">
+                                <a href="{{ path('app_sharing_item_by_cat', { catId: category.id }) }}" class="text-decoration-none mx-auto">
+                                    <button type="button" class="btn btn-sm btn-primary rounded mx-auto">{{ category.name }}</button>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </section>
+
+            <section class="container row justify-content-center mt-5 mx-auto">
+
+                <ul>
+                {% for item in sharingItems %}
+                    <li class="card mx-auto my-5 rounded itemCard">
+                        <div class="card-header">
+                            <h2 class="card-title text-center text-white mx-auto p-2 rounded">{{ item.title|capitalize }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text justify">{{ item.content }}</p>
+                            <div class="row">
+                                <p class="col card-text mb-0">{{ item.user.name|capitalize }}</p>
+                                <p class="col card-text text-end">{{ item.createdAt|date("d/m/Y H:i") }}</p>
+                            </div>
+                            <p class="card-text text-end">Categorie : {{ item.category.name }}</p>
+                        </div>
+                        <div class="card-footer">
+                            {% for shareAnswer in item.shareAnswers %}
+                            <div class="card-footer-art p-3">
+                                <p class="card-text mx-5 justify">{{ shareAnswer.content }}</p>
+                                <div class="row">
+                                    <p class="col card-text mx-5">{{ shareAnswer.user.name|capitalize }}</p>
+                                    <p class="col card-text text-end">{{ shareAnswer.createdAt|date("d/m/Y H:i") }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="d-flex mt-3">
+                                <a href="{{ path('app_new_share_answer', { sharingItemId: item.id }) }}" class="text-decoration-none mx-auto">
+                                    <button type="button" class="btn btn-sm btn-primary rounded mx-auto">Pour répondre clique ici</button>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                {% endfor %}
+                </ul>
+
+            </section>
+
+    </section>
+
+{% endblock %}

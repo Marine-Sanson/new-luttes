@@ -12,13 +12,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/messages')]
 class ChatItemsController extends AbstractController
 {
     public function __construct(private readonly ChatItemService $chatItemService){
 
     }
 
-    #[Route('/messages', name: 'app_chatItems')]
+    #[Route('/', name: 'app_chatItems')]
     public function displayChatItems(): Response
     {
         $chatItems = $this->chatItemService->getChatItems();
@@ -28,7 +29,7 @@ class ChatItemsController extends AbstractController
         ]);
     }
 
-    #[Route('/messages/nouveau', name: 'app_newChatItem')]
+    #[Route('/nouveau', name: 'app_newChatItem')]
     public function addChatItem(Request $request): Response
     {
         $chatItem = new ChatItem();
@@ -51,7 +52,7 @@ class ChatItemsController extends AbstractController
         ]);
     }
 
-    #[Route('/messages/{chatItemId}/repondre', name: 'app_newChatAnswer')]
+    #[Route('/{chatItemId}/repondre', name: 'app_newChatAnswer')]
     public function addChatAnswer(Request $request, int $chatItemId): Response
     {
         $chatAnswer = new ChatAnswer();
@@ -76,7 +77,7 @@ class ChatItemsController extends AbstractController
         ]);
     }
 
-    #[Route('/messages/supprimer', name: 'app_deleteOldChatItem')]
+    #[Route('/supprimer', name: 'app_deleteOldChatItem')]
     public function deleteChatItems(): Response
     {
         $oldChatItems = $this->chatItemService->getOldChatItems();
