@@ -135,7 +135,7 @@ ul{
     border-bottom: 2px solid var(--main-color);
 }
 
-.chatItemCard>.card-header{
+.itemCard>.card-header{
     border-bottom: none;
     background-color: transparent;
 }
@@ -174,4 +174,8 @@ ul{
 
 .card-footer-art:first-of-type{
     border-top: 2px solid var(--main-color);
+}
+
+.card-header>p{
+    color: var(--main-color);
 }

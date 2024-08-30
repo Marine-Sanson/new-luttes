@@ -16,6 +16,12 @@ class SharingItemRepository extends ServiceEntityRepository
         parent::__construct($registry, SharingItem::class);
     }
 
+    public function saveSharingItem(SharingItem $sharingItem)
+    {
+        $this->getEntityManager()->persist($sharingItem);
+        $this->getEntityManager()->flush();
+    }
+
     //    /**
     //     * @return SharingItem[] Returns an array of SharingItem objects
     //     */

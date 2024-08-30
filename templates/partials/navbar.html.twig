@@ -10,41 +10,44 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         {% if app.user %}
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_members_home') }}">Accueil</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_event') }}">Agenda</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_song') }}">Chants</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_user_list') }}">Liste</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_chatItems') }}">Messages</a>
                             </li>
+                            <li class="nav-item m-auto">
+                                <a class="nav-link navbarLink" href="{{ path('app_sharing_item') }}">Echanges</a>
+                            </li>                            
                             {% if app.user.roles[0] == "ROLE_DATES" or app.user.roles[0] == "ROLE_ADMIN" %}
-                                <li class="nav-item">
+                            <li class="nav-item m-auto">
                                     <a class="nav-link navbarLink" href="{{ path('app_manage_event') }}">Gérer les dates</a>
                                 </li>
                             {% endif %}
                             {% if app.user.roles[0] == "ROLE_CHANTS" or app.user.roles[0] == "ROLE_ADMIN" %}
-                                <li class="nav-item">
+                            <li class="nav-item m-auto">
                                     <a class="nav-link navbarLink" href="{{ path('app_manage_songs') }}">Gérer les chants</a>
                                 </li>
                             {% endif %}
                             {% if app.user.roles[0] == "ROLE_ADMIN" %}
-                                <li class="nav-item">
+                            <li class="nav-item m-auto">
                                     <a class="nav-link navbarLink" href="{{ path('app_new_user') }}">Gérer les membres</a>
                                 </li>
                             {% endif %}
                         {% else %}
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_contact') }}">Contact</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_login') }}">Espace membres</a>
                             </li>
                         {% endif %}
