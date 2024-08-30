@@ -16,6 +16,11 @@ class ShareAnswerRepository extends ServiceEntityRepository
         parent::__construct($registry, ShareAnswer::class);
     }
 
+    public function saveShareAnswer(ShareAnswer $shareAnswer)
+    {
+        $this->getEntityManager()->persist($shareAnswer);
+        $this->getEntityManager()->flush();
+    }
     //    /**
     //     * @return ShareAnswer[] Returns an array of ShareAnswer objects
     //     */

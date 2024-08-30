@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Répondre à un échange{% endblock %}
+
+{% block body %}
+
+    <section class="container d-flex row justify-content-center mt-5 mx-auto">
+        
+        <div class="col-md-7 col-11 mt-5">
+            <h1 class="text-center fw-bolder">Répondre à un échange</h1>
+        </div>
+
+        <h2 class="text-center mt-5">Echange catégorie {{ sharingItem.category.name }}</h2>
+
+        <div class="card mx-auto my-5 rounded itemCard">
+
+            <div class="card-header mt-5">
+                <h2 class="card-title text-center text-white mx-auto p-2 rounded">{{ sharingItem.title|capitalize }}</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text justify">{{ sharingItem.content }}</p>
+                <div class="row">
+                    <p class="col card-text mb-0">{{ sharingItem.user.name|capitalize }}</p>
+                    <p class="col card-text text-end">{{ sharingItem.createdAt|date("d/m/Y H:i") }}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                {% for shareAnswer in sharingItem.shareAnswers %}
+                <div class="card-footer-art p-3">
+                    <p class="card-text mx-5 justify">{{ shareAnswer.content }}</p>
+                    <div class="row">
+                        <p class="col card-text mx-5">{{ shareAnswer.user.name|capitalize }}</p>
+                        <p class="col card-text text-end">{{ shareAnswer.createdAt|date("d/m/Y H:i") }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="mt-3 ms-5">
+                    {{ form_errors(shareAnswerForm) }}
+
+                    {{ form_start(shareAnswerForm) }}
+                        {{ form_row(shareAnswerForm.content) }}
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-lg btn-primary rounded mt-3">Répondre</button>
+                        </div>
+
+                    {{ form_end(shareAnswerForm) }}
+                    </div>
+                </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}
