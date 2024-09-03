@@ -13,7 +13,7 @@ class EventDetail
 
     private string $privateDetails;
 
-    private string $publicDetails;
+    private ?string $publicDetails;
 
     private string $status;
 
@@ -73,12 +73,12 @@ class EventDetail
         return $this;
     }
     
-    public function getPublicDetails(): string
+    public function getPublicDetails(): ?string
     {
         return $this->publicDetails;
     }
 
-    public function setPublicDetails(string $publicDetails): static
+    public function setPublicDetails(?string $publicDetails): static
     {
         $this->publicDetails = $publicDetails;
 
