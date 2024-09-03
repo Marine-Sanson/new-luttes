@@ -179,3 +179,8 @@ ul{
 .card-header>p{
     color: var(--main-color);
 }
+
+.ulBorder{
+    padding: 3rem;
+    border : 2px solid var(--main-color);
+}
