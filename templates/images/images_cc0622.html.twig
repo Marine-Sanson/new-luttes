@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les chants{% endblock %}
+
+{% block body %}
+
+        <section class="container row d-flex justify-content-center mt-3 mx-auto">
+			
+			<div class="col-11 col-lg-9 row mt-3">
+				<h1 class="text-center fw-bolder mt-3">Chorales Aux Champs - 11/06/2022</h1>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/cc0622/cc1.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/cc0622/cc2.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/cc0622/cc3.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/cc0622/cc4.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
+                    <div class="col-lg-6 col-offset-lg-3 row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/cc0622/cc5.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+			</div>
+
+		</section>
+
+{% endblock %}

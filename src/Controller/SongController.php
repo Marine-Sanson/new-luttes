@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/chants')]
 class SongController extends AbstractController
 {
@@ -19,7 +20,6 @@ class SongController extends AbstractController
 
     }
 
-    #[IsGranted('ROLE_USER')]
     #[Route('', name: 'app_song')]
     public function displaySongs(): Response
     {
@@ -39,7 +39,6 @@ class SongController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_USER')]
     #[Route('/detail/{id}', name: 'app_song_details')]
     public function displaySongDetails(int $id): Response
     {

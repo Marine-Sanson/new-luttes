@@ -27,6 +27,9 @@
                             </li>
                             <li class="nav-item m-auto">
                                 <a class="nav-link navbarLink" href="{{ path('app_sharing_item') }}">Echanges</a>
+                            </li>
+                            <li class="nav-item m-auto">
+                                <a class="nav-link navbarLink" href="{{ path('app_images_concerts') }}">Images</a>
                             </li>                            
                             {% if app.user.roles[0] == "ROLE_DATES" or app.user.roles[0] == "ROLE_ADMIN" %}
                             <li class="nav-item m-auto">

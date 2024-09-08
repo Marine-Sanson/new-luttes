@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Images{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-9 row mt-3">
+				<h1 class="text-center fw-bolder mt-3">Luttes Enchantées - Images</h1>
+
+				<p class="text-center mt-3">Ici tu peux trouver toutes les images des concerts, quand on en a...</p>
+
+                <h2 class="text-center mt-3">2024</h2>
+
+                    <h3 class="text-center mt-3">Nuit des Musées au Frac - 21/06/2024
+                        <a href="{{ path('app_images_frac') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+                    <h3 class="text-center mt-3">Planning Familial - 06/06/2024
+                        <a href="{{ path('app_images_pf0624') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+                    <h3 class="text-center mt-3">8 mars 2024
+                        <a href="{{ path('app_images_8mars24') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+                <h2 class="text-center mt-3">2023</h2>
+
+                    <h3 class="text-center mt-3">Festival Musicienne.s - 01/06/2023
+                        <a href="{{ path('app_images_musiciennes') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+                    <h3 class="text-center mt-3">Soirée Histoire du Féminisme à Rennes - 01/06/2023 
+                        <a href="{{ path('app_images_hfr0623') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+                    <h3 class="text-center mt-3">Evenement du Planning Familial 35 - 15/03/2023
+                        <a href="{{ path('app_images_pf0323') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+                <h2 class="text-center mt-3">2022</h2>
+
+                    <h3 class="text-center mt-3">Chorales Aux Champs - 11/06/2022
+                        <a href="{{ path('app_images_cc0622') }}" class="text-center text-decoration-none m-auto">
+                            <button type="button" class="btn btn-sm btn-primary rounded">Voir</button>
+                        </a>
+                    </h3>
+
+			</div>
+
+
+		</section>
+
+{% endblock %}

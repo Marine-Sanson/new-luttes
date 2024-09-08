@@ -17,6 +17,7 @@ body{
 body>*,
 .form-control{
     font-size: 1.2rem;
+    box-sizing: inherit;
 }
 
 .justify{
@@ -184,3 +185,293 @@ ul{
     padding: 3rem;
     border : 2px solid var(--main-color);
 }
+
+@media(min-width: 0px) and (max-width: 791.99px)
+{
+    .mwidth30{
+        display: flex;
+        max-width: 90%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+    }
+
+    .mwidth45{
+        display: flex;
+        max-width: 90%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+    }
+
+    .imagePortrait{
+        display: flex;
+        max-width: 90%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+    }
+}
+
+@media(min-width: 791.99px)
+{
+    .mwidth30{
+        max-width: 30%;
+        height: auto;
+    }
+
+    .mwidth45{
+        max-width: 45%;
+        height: auto;
+    }
+
+    .imagePortrait{
+        max-width: 25%;
+        height: auto;
+    }
+
+}
+
+.photo>img{
+    height: auto;
+    max-width: 100%;
+}
+
+.photo{
+    display: flex;
+    margin: auto;
+    max-width: 98%;
+    max-height: 98%;
+}
+
+.photo .image
+{
+      object-fit: cover;
+}
+
+@media(min-width: 0px) and (max-width: 791.99px)
+{
+      .membersVideosGrid{
+            display: grid;
+            gap: 2px;
+            margin: 2rem auto;
+      }
+      
+      .ph85{
+            grid-area: 14 / 6 / 15 / 7;
+      }
+        
+      
+      .ph86{
+            grid-area: 3 / 1 / 5 / 3;
+      }
+      
+      .ph90{
+            grid-area: 9 / 5 / 12 / 8;
+      }
+      
+      .ph91{
+            grid-area: 12 / 7 / 13 / 8;
+      }
+      
+      .ph92{
+            grid-area: 11 / 2 / 14 / 5;
+      }
+      
+      .ph94{
+            grid-area: 14 / 3 / 16 / 6;
+      }
+      
+      .ph99{
+            grid-area: 12 / 5 / 14 / 7;
+      }
+      
+      .ph00{
+            grid-area: 9 / 4 / 11 / 5;
+      }
+      
+      .ph02{
+            grid-area: 5 / 1 / 7 / 2;
+      }
+      
+      .ph05{
+            grid-area: 1 / 6 / 3 / 7;
+      }
+      
+      .ph07{
+            grid-area: 5 / 2 / 7 / 4;
+      }
+      
+      .ph11{
+            grid-area: 10 / 2 / 11 / 3;
+      }
+      
+      .ph13{
+            grid-area: 3 / 6 / 5 / 8;
+      }
+      
+      .ph14{
+            grid-area: 7 / 1 / 10 / 4;
+      }
+      
+      .ph19{
+            grid-area: 10 / 1 / 12 / 2;
+      }
+      
+      .ph21{
+            grid-area: 2 / 3 / 5 / 6;
+      }
+      
+      .ph22{
+            grid-area: 10 / 3 / 11 / 4;
+      }
+      
+      .ph24{
+            grid-area: 5 / 4 / 9 / 8;
+      }
+      
+      #credit{
+            grid-area: 1 / 2 / 2 / 6;
+            font-size: 1.2rem;
+            text-align: right;
+            margin: auto 0.1rem 0.1rem auto;
+      }
+}
+
+@media(min-width: 319px) and (max-width: 591.99px)
+{
+      .membersVideosGrid{
+            grid-template-rows: repeat(15, 28px);
+            grid-template-columns: repeat(7, 42px);
+            width: 321px;
+            height: auto;
+      }
+}
+
+@media(min-width: 520px) and (max-width: 791.99px)
+{
+      .membersVideosGrid{
+            grid-template-rows: repeat(15, 47px);
+            grid-template-columns: repeat(7, 70px);
+            width: 518px;
+            height: 720px;
+      }
+
+}
+
+@media(min-width: 792px)
+{
+      .membersVideosGrid{
+            display: grid;
+            grid-template-rows: repeat(13, 1fr);
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4px;
+            margin: 2rem auto;
+      }
+      
+      .ph85{
+            grid-area: 7 / 10 / 8 / 11;
+      }
+        
+      
+      .ph86{
+            grid-area: 8 / 11 / 10 / 13;
+      }
+      
+      .ph90{
+            grid-area: 9 / 5 / 12 / 8;
+      }
+      
+      .ph91{
+            grid-area: 3 / 8 / 4 / 9;
+      }
+      
+      .ph92{
+            grid-area: 4 / 8 / 7 / 11;
+      }
+      
+      .ph94{
+            grid-area: 7 / 1 / 10 / 4;
+      }
+      
+      .ph99{
+            grid-area: 11 / 8 / 13 / 10;
+      }
+      
+      .ph00{
+            grid-area: 9 / 4 / 11 / 5;
+      }
+      
+      .ph02{
+            grid-area: 6 / 11 / 8 / 12;
+      }
+      
+      .ph05{
+            grid-area: 1 / 6 / 3 / 7;
+      }
+      
+      .ph07{
+            grid-area: 5 / 2 / 7 / 4;
+      }
+      
+      .ph11{
+            grid-area: 7 / 9 / 8 / 10;
+      }
+      
+      .ph13{
+            grid-area: 3 / 6 / 5 / 8;
+      }
+      
+      .ph14{
+            grid-area: 8 / 8 / 11 / 11;
+      }
+      
+      .ph19{
+            grid-area: 12 / 7 / 14 / 8;
+      }
+      
+      .ph21{
+            grid-area: 2 / 3 / 5 / 6;
+      }
+      
+      .ph22{
+            grid-area: 7 / 8 / 8 / 9;
+      }
+      
+      .ph24{
+            grid-area: 5 / 4 / 9 / 8;
+      }
+      
+      #credit{
+            grid-area: 2 / 7 / 3 / 10;
+            margin: auto auto 0.1rem 0.1rem;
+      }
+}
+
+@media(min-width: 792px) and (max-width: 1099.99px)
+{
+      .membersVideosGrid{
+            width: 793px;
+            height: 460px;
+      }
+
+      #credit{
+            grid-area: 2 / 7 / 3 / 10;
+      }
+}
+
+@media(min-width: 1100px)
+{
+      .membersVideosGrid{
+            width: 1100px;
+            height: 500px;
+      }
+
+      #credit{
+            grid-area: 2 / 7 / 3 / 9;
+      }
+}
+

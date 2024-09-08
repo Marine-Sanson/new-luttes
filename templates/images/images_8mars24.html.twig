@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Images{% endblock %}
+
+{% block body %}
+        <section class="container row d-flex justify-content-center mt-3">
+			
+			<div class="col-11 col-lg-9 row mt-3">
+				<h1 class="text-center fw-bolder mt-3">Luttes Enchantées - Images - 8 mars 2024</h1>
+
+                <p class="text-center mt-5">Vidéos du concert</p>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/8mars24/8mars24video1.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/8mars24/8mars24video2.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/8mars24/8mars24video3.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+                <p class="text-center mt-5">Vidéo de la pause</p>
+
+                <div class="col-lg row mw-lg-25 mt-5 justify-content-center mx-auto">
+                    <video width="auto" height="300" controls>
+                        <source src="{{ asset('video/8mars24/8mars24video4.mp4') }}" type="video/mp4" />
+                    </video>
+                </div>
+
+			</div>
+
+
+		</section>
+
+{% endblock %}
