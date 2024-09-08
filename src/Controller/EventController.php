@@ -36,6 +36,15 @@ class EventController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
+    #[Route('/8mars24', name: 'app_images_8mars24')]
+    public function imagesDetail8mars24(): Response
+    {
+
+        return $this->render('images/images_8mars24.html.twig', [
+        ]);
+    }
+
+    #[IsGranted('ROLE_USER')]
     #[Route('/detail/{id}', name: 'app_event_detail')]
     public function eventDetails(int $id, Request $request): Response
     {

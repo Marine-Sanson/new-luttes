@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soirée Histoire du Féminisme à Rennes - 01/06/2023{% endblock %}
+
+{% block body %}
+
+        <section class="container row d-flex justify-content-center mt-3 mx-auto">
+			
+			<div class="col-11 col-lg-9 row mt-3">
+				<h1 class="text-center fw-bolder mt-3">Soirée Histoire du Féminisme à Rennes - 01/06/2023</h1>
+
+                <p class="text-center">Concert dans le cadre d'une soirée conviviale de l' association <a href="http://histoire-feminisme-rennes.blogspot.com/" target="_blank">Histoire du Féminisme à Rennes</a></p>
+
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth45 mt-5 col" src="{{ asset('img/hfr0623/hfr0623p1.jpg') }}">
+                        <img class="mwidth45 mt-5 col" src="{{ asset('img/hfr0623/hfr0623p2.jpg') }}">
+                    </div>
+                </div>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v1.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v2.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v3.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v4.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v5.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v6.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
+                    <div class="col-lg-6 col-offset-lg-3 row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
+                        <video class="m-auto" max-width="300" height="auto" controls>
+                            <source src="{{ asset('video/hfr0623/hfr0623v7.mp4') }}" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+
+			</div>
+
+		</section>
+
+{% endblock %}
