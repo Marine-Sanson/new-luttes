@@ -28,3 +28,8 @@
 /public/img/
 /public/video/
 ###< images ###
+
+###> uploads ###
+/public/uploads/texts/
+/public/uploads/voices/
+###< uploads ###
