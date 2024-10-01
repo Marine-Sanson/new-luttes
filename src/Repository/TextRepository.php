@@ -16,6 +16,14 @@ class TextRepository extends ServiceEntityRepository
         parent::__construct($registry, Text::class);
     }
 
+    public function saveText(Text $text)
+    {
+        $this->getEntityManager()->persist($text);
+        $this->getEntityManager()->flush();
+
+        return $text;
+    }
+
     //    /**
     //     * @return Text[] Returns an array of Text objects
     //     */

@@ -37,7 +37,7 @@ class Song
     /**
      * @var Collection<int, Text>
      */
-    #[ORM\OneToMany(targetEntity: Text::class, mappedBy: 'song', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Text::class, mappedBy: 'song', cascade:['persist'], orphanRemoval: true)]
     private Collection $texts;
 
     public function __construct()

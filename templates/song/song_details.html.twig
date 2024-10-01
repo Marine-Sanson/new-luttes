@@ -5,13 +5,17 @@
 {% block body %}
 <section class="container row d-flex justify-content-center mx-auto mt-3">
 
-    <div class="col-11 col-lg-9 row">
+    <div class="col-11 col-lg-9  mt-5 row">
         <h1 class="text-center fw-bolder">{{song.title}}</h1>
         <p class="text-center">{{song.description}}</p>
 
     </div>
-    <div class="col-11 mt-5">
+    <div class="col-11 col-lg-9 mt-5">
+        {% for text in texts %}
 
+            <iframe src="{{ asset('uploads/texts/') ~  text.fileName }}" type="application/pdf" width="100%" height="300%"></iframe>
+
+        {% endfor %}
 {# A finir ************************************** #}
 {# Ajouter textes et voix************************ #}
 

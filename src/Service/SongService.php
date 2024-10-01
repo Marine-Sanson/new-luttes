@@ -4,10 +4,12 @@ namespace App\Service;
 
 use DateTimeZone;
 use App\Entity\Song;
+use App\Entity\Text;
 use DateTimeImmutable;
 use App\Mapper\SongMapper;
 use App\Model\SongDetails;
 use App\Repository\SongRepository;
+use App\Repository\TextRepository;
 use App\Repository\SongCategoryRepository;
 
 
@@ -17,6 +19,7 @@ class SongService
     public function __construct(
         private readonly SongMapper $songMapper,
         private readonly SongRepository $songRepository,
+        private readonly TextRepository $textRepository,
         private readonly SongCategoryRepository $songCategoryRepository
     ) {
 
@@ -62,6 +65,16 @@ class SongService
 
     }
 
+    public function getSongTexts(Song $song): array
+    {
+        return $this->textRepository->findBySong($song);
+    }
+
+    public function saveSongText(Text $text): Text
+    {
+        return $this->textRepository->saveText($text);
+    }
+
     public function manageSong(SongDetails $song): Song
     {
 
@@ -84,6 +97,11 @@ class SongService
         }
 
         return $this->songRepository->saveSong($updatedSong);
+    }
+
+    public function getSongById($id): Song
+    {
+        return $this->songRepository->findOneById($id);
     }
 
 }
