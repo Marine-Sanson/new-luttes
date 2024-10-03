@@ -40,9 +40,16 @@ class Song
     #[ORM\OneToMany(targetEntity: Text::class, mappedBy: 'song', cascade:['persist'], orphanRemoval: true)]
     private Collection $texts;
 
+    /**
+     * @var Collection<int, Voice>
+     */
+    #[ORM\OneToMany(targetEntity: Voice::class, mappedBy: 'song')]
+    private Collection $voices;
+
     public function __construct()
     {
         $this->texts = new ArrayCollection();
+        $this->voices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -134,6 +141,36 @@ class Song
             // set the owning side to null (unless already changed)
             if ($text->getSong() === $this) {
                 $text->setSong(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Voice>
+     */
+    public function getVoices(): Collection
+    {
+        return $this->voices;
+    }
+
+    public function addVoice(Voice $voice): static
+    {
+        if (!$this->voices->contains($voice)) {
+            $this->voices->add($voice);
+            $voice->setSong($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVoice(Voice $voice): static
+    {
+        if ($this->voices->removeElement($voice)) {
+            // set the owning side to null (unless already changed)
+            if ($voice->getSong() === $this) {
+                $voice->setSong(null);
             }
         }
 
