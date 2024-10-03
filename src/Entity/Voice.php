@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\TextRepository;
+use App\Entity\CreatedAtTrait;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VoiceRepository;
 
-#[ORM\Entity(repositoryClass: TextRepository::class)]
-class Text
+#[ORM\Entity(repositoryClass: VoiceRepository::class)]
+class Voice
 {
     use CreatedAtTrait;
 
@@ -15,9 +16,11 @@ class Text
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'texts')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'voices')]
     private ?Song $song = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $voiceType = null;
 
     #[ORM\Column(length: 255)]
     private ?string $originalName = null;
@@ -41,6 +44,18 @@ class Text
     public function setSong(?Song $song): static
     {
         $this->song = $song;
+
+        return $this;
+    }
+
+    public function getVoiceType(): ?string
+    {
+        return $this->voiceType;
+    }
+
+    public function setVoiceType(string $voiceType): static
+    {
+        $this->voiceType = $voiceType;
 
         return $this;
     }
