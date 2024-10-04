@@ -88,6 +88,15 @@ class SongService
         return $this->voiceRepository->saveVoice($voice);
     }
 
+    public function addVideo(Song $song, string $urlVideo): Song
+    {
+        $songToUpdate = $this->songRepository->findOneById($song->getId());
+
+        $songToUpdate->setUrlVideo($urlVideo);
+
+        return $this->songRepository->saveSong($songToUpdate);
+    }
+
     public function manageSong(SongDetails $song): Song
     {
 

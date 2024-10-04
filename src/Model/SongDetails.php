@@ -18,6 +18,8 @@ class SongDetails
 
     private ?int $categoryId = null;
 
+    private ?string $urlVideo = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -78,6 +80,22 @@ class SongDetails
     public function setCategoryId(?int $categoryId): static
     {
         $this->categoryId = $categoryId;
+
+        return $this;
+    }
+
+    public function getUrlVideo(): ?string
+    {
+        return $this->urlVideo;
+    }
+
+    public function setUrlVideo(?string $urlVideo): static
+    {
+        if(is_null($urlVideo)) {
+            $this->urlVideo = null;
+          } else {
+            $this->urlVideo = $urlVideo;
+          }
 
         return $this;
     }
