@@ -188,11 +188,23 @@ ul{
 
 @media(min-width: 0px) and (max-width: 791.99px)
 {
-    #showVideo>iframe{
-        width: 100%;
-        height: auto;
+    #text{
+        width: 370px;
+        height: 490px;
     }
 }
+
+@media(min-width: 791.99px)
+{
+      #text{
+            width: 770px;
+            height: 1030px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+}
+
+
 
 @media(min-width: 0px) and (max-width: 791.99px)
 {
