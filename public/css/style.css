@@ -188,6 +188,14 @@ ul{
 
 @media(min-width: 0px) and (max-width: 791.99px)
 {
+    #showVideo>iframe{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media(min-width: 0px) and (max-width: 791.99px)
+{
     .mwidth30{
         display: flex;
         max-width: 90%;

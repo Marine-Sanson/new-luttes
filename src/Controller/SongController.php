@@ -10,6 +10,7 @@ use App\Form\SongType;
 use App\Form\TextType;
 use DateTimeImmutable;
 use App\Form\VoiceType;
+use App\Form\SongsVideoType;
 use App\Service\SongService;
 use App\Form\SongDetailsType;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,8 +58,6 @@ class SongController extends AbstractController
         $song = $this->songService->getSongDetails($id);
         $texts = $this->songService->getSongTexts($this->songService->getSongById($id));
         $voices = $this->songService->getSongVoices($this->songService->getSongById($id));
-        // A faire *******************************************************************
-        // Reste à récupérer les voix et les textes
 
         return $this->render('song/song_details.html.twig', [
             'song' => $song,
@@ -119,13 +118,34 @@ class SongController extends AbstractController
         if ($songDetailsForm->isSubmitted() && $songDetailsForm->isValid()) {
             $song = $this->songService->manageSong($song);
 
-            $this->addFlash('success', 'Nouveau chant enregistré avec succès');
+            $this->addFlash('success', 'Chant bien mis à jour');
             return $this->redirectToRoute('app_manage_songs');
         }
 
         return $this->render('song/update_song.html.twig', [
             'song' => $song,
             'songDetailsForm' => $songDetailsForm,
+        ]);
+    }
+
+    #[IsGranted('ROLE_CHANTS')]
+    #[Route('/addVideo/{id}', name: 'app_add_video_song')]
+    public function addVideo(int $id, Request $request): Response
+    {
+
+        $song = $this->songService->getSongById($id);
+        $songsVideoType = $this->createForm(SongsVideoType::class, $song);
+        $songsVideoType->handleRequest($request);
+        if ($songsVideoType->isSubmitted() && $songsVideoType->isValid()) {
+            $song = $this->songService->addVideo($song,$songsVideoType->get('urlVideo')->getData());
+
+            $this->addFlash('success', 'Vidéo enregistrée enregistré avec succès');
+            return $this->redirectToRoute('app_manage_songs');
+        }
+
+        return $this->render('song/add_song_video.html.twig', [
+            'song' => $song,
+            'songsVideoType' => $songsVideoType,
         ]);
     }
 
@@ -175,7 +195,7 @@ class SongController extends AbstractController
 
             // ... persist the $product variable or any other work
 
-            $this->addFlash('success', 'Nouveau chant enregistré avec succès');
+            $this->addFlash('success', 'Nouveau text enregistré avec succès');
             return $this->redirectToRoute('app_manage_songs');
         }
 
@@ -236,7 +256,7 @@ class SongController extends AbstractController
 
             // ... persist the $product variable or any other work
 
-            $this->addFlash('success', 'Nouveau chant enregistré avec succès');
+            $this->addFlash('success', 'Nouvelle voix enregistrée avec succès');
             return $this->redirectToRoute('app_manage_songs');
         }
 

@@ -33,6 +33,10 @@ class SongMapper
             $songDetailsToUpdate->setCategoryId($song->getCategory()->getId());
         }
 
+        if($song->getUrlVideo()){
+            $songDetailsToUpdate->setUrlVideo($song->getUrlVideo());
+        }
+
         return $songDetailsToUpdate;
     }
 
