@@ -9,36 +9,36 @@
         <h1 class="text-center fw-bolder">{{song.title}}</h1>
         <p class="text-center">{{song.description}}</p>
 
-    </div>
-    <div class="col-11 col-lg-9">
         <div class="d-flex justify-content-center flex-column mt-5 mx-auto">
-
-            {% for voice in voices %}
-                <h2 class="row mx-auto mt-3">{{ voice.voiceType }}</h2>
-                <audio class="row mx-auto w-50"
-                    controls
-                    src="{{ asset('uploads/voices/') ~  voice.fileName }}" type="audio/mp3">
-                        <a href="{{ asset('uploads/voices/') ~  voice.fileName }}">
-                        Download audio
-                        </a>
-                </audio>
-            {% endfor %}
+            <h2 class="mx-auto mt-3">Voix :</h2>
+                {% for voice in voices %}
+                    <h3 class="row mx-auto mt-3">{{ voice.voiceType }}</h3>
+                    <audio class="row mx-auto w-50"
+                        controls
+                        src="{{ asset('uploads/voices/') ~  voice.fileName }}" type="audio/mp3">
+                            <a href="{{ asset('uploads/voices/') ~  voice.fileName }}">
+                            Download audio
+                            </a>
+                    </audio>
+                {% endfor %}
         </div>
 
-        <div class="d-flex justify-content-center mt-5 mx-auto">
+        <div class="d-flex justify-content-center mt-5 mx-auto h-auto object-fit-contain">
 
             {% for text in texts %}
 
-                <figure class="w-100 h-300">
-                    <iframe src="{{ asset('uploads/texts/') ~  text.fileName }}" type="application/pdf" width="100%" height="600%"></iframe>
+                <figure class="w-100  mx-auto">
+                    <iframe id="text" src="{{ asset('uploads/texts/') ~  text.fileName }}" type="application/pdf"></iframe>
                 </figure>
 
             {% endfor %}
         </div>
+        <div>
+        </div>
 
         <div class="d-flex justify-content-center mt-5 mx-auto">
 
-                <figure id="showVideo" class="mw-100">
+                <figure id="showVideo" class="mw-100 mx-auto">
                     {{ song.urlVideo | raw }}
                 </figure>
 

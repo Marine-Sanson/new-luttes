@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Model\SongDetailsToUpdate;
+use App\Model\SongDetails;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
@@ -71,7 +71,7 @@ class SongDetailsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => SongDetailsToUpdate::class,
+            'data_class' => SongDetails::class,
         ]);
     }
 }
