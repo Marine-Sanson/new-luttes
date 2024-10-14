@@ -23,6 +23,13 @@ class ImagesController extends AbstractController
         ]);
     }
 
+    #[Route('/soutien', name: 'app_images_soutien')]
+    public function displayImagesSoutien(): Response
+    {
+        return $this->render('images/images_soutien041024.html.twig', [
+        ]);
+    }
+
     #[Route('/frac', name: 'app_images_frac')]
     public function displayImagesFrac(): Response
     {

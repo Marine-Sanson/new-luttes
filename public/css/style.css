@@ -98,6 +98,10 @@ li{
     list-style-type: none;
 }
 
+.withPuces>li{
+      list-style-type: disc;
+}
+
 .btn-primary{
     background-color: var(--main-color);
     border-color: var(--main-color);
@@ -111,6 +115,12 @@ li{
     border-width: 2px;
     color: var(--main-color);
     font-weight: bold;
+}
+
+input,
+textarea,
+.form-control{
+      background-color: var(--main-color-4);
 }
 
 .membersHome>li+li{
