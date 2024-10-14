@@ -49,21 +49,19 @@
 				</article>
 				<figure class="col-4 m-auto" id="chorusPicture">
 					<img class="w-100 h-auto" src="{{ asset('img/photoGroupe.jpg') }}" alt="Photo de la chorale - janvier 2023">
-					<figcaption class="figure-caption text-end">Photo de groupe</figcaption>
 				</figure>
 
 			</div>
 
 		</section>
 		
-		<section class="container w-75 p-3 rounded" id="homeActu">
+		<section class="container p-3 rounded mt-5 card" id="homeActu">
 			<h2 class="my-3 fw-bolder text-center">Nos actualités :</h2>
 			{% if events %}
 				<ul>
 					{% for event in events %}
 					<li class ="row">
-						<h3 class="col-3">{{ event.date }} :</h3>
-						<p class="col-9">{% if event.publicDetails %}{{ event.publicDetails|capitalize }}{% else %}Plus d'infos à venir{% endif %}</p>
+						<p class="fw-bold fs-4">{{ event.date }} : {% if event.publicDetails %}{{ event.publicDetails|capitalize }}{% else %}Plus d'infos à venir{% endif %}</p>
 					</li>
 					{% endfor %}
 				</ul>
@@ -73,7 +71,7 @@
 		</section>
 
 		<section id="homeChants">
-			<h2 class="my-3 fw-bolder text-center">Nos chants</h2>
+			<h2 class="my-3 fw-bolder text-center mt-5">Nos chants</h2>
 
 			<p class="mb-0">Notre répértoire est composé de <strong>chants féministes</strong> et de <strong>chants de femmes</strong>.</p>
 			<p>Voici quelques exemples de chants que nous travaillons actuellement</p>

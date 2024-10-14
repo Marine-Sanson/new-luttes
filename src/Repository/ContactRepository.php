@@ -23,7 +23,7 @@ class ContactRepository extends ServiceEntityRepository
             ->setMail($email)
             ->setObject($object)
             ->setContent($content)
-            ->setCreatedAt(DateTimeImmutable::createFromMutable($date));
+            ->setCreatedAt($date);
 
         $this->getEntityManager()->persist($contact);
         $this->getEntityManager()->flush();

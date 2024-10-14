@@ -11,54 +11,54 @@
                     <ul class="navbar-nav me-auto">
                         {% if app.user %}
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_members_home') }}">Accueil</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_members_home') }}">Accueil</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_event') }}">Agenda</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_event') }}">Agenda</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_song') }}">Chants</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_song') }}">Chants</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_user_list') }}">Liste</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_user_list') }}">Liste</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_chatItems') }}">Messages</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_chatItems') }}">Messages</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_sharing_item') }}">Echanges</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_sharing_item') }}">Echanges</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_images_concerts') }}">Images</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_images_concerts') }}">Images</a>
                             </li>                            
                             {% if app.user.roles[0] == "ROLE_DATES" or app.user.roles[0] == "ROLE_ADMIN" %}
                             <li class="nav-item m-auto">
-                                    <a class="nav-link navbarLink" href="{{ path('app_manage_event') }}">Gérer les dates</a>
+                                    <a class="nav-link navbarLink text-center" href="{{ path('app_manage_event') }}">Gérer les dates</a>
                                 </li>
                             {% endif %}
                             {% if app.user.roles[0] == "ROLE_CHANTS" or app.user.roles[0] == "ROLE_ADMIN" %}
                             <li class="nav-item m-auto">
-                                    <a class="nav-link navbarLink" href="{{ path('app_manage_songs') }}">Gérer les chants</a>
+                                    <a class="nav-link navbarLink text-center" href="{{ path('app_manage_songs') }}">Gérer les chants</a>
                                 </li>
                             {% endif %}
                             {% if app.user.roles[0] == "ROLE_ADMIN" %}
                             <li class="nav-item m-auto">
-                                    <a class="nav-link navbarLink" href="{{ path('app_new_user') }}">Ajout membre</a>
+                                    <a class="nav-link navbarLink text-center" href="{{ path('app_new_user') }}">Ajout membre</a>
                                 </li>
                             {% endif %}
                         {% else %}
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_contact') }}">Contact</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_contact') }}">Contact</a>
                             </li>
                             <li class="nav-item m-auto">
-                                <a class="nav-link navbarLink" href="{{ path('app_login') }}">Espace membres</a>
+                                <a class="nav-link navbarLink text-center" href="{{ path('app_login') }}">Espace membres</a>
                             </li>
                         {% endif %}
 
                     </ul>
                     {% if app.user %}
                         <div class="nav-item">
-                            <a class="nav-link navbarLink" href="{{ path('app_logout') }}">Déconnexion</a>
+                            <a class="nav-link navbarLink text-center" href="{{ path('app_logout') }}">Déconnexion</a>
                         </div>
                     {% endif %}
                 </div>
