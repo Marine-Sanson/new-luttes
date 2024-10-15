@@ -71,10 +71,26 @@
 		</section>
 
 		<section id="homeChants">
-			<h2 class="my-3 fw-bolder text-center mt-5">Nos chants</h2>
+			<h2 class="my-3 mx-auto fw-bolder text-center mt-5">Nos chants</h2>
 
 			<p class="mb-0">Notre répértoire est composé de <strong>chants féministes</strong> et de <strong>chants de femmes</strong>.</p>
 			<p>Voici quelques exemples de chants que nous travaillons actuellement</p>
+
+			{% for song in currentSongs %}
+				{% if song.urlVideo %}
+					<h3 class="text-center mx-auto mt-5">{{ song.title }}</h3>
+
+					<div class="container row mx-auto mt-5">
+						<div class="col mx-auto">
+							<figure>{{ song.urlVideo | raw }}</figure>
+						</div>
+						<div class="col m-auto">
+							<p>{{ song.description }}</p>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+
 		</section>
 
 {% endblock %}
