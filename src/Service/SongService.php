@@ -48,6 +48,11 @@ class SongService
 
     }
 
+    public function getCurrentSong()
+    {
+        return $this->songRepository->findByCurrentSong(true);
+    }
+
     public function getSongsWithoutCats(): ?array
     {
         $songs = $this->songRepository->findSongsWithoutCategory();
