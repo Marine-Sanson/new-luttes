@@ -9,12 +9,14 @@ use DateTimeImmutable;
 use App\Entity\ChatItem;
 use App\Entity\ChatAnswer;
 use App\Repository\ChatItemRepository;
+use App\Repository\ChatAnswerRepository;
 
 
 class ChatItemService
 {
     public function __construct(
-        private readonly ChatItemRepository $chatItemRepository
+        private readonly ChatItemRepository $chatItemRepository,
+        private readonly ChatAnswerRepository $chatAnswerRepository
     ) {
 
     }
@@ -33,6 +35,16 @@ class ChatItemService
             foreach($chatItems as $chatItem){
 
                 if($chatItem->getCreatedAt() > $previousConnection || $previousConnection === null){
+
+                    return true;
+                }
+            }
+
+            $chatAnswers = $this->getChatAnswers();
+    
+            foreach($chatAnswers as $chatAnswer){
+
+                if($chatAnswer->getCreatedAt() > $previousConnection || $previousConnection === null){
 
                     return true;
                 }
@@ -102,4 +114,13 @@ class ChatItemService
         return $this->chatItemRepository->findOneById($chatItemId);
     }
 
+    public function getChatAnswers(): array
+    {
+        return $this->chatAnswerRepository->findAllChatAnswers();
+    }
+
+    public function getChatAnswer($chatAnswerId): ChatAnswer
+    {
+        return $this->chatAnswerRepository->findOneById($chatAnswerId);
+    }
 }

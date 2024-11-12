@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateInterval;
 use DateTimeZone;
 use DateTimeImmutable;
 use App\Service\UserService;
@@ -28,14 +29,15 @@ class MembersHomeController extends AbstractController
     public function index(): Response
     {
         $user = $this->userService->findUserByEmail($this->getUser()->getUserIdentifier());
-
-        $newMessages = $this->chatItemService->checkNewChatItems($user);
-        
-        if($newMessages){
-            $this->addFlash('success', 'Il y a de nouveaux messages depuis ta dernière connection, tu peux les voir ici :');
-            return $this->redirectToRoute('app_chatItems');
+        $lastConnection = $user->getLastConnection();
+        $now = new DateTimeImmutable("now", new DateTimeZone("Europe/Paris"));
+        if(($lastConnection->add(new DateInterval('PT01M'))->getTimestamp() - $now->getTimestamp()) > 7068){
+            $newMessages = $this->chatItemService->checkNewChatItems($user);
+            if($newMessages){
+                $this->addFlash('success', 'Il y a de nouveaux messages depuis ta dernière connection, tu peux les voir ici :');
+                return $this->redirectToRoute('app_chatItems');
+            }
         }
-        
         $eventsWithoutAnswer = $this->eventService->getEventsByParticipation($user, 4);
 
         $eventsDontKnow = $this->eventService->getEventsByParticipation($user, 3);

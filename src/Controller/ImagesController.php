@@ -30,6 +30,13 @@ class ImagesController extends AbstractController
         ]);
     }
 
+    #[Route('/repe24', name: 'app_images_répé_24')]
+    public function displayImagesRepe24(): Response
+    {
+        return $this->render('images/images_répé_24.html.twig', [
+        ]);
+    }
+
     #[Route('/frac', name: 'app_images_frac')]
     public function displayImagesFrac(): Response
     {
@@ -49,6 +56,13 @@ class ImagesController extends AbstractController
     {
 
         return $this->render('images/images_8mars24.html.twig', [
+        ]);
+    }
+
+    #[Route('/repe23', name: 'app_images_répé_23')]
+    public function displayImagesRepe23(): Response
+    {
+        return $this->render('images/images_répé_23.html.twig', [
         ]);
     }
 

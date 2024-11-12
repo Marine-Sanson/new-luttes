@@ -10,6 +10,7 @@ use DateTimeImmutable;
 use App\Mapper\EventMapper;
 use App\Service\UserService;
 use App\Entity\Participation;
+use App\Repository\EventRepository;
 use App\Repository\StatusRepository;
 use App\Repository\ParticipationRepository;
 
@@ -19,7 +20,8 @@ class ParticipationService
         private readonly ParticipationRepository $participationRepository,
         private readonly UserService $userService,
         private readonly StatusRepository $statusRepository,
-        private readonly EventMapper $eventMapper
+        private readonly EventMapper $eventMapper,
+        private readonly EventRepository $eventRepository
     ) {
 
     }
@@ -71,13 +73,15 @@ class ParticipationService
 
     }
 
-    public function findEventsByParticipation(User $user, int $status): array
+    public function findEventsByParticipation(User $user, int $status): ?array
     {
+
         $participations = $this->participationRepository->findByParticipationStatus($user, $status);
         if($participations){
             return array_map(
                 function (Participation $participation) {
-                    $event = $participation->getEvent();
+                    $event = $this->eventRepository->findOneById($participation->getEvent()->getId());
+
                     $participationId = $participation->getId();
                     return $this->eventMapper->transformToEventForMembersHome($event, $participationId);
                 },

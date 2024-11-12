@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use DateTimeZone;
+use DateTimeImmutable;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Service\ContactService;
@@ -27,20 +29,23 @@ class ContactController extends AbstractController
         $contactForm = $this->createForm(ContactType::class, $contact);
         $contactForm->handleRequest($request);
         $number = rand(0,7);
+        $result = $number + 2;
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            if($contactForm->get('result')->getData() === $number + 2)
+            if($contactForm->get('userResult')->getData() === 7)
             {
-                $this->contactService->manageContact($contact->getMail(), $contact->getObject(), $contact->getContent());
+                $contact->setCreatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")));
+                $this->contactService->manageContact($contact);
                 $this->addFlash('success', 'Votre message a bien été pris en compte');
+
                 return $this->redirectToRoute('app_contact');
             }
-
         }
 
         return $this->render('contact/contact.html.twig', [
             'contactForm' => $contactForm,
             'number' => $number,
+            'result' => $result,
         ]);
 
     }

@@ -10,25 +10,47 @@
         <p class="text-center">{{song.description}}</p>
 
         <div class="d-flex justify-content-center flex-column mt-5 mx-auto">
-            <h2 class="mx-auto mt-3">Voix :</h2>
-                {% for voice in voices %}
-                    <h3 class="row mx-auto mt-3">{{ voice.voiceType }}</h3>
+            {% for voice in voices %}
+                <h2 class="row mx-auto mt-3">{{ voice.voiceType }}</h2>
+
+                {% if voice.fileType == "mp3" %}
                     <audio class="row mx-auto w-50"
                         controls
-                        src="{{ asset('uploads/voices/') ~  voice.fileName }}" type="audio/mp3">
-                            <a href="{{ asset('uploads/voices/') ~  voice.fileName }}">
-                            Download audio
-                            </a>
+                        src="{{ asset('uploads/voices/') ~  voice.fileName ~ '.mp3' }}" type="audio/mp3">
+                        <a href="{{ asset('uploads/voices/') ~  voice.fileName ~ ".mp3" }}">
+                        Download audio
+                        </a>
                     </audio>
-                {% endfor %}
+                {% elseif voice.fileType == "MP3" %}
+                    <audio class="row mx-auto w-50"
+                        controls
+                        src="{{ asset('uploads/voices/') ~  voice.fileName ~ '.MP3' }}" type="audio/mp3">
+                        <a href="{{ asset('uploads/voices/') ~  voice.fileName ~ ".MP3" }}">
+                        Download audio
+                        </a>
+                    </audio>
+                {% elseif voice.fileType == "m4a" %}
+                    <audio class="row mx-auto w-50"
+                        controls
+                        src="{{ asset('uploads/voices/') ~  voice.fileName ~ '.m4a' }}" type="audio/m4a">
+                        <a href="{{ asset('uploads/voices/') ~  voice.fileName ~ ".m4a" }}">
+                        Download audio
+                        </a>
+                    </audio>
+                {% endif %}
+            {% endfor %}
         </div>
 
-        <div class="d-flex justify-content-center mt-5 mx-auto h-auto object-fit-contain">
+        <div class="d-flex mt-5 mx-auto h-auto object-fit-contain">
 
             {% for text in texts %}
 
-                <figure class="w-100  mx-auto">
-                    <iframe id="text" src="{{ asset('uploads/texts/') ~  text.fileName }}" type="application/pdf"></iframe>
+                <figure class="w-75 d-flex text mx-auto p-0 justify-content-center">
+                    {% if text.fileType == "pdf" %}
+                        <iframe class="mx-auto p-0" id="text" src="{{ asset('uploads/texts/') ~  text.fileName ~ ".pdf" }}" type="application/pdf"></iframe>
+                    {% elseif text.fileType == "jpg" %}
+                        <img class="mx-auto" id="text" src="{{ asset('uploads/texts/') ~  text.fileName ~ ".jpg" }}" />
+                    {% endif %}
                 </figure>
 
             {% endfor %}
@@ -36,12 +58,13 @@
         <div>
         </div>
 
-        <div class="d-flex justify-content-center mt-5 mx-auto">
 
-                <figure id="showVideo" class="mw-100 mx-auto">
+        <div class="containerVideo">
+            <div class="d-flex justify-content-center mt-5 mx-auto divVideo">
+                <figure class="video mx-auto">
                     {{ song.urlVideo | raw }}
                 </figure>
-
+            </div>
         </div>
 
     </div>

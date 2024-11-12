@@ -3,9 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Song;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\SongCategory;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Song>
@@ -29,6 +30,17 @@ class SongRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.category IS NULL')
+            ->orderBy('s.title', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+    public function findByCategoryId(int $categoryId)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.category = :category_id')
+            ->setParameter('category_id', $categoryId)
             ->orderBy('s.title', 'ASC')
             ->getQuery()
             ->getResult()

@@ -40,7 +40,8 @@ class SongController extends AbstractController
         $currentYearSongs = $this->songService->getSongsByCats(1);
         $sharedSongs = $this->songService->getSongsByCats(2);
         $oldSongs = $this->songService->getSongsByCats(3);
-        $livrets = $this->songService->getSongsByCats(4);
+        $olderSongs = $this->songService->getSongsByCats(4);
+        $livrets = $this->songService->getSongsByCats(5);
 
 
         return $this->render('song/song.html.twig', [
@@ -48,6 +49,7 @@ class SongController extends AbstractController
             'currentYearSongs' => $currentYearSongs,
             'sharedSongs' => $sharedSongs,
             'oldSongs' => $oldSongs,
+            'olderSongs' => $olderSongs,
             'livrets' => $livrets,
         ]);
     }
@@ -74,13 +76,15 @@ class SongController extends AbstractController
         $currentYearSongs = $this->songService->getSongsByCats(1);
         $sharedSongs = $this->songService->getSongsByCats(2);
         $oldSongs = $this->songService->getSongsByCats(3);
-        $livrets = $this->songService->getSongsByCats(4);
+        $olderSongs = $this->songService->getSongsByCats(4);
+        $livrets = $this->songService->getSongsByCats(5);
 
         return $this->render('song/manage_songs.html.twig', [
             'outOfCatSongs' => $outOfCatSongs,
             'currentYearSongs' => $currentYearSongs,
             'sharedSongs' => $sharedSongs,
             'oldSongs' => $oldSongs,
+            'olderSongs' => $olderSongs,
             'livrets' => $livrets,
         ]);
     }

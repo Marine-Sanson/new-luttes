@@ -24,7 +24,17 @@ class EventRepository extends ServiceEntityRepository
         return $event;
     }
 
-       public function findAllEvents(): array
+    public function findOneById(int $id): Event
+    {
+        return $this->createQueryBuilder('e')
+        ->andWhere('e.id = :val')
+        ->setParameter('val', $id)
+        ->getQuery()
+        ->getOneOrNullResult()
+    ;
+    }
+
+    public function findAllEvents(): array
        {
            return $this->createQueryBuilder('e')
                ->orderBy('e.timestamp', 'ASC')

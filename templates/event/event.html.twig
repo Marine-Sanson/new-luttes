@@ -9,21 +9,21 @@
 				<h1 class="text-center fw-bolder">Agenda</h1>
                 <h2 class="text-center fw-bolder">Voici les évenements à venir :</h2>
             </div>
-            <div class="col-11 mt-5">
+            <div class="col-md-11 mt-5">
                 {% if events %}
                     {% for event in events %}
 
-				<article class="card mx-auto my-5 rounded">
-					<div class="card-header row bgmain rounded">
-						<h3 class="card-title text-start text-white m-auto p-2 col-9">{{ event.eventCategory }} du {{ event.date }}</h3>
-						<p class="text-end col-3 m-auto">Evenement {{ event.status }}</p>
+				<article class="card mx-auto my-5 rounded p-0">
+					<div class="card-header row-md bgmain rounded m-2">
+						<h3 class="card-title text-center text-white px-0 pt-2">{{ event.eventCategory }} du {{ event.date }}</h3>
+						<p class="text-end text-white mx-auto mb-2">Évènement {{ event.status }}</p>
 					</div>
 					<div class="card-body row mt-3">
-						<div class="row">
-							<p class="text-center col">Présentes : {{ event.oui }}</p>
-							<p class="text-center col">Absentes : {{ event.non }}</p>
-							<p class="text-center col">Ne savent pas : {{ event.nsp }}</p>
-							<p class="text-center col">Non répondu : {{ event.pasrep }}</p>
+						<div class="row-md d-flex flex-md-row flex-column">
+							<p class="text-center mx-auto col-md row">Présentes : {{ event.oui }}</p>
+							<p class="text-center mx-auto col-md row">Absentes : {{ event.non }}</p>
+							<p class="text-center mx-auto col-md row">Ne savent pas : {{ event.nsp }}</p>
+							<p class="text-center mx-auto col-md row">Non répondu : {{ event.pasrep }}</p>
 						</div>
 						<p class="justify">{{ event.privateDetails }}</p>
 

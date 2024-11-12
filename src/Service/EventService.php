@@ -28,8 +28,9 @@ class EventService
 
     }
 
-    public function getEventsByParticipation(User $user, int $status): array
+    public function getEventsByParticipation(User $user, int $status): ?array
     {
+
         return $this->participationService->findEventsByParticipation($user, $status);
     }
 

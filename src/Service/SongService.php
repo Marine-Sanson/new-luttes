@@ -37,8 +37,8 @@ class SongService
 
     public function getSongsByCats(int $id)
     {
-        $songs = $this->songRepository->findByCategory($this->songCategoryRepository->findOneById($id));
 
+        $songs = $this->songRepository->findByCategoryId($id);
         return array_map(
             function (Song $song) {
                 return $this->songMapper->transformToReduceSong($song);

@@ -4,14 +4,14 @@
 
 {% block body %}
         <section class="container row d-flex justify-content-center mt-3 mx-auto">
-            <div class="col-md-7 col-11">
+            <div class="col-md-9 col-11">
                 <h1 class="text-center fw-bolder">Bonjour {{ user.name|capitalize }}, bienvenue sur l'espace réservé aux membres des Luttes Enchantées</h1>
             </div>
-            <div class="col-md-8 col-11 mt-5">
+            <div class="col-md-9 col mt-5">
                 <h2 class="text-center fw-bolder">Voici les évenements à venir :</h2>
                 {% if eventsWithoutAnswer %}
-                    <div class="ulBorder rounded m-5">
-                        <h3 class="text-center fw-bolder mt-5">Ceux où tu n'as pas encore répondu :</h3>
+                    <div class="ulBorder rounded my-5">
+                        <h3 class="text-center fw-bolder">Ceux où tu n'as pas encore répondu :</h3>
                         <ul class="membersHome">
                             {% for event in eventsWithoutAnswer %}
                                 <li class="mt-5">
@@ -29,8 +29,8 @@
                 {% endif %}
 
                 {% if eventsDontKnow %}
-                    <div class="ulBorder rounded m-5">
-                        <h3 class="text-center fw-bolder mt-5">Ceux où tu as répondu "je ne sais pas" :</h3>
+                    <div class="ulBorder rounded my-5">
+                        <h3 class="text-center fw-bolder">Ceux où tu as répondu "je ne sais pas" :</h3>
                         <ul class="membersHome">
                             {% for event in eventsDontKnow %}
                                 <li class="mt-5">
@@ -48,8 +48,8 @@
                 {% endif %}
 
                 {% if eventsYes %}
-                    <div class="ulBorder rounded m-5">
-                        <h3 class="text-center fw-bolder mt-5">Ceux où tu as répondu "oui" :</h3>
+                    <div class="ulBorder rounded my-5">
+                        <h3 class="text-center fw-bolder">Ceux où tu as répondu "oui" :</h3>
                         <ul class="membersHome">
                             {% for event in eventsYes %}
                                 <li class="mt-5">
@@ -67,8 +67,8 @@
                 {% endif %}
 
                 {% if eventsNo %}
-                    <div class="ulBorder rounded m-5">
-                        <h3 class="text-center fw-bolder mt-5">Ceux où tu as répondu "non" :</h3>
+                    <div class="ulBorder rounded my-5">
+                        <h3 class="text-center fw-bolder">Ceux où tu as répondu "non" :</h3>
                         <ul class="membersHome">
                             {% for event in eventsNo %}
                                 <li class="mt-5">

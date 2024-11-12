@@ -9,7 +9,7 @@
 				<h1 class="text-center fw-bolder">Gestion des dates</h1>
                 <h2 class="text-center fw-bolder">Permet d'ajouter une nouvelle date ou de modifier les dates existantes</h2>
             </div>
-            <div class="col-11 mt-5">
+            <div class="col-md-9 mt-5">
                 <section id="addNewEvent">
 
                     <h2 class="text-center">Ajouter une nouvelle date</h2>
@@ -28,29 +28,27 @@
 
                             <article class="card mx-auto my-5 rounded">
                                 <div class="card-header row bgmain rounded">
-                                    <h3 class="card-title text-start text-white m-auto p-2 col-9">{{ event.eventCategory.name }} du {{ event.date }}</h3>
-                                    <p class="text-end col-3 m-auto">Evenement {% if event.status == false %} public {% else %} privé {% endif %}</p>
+                                    <h3 class="card-title text-start text-white m-auto p-2 col-md-9 row">{{ event.eventCategory.name }} du {{ event.date }}</h3>
+                                    <p class="text-end text-white col-md-3 row m-auto">Evenement {% if event.status == false %} public {% else %} privé {% endif %}</p>
                                 </div>
-                                <div class="card-body row mt-3">
+                                <div class="card-body row mt-3 p-0">
 
-                                    <p class="justify">Infos membres : {{ event.privateDetails }}</p>
-                                    <p class="justify">Infos publiques : {{ event.publicDetails }}</p>
+                                    <p class="justify p-0">Infos membres : {{ event.privateDetails }}</p>
+                                    <p class="justify p-0">Infos publiques : {{ event.publicDetails }}</p>
                                     
-                                    <div class="row">
-                                        <div class="col"></div>
+                                    <div class="row mx-auto">
                                         <div class="col d-flex justify-content-center">
                                             <a href="{{ path('app_event_update', { id: event.id }) }}" class="text-decoration-none text-left">
                                                 <button type="button" class="btn btn-lg btn-primary rounded mt-3">Modifier</button>
                                             </a>
                                         </div>
                                         {% if 'ROLE_DATES' in app.user.roles or 'ROLE_ADMIN' in app.user.roles %}
-                                        <div class="col d-flex justify-content-center">
+                                        <div class="col d-flex mx-auto justify-content-center">
                                             <a href="{{ path('app_event_delete', { id: event.id }) }}" class="text-decoration-none text-left">
                                                 <button type="button" class="btn btn-lg btn-primary rounded mt-3">Supprimer</button>
                                             </a>
                                         </div>
                                         {% endif %}
-                                        <div class="col"></div>
 
                                     </div>
                                 </div>
