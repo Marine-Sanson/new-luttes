@@ -16,6 +16,15 @@ class ChatAnswerRepository extends ServiceEntityRepository
         parent::__construct($registry, ChatAnswer::class);
     }
 
+    public function findAllChatAnswers()
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     //    /**
     //     * @return ChatAnswer[] Returns an array of ChatAnswer objects
     //     */

@@ -16,11 +16,10 @@
 
                 {% if outOfCatSongs %}
                     <h3 class="text-center mt-5">Hors catégorie :</h3>
-
-                    <ul class="mt-2 d-flex flex-column flex-lg-row">
+                    <ul class="mt-2 d-flex flex-column flex-lg-row justify-content-around flex-wrap">
                         {% for song in outOfCatSongs %}
 
-                            <li>
+                            <li class="mt-lg-3 mt-2">
                                 <div class="col-lg row mt-2 mx-auto m-lg-auto">
                                     <a href="{{ path('app_song_details', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
                                         <button type="button" class="btn btn-sm btn-primary rounded">{{ song.title }}</button>
@@ -30,17 +29,16 @@
 
                         {% endfor %}
                     </ul>
-                {% else %}
-                    <p class="mt-3">Aucun chant dans cette catégorie</p>
                 {% endif %}
 
-                <h3 class="text-center mt-5">Chants année en cours :</h3>
+
 
                 {% if currentYearSongs %}
-                    <ul class="mt-2 d-flex flex-column flex-lg-row">
+                    <h3 class="text-center mt-5">Chants année en cours :</h3>
+                    <ul class="mt-2 d-flex flex-column flex-lg-row justify-content-around flex-wrap">
                         {% for song in currentYearSongs %}
 
-                            <li>
+                            <li class="mt-lg-3 mt-2">
                                 <div class="col-lg row mt-2 mx-auto m-lg-auto">
                                     <a href="{{ path('app_song_details', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
                                         <button type="button" class="btn btn-sm btn-primary rounded">{{ song.title }}</button>
@@ -50,18 +48,16 @@
 
                         {% endfor %}
                     </ul>
-                {% else %}
-                    <p class="mt-3">Aucun chant dans cette catégorie</p>
                 {% endif %}
 
 
-                <h3 class="text-center mt-5">Chants de manif / Chants partagés :</h3>
 
                 {% if sharedSongs %}
-                    <ul class="mt-2 d-flex flex-column flex-lg-row">
+                    <h3 class="text-center mt-5">Chants de manif / Chants partagés :</h3>
+                    <ul class="mt-2 d-flex flex-column flex-lg-row justify-content-around flex-wrap">
                         {% for song in sharedSongs %}
-                            <li>
-                                <div class="col-lg row mt-2 mx-auto m-lg-auto">
+                            <li class="mt-lg-3 mt-2">
+                                <div class="col-lg row mx-auto m-lg-auto">
                                     <a href="{{ path('app_song_details', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
                                         <button type="button" class="btn btn-sm btn-primary rounded">{{ song.title }}</button>
                                     </a>
@@ -69,17 +65,13 @@
                             </li>
                         {% endfor %}
                     </ul>
-                {% else %}
-                    <p class="mt-3">Aucun chant dans cette catégorie</p>
                 {% endif %}
-
-
-                <h3 class="text-center mt-5">Chants années précédentes :</h3>
 
                 {% if oldSongs %}
-                    <ul class="mt-2 d-flex flex-column flex-lg-row">
+                    <h3 class="text-center mt-5">Chants années précédentes :</h3>
+                    <ul class="mt-2 d-flex flex-column flex-lg-row justify-content-around flex-wrap">
                         {% for song in oldSongs %}
-                            <li>
+                            <li class="mt-lg-3 mt-2">
                                 <div class="col-lg row mt-2 mx-auto m-lg-auto">
                                     <a href="{{ path('app_song_details', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
                                         <button type="button" class="btn btn-sm btn-primary rounded">{{ song.title }}</button>
@@ -88,16 +80,13 @@
                             </li>
                         {% endfor %}
                     </ul>
-                {% else %}
-                    <p class="mt-3">Aucun chant dans cette catégorie</p>
                 {% endif %}
 
-                <h3 class="text-center mt-5">Livrets :</h3>
-
-                {% if livrets %}
-                    <ul class="mt-2 d-flex flex-column flex-lg-row">
-                        {% for song in livrets %}
-                            <li>
+                {% if olderSongs %}
+                    <h3 class="text-center mt-5">Chants plus anciens :</h3>
+                    <ul class="mt-2 d-flex flex-column flex-lg-row justify-content-around flex-wrap">
+                        {% for song in olderSongs %}
+                            <li class="mt-lg-3 mt-2">
                                 <div class="col-lg row mt-2 mx-auto m-lg-auto">
                                     <a href="{{ path('app_song_details', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
                                         <button type="button" class="btn btn-sm btn-primary rounded">{{ song.title }}</button>
@@ -106,8 +95,21 @@
                             </li>
                         {% endfor %}
                     </ul>
-                {% else %}
-                    <p class="mt-3">Aucun livret pour le moment</p>
+                {% endif %}
+
+                {% if livrets %}
+                    <h3 class="text-center mt-5">Livrets :</h3>
+                    <ul class="mt-2 d-flex flex-column flex-lg-row justify-content-around flex-wrap">
+                        {% for song in livrets %}
+                            <li class="mt-lg-3 mt-2">
+                                <div class="col-lg row mt-2 mx-auto m-lg-auto">
+                                    <a href="{{ path('app_song_details', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
+                                        <button type="button" class="btn btn-sm btn-primary rounded">{{ song.title }}</button>
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
 
             </section>

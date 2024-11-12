@@ -64,6 +64,7 @@ class SongType extends AbstractType
                     'Chants années précédentes' => 3,
                     'Livrets' => 4,
                 ],
+                'label' => 'Catégorie',
                 'mapped' => false
             ])
         ;

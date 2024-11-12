@@ -21,7 +21,7 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3 mx-auto'
                 ],
                 'label' => 'Adresse email',
                 'constraints' => [
@@ -42,7 +42,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'attr' => [
-                    'class' => 'form-control m-3 border-0'
+                    'class' => 'form-control my-3 border-0 mx-auto'
                 ],
                 'label' => 'Role',
                 'mapped' => false
@@ -51,7 +51,7 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'autocomplete' => 'new-password',
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3 mx-auto'
                 ],
                 'label' => 'Mot de passe',
                 'constraints' => [
@@ -72,7 +72,7 @@ class UserType extends AbstractType
             ])
             ->add('name', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3 mx-auto'
                 ],
                 'label' => 'Nom d\'utilisateur',
                 'constraints' => [
@@ -93,7 +93,7 @@ class UserType extends AbstractType
             ])
             ->add('tel', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3 mx-auto'
                 ],
                 'label' => 'Telephone',
                 'required' => false
@@ -108,7 +108,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'attr' => [
-                    'class' => 'form-control m-3 border-0'
+                    'class' => 'form-control my-3 border-0 mx-auto'
                 ],
                 'label' => 'Accord sur les coordonnées'
             ])

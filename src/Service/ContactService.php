@@ -4,6 +4,7 @@ namespace App\Service;
 
 use DateTimeZone;
 use DateTimeImmutable;
+use App\Entity\Contact;
 use App\Service\MailService;
 use App\Repository\ContactRepository;
 
@@ -16,29 +17,29 @@ class ContactService
 
     }
 
-    public function manageContact(string $email, string $object, string $content)
+    public function manageContact(Contact $contact)
     {
 
-        $savedContact = $this->saveContact($email, $object, $content, new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")));
+        $savedContact = $this->saveContact($contact);
         if ($savedContact)
         {
 
             $this->mailService->send(
                 'contact@luttesenchantees35.fr',
-                $email,
-                $object,
+                $contact->getMail(),
+                $contact->getObject(),
                 'contact',
                 [
-                    'mail' => $email,
-                    'object' => $object,
-                    'content' => $content,
+                    'mail' => $contact->getMail(),
+                    'object' => $contact->getObject(),
+                    'content' => $contact->getContent(),
                 ]
             );
         }
     }
 
-    public function saveContact($email, $object, $content, $date): bool
+    public function saveContact($contact): bool
     {
-        return $this->contactsRepository->saveContact($email, $object, $content, $date);
+        return $this->contactsRepository->saveContact($contact);
     }
 }

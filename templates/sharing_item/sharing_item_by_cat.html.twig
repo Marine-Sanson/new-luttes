@@ -11,28 +11,28 @@
             <p class="text-center">Ici un espace pour s'échanger des recettes, idées de lecture, spectacles, films...</p>
         </div>
 
-            <section class="container row justify-content-center mt-5 mx-auto">
+        <section class="container row justify-content-center mt-5 mx-auto">
 
-                <h2 class="text-center mt-3">Changer de catégorie</h2>
-                <p class="text-center">Si tu veux changer de catégorie, pas de problème ! Choisis en une autre :</p>
+            <h2 class="text-center mt-3">Changer de catégorie</h2>
+            <p class="text-center">Si tu veux changer de catégorie, pas de problème ! Choisis en une autre :</p>
 
-                <ul class="row w-75 mx-auto">
-                    {% for category in sharingCategories %}
-                        <li class="col">
-                            <div class="d-flex mt-3">
-                                <a href="{{ path('app_sharing_item_by_cat', { catId: category.id }) }}" class="text-decoration-none mx-auto">
-                                    <button type="button" class="btn btn-sm btn-primary rounded mx-auto">{{ category.name }}</button>
-                                </a>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
+            <ul class="row w-75 mx-auto">
+                {% for category in sharingCategories %}
+                    <li class="col">
+                        <div class="d-flex mt-3">
+                            <a href="{{ path('app_sharing_item_by_cat', { catId: category.id }) }}" class="text-decoration-none mx-auto">
+                                <button type="button" class="btn btn-sm btn-primary rounded mx-auto">{{ category.name }}</button>
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
 
-            </section>
+        </section>
 
-            <section class="container row justify-content-center mt-5 mx-auto">
-
-                <ul>
+        <section class="container row justify-content-center mt-5 mx-auto">
+            {% if sharingItems %}
+            <ul>
                 {% for item in sharingItems %}
                     <li class="card mx-auto my-5 rounded itemCard">
                         <div class="card-header">
@@ -66,9 +66,11 @@
                     </li>
 
                 {% endfor %}
-                </ul>
-
-            </section>
+            </ul>
+            {% else %}
+                <p class="text-center">Aucun échange dans cette catégorie pour le moment</p>
+            {% endif %}
+        </section>
 
     </section>
 

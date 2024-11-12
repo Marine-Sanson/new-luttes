@@ -8,12 +8,12 @@
         <div class="col-sm-7 col-md-11 mt-5">
             <h1 class="text-center fw-bolder">Liste des choristes</h1>
         </div>
-        <div class="col-sm-7 col-md-11 mt-5">
-            <ul id="" class="card-deck row mx-auto">
+        <div class="col mt-5">
+            <ul class="card-deck row mt-3 mx-auto">
                 {% for user in usersForList %}
-                    <li class="card mx-auto my-5 rounded" style="max-width: 23rem;">
+                    <li class="card mx-auto my-3 rounded" style="max-width: 23rem;">
                         <div class="card-header">
-                            <h2 class="card-title text-center text-white mx-auto p-2 rounded">{{ user.name|capitalize }}</h2>
+                            <h2 class="card-title text-center text-white mx-auto p-2 rounded">{{ user.name|title  }}</h2>
                         </div>
                         <div class="card-body row">
                             <div class="col-7">
