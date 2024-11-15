@@ -9,15 +9,22 @@
 body{
     margin:0;
     box-sizing: border-box;
-    font-family: "Kalam", cursive;
+    font-family: "Kalam", "Handlee", cursive;
     background-color: white;
     color: var(--main-color);
 }
 
 body>*,
-.form-control{
-    font-size: 1.2rem;
+.form-control,
+.card-body>*{
+    font-size: 1.8rem;
     box-sizing: inherit;
+}
+
+.navbar>*,
+.btn,
+select>*{
+    font-size: 1.5rem;
 }
 
 .justify{
@@ -40,7 +47,7 @@ button[type=submit]{
 }
 
 .logo{
-    max-width: 12vw;
+    max-width: 10vw;
     height: auto;
     position: absolute;
     margin: 0.5rem;

@@ -191,6 +191,47 @@
                     <p class="mt-3">Aucun chant dans cette catégorie</p>
                 {% endif %}
 
+                <h3 class="text-center mt-5">Chants plus anciens :</h3>
+
+                {% if olderSongs %}
+                    <ul class="mt-3 mx-auto">
+                        {% for song in olderSongs %}
+                            <li class="d-flex flex-column flex-lg-row justify-content-center row-lg mt-3 p-3 border-colored rounded">
+
+                                <h4 class="col-lg row text-center mt-3 mx-auto m-lg-auto">{{ song.title }}</h4>
+
+                                <div class="col-lg row mt-3 mx-auto m-lg-auto">
+                                    <a href="{{ path('app_add_voice_song', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
+                                        <button type="button" class="btn btn-sm btn-primary rounded">Ajouter une voix</button>
+                                    </a>
+                                </div>
+
+                                <div class="col-lg row mt-3 mx-auto m-lg-auto">
+                                    <a href="{{ path('app_add_text_song', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
+                                        <button type="button" class="btn btn-sm btn-primary rounded">Ajouter un texte</button>
+                                    </a>
+                                </div>
+
+                                <div class="col-lg row mt-3 mx-auto m-lg-auto">
+                                    <a href="{{ path('app_add_video_song', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
+                                        <button type="button" class="btn btn-sm btn-primary rounded">Ajouter une vidéo</button>
+                                    </a>
+                                </div>
+
+                                <div class="col-lg row mt-3 mx-auto m-lg-auto">
+                                    <a href="{{ path('app_update_song', { id: song.id }) }}" class="text-center text-decoration-none m-auto">
+                                        <button type="button" class="btn btn-sm btn-primary rounded">Modifier</button>
+                                    </a>
+                                </div>
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="mt-3">Aucun chant dans cette catégorie</p>
+                {% endif %}
+
+
                 <h3 class="text-center mt-5">Livrets :</h3>
 
                 {% if livrets %}

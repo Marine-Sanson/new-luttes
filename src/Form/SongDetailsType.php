@@ -62,7 +62,8 @@ class SongDetailsType extends AbstractType
                     'Année en cours' => 1,
                     'Chants de manif / chants communs' => 2,
                     'Chants années précédentes' => 3,
-                    'Livrets' => 4,
+                    'Chants plus anciens' => 4,
+                    'Livrets' => 5,
                 ],
             ])
         ;
