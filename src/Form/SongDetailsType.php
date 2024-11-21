@@ -65,6 +65,7 @@ class SongDetailsType extends AbstractType
                     'Chants plus anciens' => 4,
                     'Livrets' => 5,
                 ],
+                'label' => 'Catégorie',
             ])
         ;
     }

@@ -3,38 +3,38 @@
 {% block title %}Luttes Enchantées - Agenda{% endblock %}
 
 {% block body %}
-        <section class="container row d-flex justify-content-center mt-3">
+        <section class="container row d-flex justify-content-center mx-auto mt-3">
 			
 			<div class="col-9 row">
 				<h1 class="text-center fw-bolder">Agenda</h1>
                 <h2 class="text-center fw-bolder">Voici les évenements à venir :</h2>
             </div>
-            <div class="col-md-11 mt-5">
+            <div class="col-md-11 mt-5 p-0">
                 {% if events %}
+					<ul class="card-deck row mx-auto p-0">
                     {% for event in events %}
+						<li class="card mx-auto my-5 rounded p-0">
+							<div class="card-header row-md bgmain rounded m-2">
+								<h3 class="card-title text-center text-white px-0 pt-2">{{ event.eventCategory }} du {{ event.date }}</h3>
+								<p class="text-end text-white mx-auto mb-2">Évènement {{ event.status }}</p>
+							</div>
+							<div class="card-body row mt-3">
+								<div class="row-md d-flex flex-md-row flex-column">
+									<p class="text-center mx-auto col-md row">Présentes : {{ event.oui }}</p>
+									<p class="text-center mx-auto col-md row">Absentes : {{ event.non }}</p>
+									<p class="text-center mx-auto col-md row">Ne savent pas : {{ event.nsp }}</p>
+									<p class="text-center mx-auto col-md row">Non répondu : {{ event.pasrep }}</p>
+								</div>
+								<p class="justify">{{ event.privateDetails }}</p>
 
-				<article class="card mx-auto my-5 rounded p-0">
-					<div class="card-header row-md bgmain rounded m-2">
-						<h3 class="card-title text-center text-white px-0 pt-2">{{ event.eventCategory }} du {{ event.date }}</h3>
-						<p class="text-end text-white mx-auto mb-2">Évènement {{ event.status }}</p>
-					</div>
-					<div class="card-body row mt-3">
-						<div class="row-md d-flex flex-md-row flex-column">
-							<p class="text-center mx-auto col-md row">Présentes : {{ event.oui }}</p>
-							<p class="text-center mx-auto col-md row">Absentes : {{ event.non }}</p>
-							<p class="text-center mx-auto col-md row">Ne savent pas : {{ event.nsp }}</p>
-							<p class="text-center mx-auto col-md row">Non répondu : {{ event.pasrep }}</p>
-						</div>
-						<p class="justify">{{ event.privateDetails }}</p>
+								<div class="d-flex justify-content-center">
+									<a href="{{ path('app_event_detail', { id: event.id }) }}" class="text-decoration-none text-left">
+										<button type="button" class="btn btn-lg btn-primary rounded mt-3">Voir le détail</button>
+									</a>
+								</div>
+							</div>
+						</li>
 
-						<div class="d-flex justify-content-center">
-							<a href="{{ path('app_event_detail', { id: event.id }) }}" class="text-decoration-none text-left">
-								<button type="button" class="btn btn-lg btn-primary rounded mt-3">Voir le détail</button>
-							</a>
-						</div>
-					</div>
-
-				</article>
                 {% endfor %}
             {% else %}
                 <p class="text-center">Aucun évenement prévu pour l'instant, reviens plus tard</p>
