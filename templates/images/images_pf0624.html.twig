@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gérer les chants{% endblock %}
+{% block title %}Luttes Enchantées - Images - Planning Familial{% endblock %}
 
 {% block body %}
 
@@ -27,52 +27,10 @@
                     </div>
                 </div>
 
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v1.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v2.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v3.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v4.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
-                    <div class="col-lg-6 col-offset-lg-3 row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v5.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
                 <div class="row-lg mx-auto d-flex">
                     <div class="d-lg-flex justify-content-lg-around">
                         <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p5.jpg') }}">
                         <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p6.jpg') }}">
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
-                    <div class="col-lg-6 col-offset-lg-3 row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v6.mp4') }}" type="video/mp4" />
-                        </video>
                     </div>
                 </div>
 
@@ -90,13 +48,31 @@
                     </div>
                 </div>
 
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
-                    <div class="col-lg-6 col-offset-lg-3 row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/pf0624/pf0624v7.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
+                
+            <div class="mt-3 col-11">
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 17 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 18 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Tango de la feminista</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 19 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">A la huelga</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 20 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le corps des femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 21 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Cant de Lluita</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 22 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La grenade - par La Fronde</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 23 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Quand c'est non c'est non - feat. La Fronde</button>
+                </a>
+            </div>
+
 			</div>
 
 

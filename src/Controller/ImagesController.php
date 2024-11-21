@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\ConcertService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -12,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ImagesController extends AbstractController
 {
     public function __construct(
+        private readonly ConcertService $concertService,
     ) {
 
     }
@@ -23,7 +25,7 @@ class ImagesController extends AbstractController
         ]);
     }
 
-    #[Route('/soutien', name: 'app_images_soutien')]
+    #[Route('/soutien', name: 'app_images_soutien041024')]
     public function displayImagesSoutien(): Response
     {
         return $this->render('images/images_soutien041024.html.twig', [
@@ -37,7 +39,7 @@ class ImagesController extends AbstractController
         ]);
     }
 
-    #[Route('/frac', name: 'app_images_frac')]
+    #[Route('/frac2024', name: 'app_images_frac2024')]
     public function displayImagesFrac(): Response
     {
         return $this->render('images/images_frac.html.twig', [
@@ -93,6 +95,38 @@ class ImagesController extends AbstractController
     public function displayImagesCc0622(): Response
     {
         return $this->render('images/images_cc0622.html.twig', [
+        ]);
+    }
+
+    #[Route('/{videoId}', name: 'app_videoConcertPortrait')]
+    public function displayConcertVideoPortrait(int $videoId): Response
+    {
+        $video = $this->concertService->findVideo($videoId);
+
+        $concertName = $video->getConcertDay()->getName();
+        $videoName = $video->getName();
+        $songName = $video->getTitle();
+
+        return $this->render('images/videoConcertPortrait.html.twig', [
+            'concertName' => $concertName,
+            'videoName' => $videoName,
+            'songName' => $songName,
+        ]);
+    }
+
+    #[Route('/{videoId}', name: 'app_videoConcertPaysage')]
+    public function displayConcertVideoPaysage(int $videoId): Response
+    {
+        $video = $this->concertService->findVideo($videoId);
+
+        $concertName = $video->getConcertDay()->getName();
+        $videoName = $video->getName();
+        $songName = $video->getTitle();
+
+        return $this->render('images/videoConcertPaysage.html.twig', [
+            'concertName' => $concertName,
+            'videoName' => $videoName,
+            'songName' => $songName,
         ]);
     }
 

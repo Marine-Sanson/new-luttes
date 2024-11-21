@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gérer les chants{% endblock %}
+{% block title %}Luttes Enchantées - Images - Nuit des Musées au Frac{% endblock %}
 
 {% block body %}
 
@@ -10,52 +10,33 @@
 				<h1 class="text-center fw-bolder fs-3 mt-3">Nuit des Musées au Frac - 21/06/2024</h1>
 
                 <p>Dans le cadre de la nuit des musées et autour de l'expo : This song is for… Vol.1 de Gabrielle Goliath. Plus de détails <a href="https://www.fracbretagne.fr/fr/gabrielle-goliath-exposition-rennes-2024/" target="_blank">ici</a></p>
+            <div>
 
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
-                    <div class="col-lg row w-lg-25 d-flex mt-5 justify-content-center mx-auto">
-                        <video width="auto" height="300" controls>
-                            <source src="{{ asset('video/frac2024/fracv1.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
+            <div class="mt-3 col-11">
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 24 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 25 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le Otto Ore</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 26 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Quand c'est non c'est non </button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 27 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le corps des femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 28 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">L'hymne des femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 29 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La lega</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 30 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Final</button>
+                </a>
+            </div>
 
-                    <div class="col-lg row w-lg-25 d-flex mt-5 justify-content-center mx-auto">
-                        <video width="auto" height="300" controls>
-                            <source src="{{ asset('video/frac2024/fracv2.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-
-                    <div class="col-lg row w-lg-25 d-flex mt-5 justify-content-center mx-auto">
-                        <video width="auto" height="300" controls>
-                            <source src="{{ asset('video/frac2024/fracv3.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-
-                    <div class="col-lg row w-lg-25 d-flex mt-5 justify-content-center mx-auto">
-                        <video width="auto" height="300" controls>
-                            <source src="{{ asset('video/frac2024/fracv4.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
-                    <div class="col-lg row w-lg-25 d-flex mt-5 justify-content-center mx-auto">
-                        <video width="auto" height="300" controls>
-                            <source src="{{ asset('video/frac2024/fracv5.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-
-                    <div class="col-lg row w-lg-25 d-flex mt-5 justify-content-center mx-auto">
-                        <video width="auto" height="300" controls>
-                            <source src="{{ asset('video/frac2024/fracv6.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" width="300" height="auto" controls>
-                            <source src="{{ asset('video/frac2024/fracv7.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
+			<div class="col-11 col-lg-9 row mt-3">
                 <div class="row-lg mx-auto d-flex">
                     <div class="d-lg-flex justify-content-lg-around">
                         <img class="mwidth30 mt-5 col" src="{{ asset('img/frac2024/fracp1.jpg') }}">
@@ -71,7 +52,7 @@
                     <img class="imagePortrait mt-5" src="{{ asset('img/frac2024/fracp7.jpg') }}">
                 </div>
 
-			</div>
+            </div>
 
 		</section>
 

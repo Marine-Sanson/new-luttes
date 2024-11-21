@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Vidéo  - {{ songName }}{% endblock %}
+
+{% block body %}
+<section class="container row d-flex justify-content-center mx-auto mt-3 p-0">
+
+    <div class="col-md-9 mt-5 row p-0">
+        <div class="row">
+            <h1 class="text-center fw-bolder col offset-3">{{ songName }}</h1>
+            <a href="{{ path('app_images_' ~ concertName ) }}" class="text-end text-decoration-none m-auto col">
+                <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+            </a>
+        </div>
+
+        <div class="row d-flex mt-5 justify-content-center mx-auto p-0">
+            <video class="m-auto" max-width="auto" height="450" controls>
+                <source src="{{ asset('video/') ~ concertName ~ '/' ~  videoName }}" type="video/mp4" />
+            </video>
+        </div>
+
+    </div>
+
+{% endblock %}

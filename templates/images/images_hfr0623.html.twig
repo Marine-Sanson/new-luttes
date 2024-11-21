@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Soirée Histoire du Féminisme à Rennes - 01/06/2023{% endblock %}
+{% block title %}Luttes Enchantées - Images - Soirée Histoire du Féminisme à Rennes{% endblock %}
 
 {% block body %}
 
@@ -17,55 +17,32 @@
                         <img class="mwidth45 mt-5 col" src="{{ asset('img/hfr0623/hfr0623p2.jpg') }}">
                     </div>
                 </div>
+            </div>
 
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v1.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v2.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v3.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v4.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto my-0">
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v5.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="col-lg row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v6.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-                <div class="row-lg d-lg-flex justify-content-lg-around mx-auto">
-                    <div class="col-lg-6 col-offset-lg-3 row w-lg-50 d-flex mt-5 justify-content-center mx-auto">
-                        <video class="m-auto" max-width="300" height="auto" controls>
-                            <source src="{{ asset('video/hfr0623/hfr0623v7.mp4') }}" type="video/mp4" />
-                        </video>
-                    </div>
-                </div>
-
-			</div>
+            <div class="mt-5 col-11">
+                <h2 class="text-center fw-bolder fs-3 mt-3">Videos :</h2>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 6 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Si les femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 7 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Rosa, Louise et Flora</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 8 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Clémence</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 9 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La Sant Joan</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 10 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le corps des femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 11 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La lega</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 12 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Les Penn Sardines</button>
+                </a>
+            </div>
 
 		</section>
 
