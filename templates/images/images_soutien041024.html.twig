@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Luttes Enchantées - Images{% endblock %}
+{% block title %}Luttes Enchantées - Images - Soirée de soutien{% endblock %}
 
 {% block body %}
         <section class="container row d-flex mx-auto justify-content-center mt-3">
@@ -83,11 +83,12 @@
                     <img class="imagePortrait mt-5" src="{{ asset('img/soutien041024/soutien041024-26.jpg') }}">
                 </div>
 
-                <div class="col-lg row mw-lg-25 mt-5 justify-content-center mx-auto">
-                    <video width="auto" height="300" controls>
-                        <source src="{{ asset('video/soutien041024/soutien041024-v1.mp4') }}" type="video/mp4" />
-                    </video>
-                </div>
+            <div class="mt-3 col-11 row">
+                <h2 class="text-center fw-bolder fs-3 mt-3 col">Video :</h2>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 31 }) }}" class="text-center text-decoration-none col my-2 mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Les Corsaires</button>
+                </a>
+            </div>
 
 			</div>
 
