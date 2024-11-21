@@ -6,8 +6,12 @@
 <section class="container row d-flex justify-content-center mx-auto mt-3">
 
     <div class="col-11 col-lg-9 mt-5 row">
-        <h1 class="text-center fw-bolder">{{song.title}}</h1>
-        <p class="text-center">{{song.description}}</p>
+        <div class="row">
+            <h1 class="text-center fw-bolder col offset-1">{{song.title}}</h1>
+            <a href="{{ path('app_song') }}" class="text-center text-decoration-none m-auto col">
+                <button type="button" class="btn btn-sm btn-primary rounded">Retour à la page chants</button>
+            </a>
+        <p class="text-center mt-5">{{song.description}}</p>
 
         <div class="d-flex justify-content-center flex-column mt-5 mx-auto">
             {% for voice in voices %}
