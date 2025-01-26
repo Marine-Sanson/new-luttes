@@ -14,6 +14,8 @@ class EventForMembersHome
 
     private string $privateDetails;
 
+    private int $timestamp;
+
     public function getEventId(): int
     {
         return $this->eventId;
@@ -70,6 +72,18 @@ class EventForMembersHome
     public function setPrivateDetails(string $privateDetails): static
     {
         $this->privateDetails = $privateDetails;
+
+        return $this;
+    }
+    
+    public function getTimestamp(): ?int
+    {
+        return $this->timestamp;
+    }
+
+    public function setTimestamp(int $timestamp): static
+    {
+        $this->timestamp = $timestamp;
 
         return $this;
     }

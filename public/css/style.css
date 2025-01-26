@@ -17,8 +17,15 @@ body{
 body>*,
 .form-control,
 .card-body>*{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     box-sizing: inherit;
+}
+
+@media(min-width: 0px) and (max-width: 791.99px)
+{
+    body>*{
+        font-size: 1.2rem;
+    }
 }
 
 .navbar>*,
@@ -229,6 +236,10 @@ ul{
 
 @media(min-width: 0px) and (max-width: 791.99px)
 {
+    #chorusPicture{
+        max-width: 90vw;
+    }
+
     #text{
         width: 370px;
         height: 490px;
@@ -237,6 +248,10 @@ ul{
 
 @media(min-width: 791.99px)
 {
+    #chorusPicture{
+        max-width: 60vw;
+    }
+
     #text{
         width: 770px;
         height: 1030px;

@@ -55,6 +55,7 @@ class ParticipationRepository extends ServiceEntityRepository
             ->andWhere('p.status = :status')
             ->setParameter('user', $user)
             ->setParameter('status', $status)
+            ->orderBy('p.event')
             ->getQuery()
             ->getResult()
         ;

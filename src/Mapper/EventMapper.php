@@ -65,6 +65,7 @@ class EventMapper
             ->setCategory($event->getEventCategory()->getName())
             ->setDate($event->getDate())
             ->setPrivateDetails($event->getPrivateDetails())
+            ->setTimestamp($event->getTimestamp())
         ;
     }
 

@@ -34,7 +34,7 @@ class MembersHomeController extends AbstractController
         if(($lastConnection->add(new DateInterval('PT01M'))->getTimestamp() - $now->getTimestamp()) > 7068){
             $newMessages = $this->chatItemService->checkNewChatItems($user);
             if($newMessages){
-                $this->addFlash('success', 'Il y a de nouveaux messages depuis ta dernière connection, tu peux les voir ici :');
+                $this->addFlash('success', 'Il y a de nouveaux messages depuis ta dernière connexion, tu peux les voir ici :');
                 return $this->redirectToRoute('app_chatItems');
             }
         }
@@ -45,7 +45,7 @@ class MembersHomeController extends AbstractController
         $eventsNo = $this->eventService->getEventsByParticipation($user, 2);
 
         $eventsYes = $this->eventService->getEventsByParticipation($user, 1);
-
+// dd($eventsWithoutAnswer, $eventsDontKnow, $eventsNo, $eventsYes);
         return $this->render('members_home/members_home.html.twig', [
             'user' => $user,
             'eventsWithoutAnswer' => $eventsWithoutAnswer,
