@@ -230,12 +230,13 @@ class SongController extends AbstractController
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $this->slugger->slug($originalFilename);
                 $extension = $uploadedvoice->guessExtension();
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$extension;
+                $newFilename = $safeFilename.'-'.uniqid();
+                $fileNameToUpload = $newFilename.'.'.$extension;
 
                 // Move the file to the directory where brochures are stored
                 try {
 
-                    $uploadedvoice->move($voiceDirectory, $newFilename);
+                    $uploadedvoice->move($voiceDirectory, $fileNameToUpload);
                 } catch (FileException $e) {
                     echo 'Une erreur est survenue: ',  $e->getMessage(), "\n";
                     // ... handle exception if something happens during file upload
@@ -245,7 +246,7 @@ class SongController extends AbstractController
                 $voice = (new Voice())
                     ->setSong($song)
                     ->setVoiceType($voiceType)
-                    ->setOriginalName($originalFilename)
+                    ->setOriginalName($safeFilename)
                     ->setFileName($newFilename)
                     ->setFileType($extension)
                     ->setCreatedAt(new DateTimeImmutable("now", new DateTimeZone("Europe/Paris")))
