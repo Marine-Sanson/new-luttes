@@ -26,18 +26,22 @@ class UserService
 
     public function manageNewUser(string $email, string $role, string $plainPassword, string $name, ?string $tel, int $agreement, array $events): User
     {
-        $arrayRole = ['ROLE_USER'];
+        $arrayRole = User::USER;
+        if($role === 'NOUVELLE'){
+            $arrayRole = [];
+            $arrayRole = User::NOUVELLE;
+        }
         if($role === 'DATES'){
             $arrayRole = [];
-            $arrayRole = ['ROLE_DATES'];
+            $arrayRole = User::DATES;
         }
         if($role === 'CHANTS'){
             $arrayRole = [];
-            $arrayRole = ['ROLE_CHANTS'];
+            $arrayRole = User::CHANTS;
         }
         if($role === 'ADMIN'){
             $arrayRole = [];
-            $arrayRole = ['ROLE_ADMIN'];
+            $arrayRole = User::ADMIN;
         }
 
         $now = new DateTimeImmutable("now", new DateTimeZone("Europe/Paris"));

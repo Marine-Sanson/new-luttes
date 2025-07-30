@@ -6,11 +6,13 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Service\UserService;
 use App\Service\EventService;
+use PhpParser\Node\Stmt\Break_;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Validator\Constraints\Length;
 
 #[Route('/membre')]
 #[IsGranted('ROLE_USER')]
@@ -27,9 +29,24 @@ class UserController extends AbstractController
     public function listUser(): Response
     {
         $usersForList = $this->userService->getUsersForList();
+        $currentUserRoles = $this->getUser()->getRoles();
+        $isNew = false;
+        for($i=0; $i<count($currentUserRoles); $i++){
+           
+            dump($currentUserRoles[$i]);
+            dump(User::ADMIN);
+            if($currentUserRoles[$i] === User::ADMIN){
+
+                $isNew = true; 
+                break;
+            }
+        }
+
+    dump($isNew);
 
         return $this->render('user/list.html.twig', [
             'usersForList' => $usersForList,
+            'isNew' => $isNew
         ]);
     }
 

@@ -37,7 +37,8 @@ class UserType extends AbstractType
                     'User' => 'USER',
                     'Admin' => 'ADMIN',
                     'Dates' => 'DATES',
-                    'Chants' => 'CHANTS'
+                    'Chants' => 'CHANTS',
+                    'Nouvelle' => 'NOUVELLE'
                 ],
                 'expanded' => true,
                 'multiple' => false,

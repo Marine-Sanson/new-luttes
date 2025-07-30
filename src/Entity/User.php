@@ -19,6 +19,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use CreatedAtTrait;
 
+    public const USER = ["ROLE_USER"];
+    public const DATES = ["ROLE_DATES"];
+    public const CHANTS = ["ROLE_CHANTS"];
+    public const ADMIN = ["ROLE_ADMIN"];
+    public const NOUVELLE = ["ROLE_NOUVELLE"];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -66,6 +72,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Photo $photo = null;
+
+    #[ORM\Column]
+    private bool $active = true;
 
     /**
      * @var Collection<int, ChatItem>
@@ -231,6 +240,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhoto(?Photo $photo): static
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
 
         return $this;
     }

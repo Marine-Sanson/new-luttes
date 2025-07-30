@@ -7,8 +7,15 @@
 			
 			<div class="col-11 col-lg-9 row mt-3">
 				<h1 class="text-center fw-bolder fs-3 mt-3">Images - 8 mars 2024</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
+            </div>
 
-                <p class="text-center mt-5">Vidéos du concert :</p>
+            <div class="col-11 col-lg-9 row mt-3">
+                <h2 class="text-center fs-4 mt-5">Vidéos du concert :</h2>
 
                 <a href="{{ path('app_videoConcertPortrait', { videoId: 13 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La lega</button>
@@ -21,7 +28,8 @@
                 </a>
             </div>
 
-                <p class="text-center mt-5">Vidéo de la pause :</p>
+            <div class="col-11 col-lg-9 row mt-3">
+                <h2 class="text-center fs-4 mt-5">Vidéo de la pause :</h2>
 
                 <a href="{{ path('app_videoConcertPaysage', { videoId: 16 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Voir</button>

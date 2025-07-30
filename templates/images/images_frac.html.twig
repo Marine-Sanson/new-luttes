@@ -8,35 +8,44 @@
 			
 			<div class="col-11 col-lg-9 row mt-3">
 				<h1 class="text-center fw-bolder fs-3 mt-3">Nuit des Musées au Frac - 21/06/2024</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
 
-                <p>Dans le cadre de la nuit des musées et autour de l'expo : This song is for… Vol.1 de Gabrielle Goliath. Plus de détails <a href="https://www.fracbretagne.fr/fr/gabrielle-goliath-exposition-rennes-2024/" target="_blank">ici</a></p>
+                <p class="mt-5">Dans le cadre de la nuit des musées et autour de l'expo : This song is for… Vol.1 de Gabrielle Goliath. Plus de détails <a href="https://www.fracbretagne.fr/fr/gabrielle-goliath-exposition-rennes-2024/" target="_blank">ici</a></p>
             </div>
 
-            <div class="mt-3 col-11">
-                <a href="{{ path('app_videoConcertPortrait', { videoId: 24 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+			<div class="mt-5 col-11 mx-auto">
+                <h2 class="text-center fs-4 mt-3">Vidéos :</h2>
+
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 24 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches</button>
                 </a>
-                <a href="{{ path('app_videoConcertPortrait', { videoId: 25 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 25 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le Otto Ore</button>
                 </a>
-                <a href="{{ path('app_videoConcertPortrait', { videoId: 26 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 26 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Quand c'est non c'est non </button>
                 </a>
-                <a href="{{ path('app_videoConcertPortrait', { videoId: 27 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 27 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le corps des femmes</button>
                 </a>
-                <a href="{{ path('app_videoConcertPortrait', { videoId: 28 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 28 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">L'hymne des femmes</button>
                 </a>
-                <a href="{{ path('app_videoConcertPortrait', { videoId: 29 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 29 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La lega</button>
                 </a>
-                <a href="{{ path('app_videoConcertPaysage', { videoId: 30 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 30 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Final</button>
                 </a>
             </div>
 
-			<div class="col-11 col-lg-9 row mt-3">
+			<div class="col-11 col-lg-9 row mt-5">
+                <h2 class="text-center fs-4 mt-3">Photos :</h2>
+
                 <div class="row-lg mx-auto d-flex">
                     <div class="d-lg-flex justify-content-lg-around">
                         <img class="mwidth30 mt-5 col" src="{{ asset('img/frac2024/fracp1.jpg') }}">
