@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Images - 15 mars 2025{% endblock %}
+
+{% block body %}
+
+        <section class="container row d-flex justify-content-center my-3 mx-auto">
+			
+			<div class="col-11 col-lg-9 row mt-3">
+				<h1 class="text-center fw-bolder fs-3 mt-3">Concert Bibliothèque de la Bellangerais - 15 mars 2025</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
+
+                <p class="mt-5">Dans le cadre des évenements autour du 8 mars, nous avons été invitées par la <a href="https://openagenda.com/bibliotheques-de-rennes/events/la-lutte-en-chantant" target="_blank">Bibliothèque de la Bellangerais</a></p>
+            </div>
+
+			<div class="mt-5 col-11 mx-auto">
+                <h2 class="text-center fs-4 mt-3">Vidéos :</h2>
+
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 36 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 37 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches - 2ème partie</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 38 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches - 3ème partie</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 39 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le Otto Ore</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 40 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Clémence</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 41 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">A la huelga</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 42 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Non tu n'as pas de nom</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 43 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Le corps des femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 44 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La lega</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 45 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Celle que j'aime</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 46 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches - déplacement</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 47 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">L'hymne des femmes</button>
+                </a>
+                
+            </div>
+
+			<div class="col-11 col-lg-9 row mt-5">
+                <h2 class="text-center fs-4 mt-3">Photos :</h2>
+
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/biblio150325/biblio150325-1.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/biblio150325/biblio150325-2.jpg') }}">
+                    </div>
+                </div>
+
+            </div>
+
+		</section>
+
+{% endblock %}

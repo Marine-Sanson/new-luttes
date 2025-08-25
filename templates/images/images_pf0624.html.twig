@@ -4,52 +4,61 @@
 
 {% block body %}
 
-        <section class="container row d-flex justify-content-center mt-3 mx-auto">
+        <section class="container row d-flex justify-content-center my-3 mx-auto">
 			
 			<div class="col-11 col-lg-9 row mt-3">
 				<h1 class="text-center fw-bolder fs-3 mt-3">Planning Familial - 06/06/2024</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
 
-                <p class="text-center">Concert pour l'innauguration des nouveaux locaux du <a href="https://www.planning-familial.org/fr/le-planning-familial-dille-et-vilaine-35/" target="_blank">Planning Familial 35</a></p>
-                <p class="text-center">Après notre concert il y a eu celui de nos soeurs de la chorale La Fronde du Planning familial de Saint Malo.</p>
-                <p class="text-center">Et pour finir nous avons chanté ensemble.</p>
+                <h2 class="text-center fs-4 mt-5">Photos :</h2>
+                <p class="text-center mt-5 mb-0">Concert pour l'innauguration des nouveaux locaux du <a href="https://www.planning-familial.org/fr/le-planning-familial-dille-et-vilaine-35/" target="_blank">Planning Familial 35</a></p>
 
                 <div class="row-lg mx-auto d-flex">
                     <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p1.jpg') }}">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p2.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p1.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p2.jpg') }}">
+                    </div>
+                </div>
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p3.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p4.jpg') }}">
+                    </div>
+                </div>
+
+                <p class="text-center mt-5 mb-0">Après notre concert il y a eu celui de nos soeurs de la chorale La Fronde du Planning familial de Saint Malo.</p>
+
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p5.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p6.jpg') }}">
+                    </div>
+                </div>
+
+                <p class="text-center mt-5 mb-0">Et pour finir nous avons chanté toutes ensemble.</p>
+
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p7.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p8.jpg') }}">
                     </div>
                 </div>
 
                 <div class="row-lg mx-auto d-flex">
                     <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p3.jpg') }}">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p4.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p9.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/pf0624/pf0624p10.jpg') }}">
                     </div>
                 </div>
+            </div>
 
-                <div class="row-lg mx-auto d-flex">
-                    <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p5.jpg') }}">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p6.jpg') }}">
-                    </div>
-                </div>
+			<div class="mt-5 col-11 mx-auto">
+                <h2 class="text-center fs-4 mt-3">Vidéos :</h2>
 
-                <div class="row-lg mx-auto d-flex">
-                    <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p7.jpg') }}">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p8.jpg') }}">
-                    </div>
-                </div>
-
-                <div class="row-lg mx-auto d-flex">
-                    <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p9.jpg') }}">
-                        <img class="mwidth45 mt-5 col" src="{{ asset('img/pf0624/pf0624p10.jpg') }}">
-                    </div>
-                </div>
-
-                
-            <div class="mt-3 col-11">
                 <a href="{{ path('app_videoConcertPaysage', { videoId: 17 }) }}" class="text-center text-decoration-none col-md my-2 mx-auto">
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches</button>
                 </a>
@@ -72,10 +81,6 @@
                     <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Quand c'est non c'est non - feat. La Fronde</button>
                 </a>
             </div>
-
-			</div>
-
-
 
 		</section>
 

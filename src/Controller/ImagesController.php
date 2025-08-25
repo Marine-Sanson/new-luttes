@@ -25,6 +25,27 @@ class ImagesController extends AbstractController
         ]);
     }
 
+    #[Route('/debout-s1', name: 'app_images_debout-s1')]
+    public function displayImagesDeboutSaison1(): Response
+    {
+        return $this->render('images/images_debout-s1.html.twig', [
+        ]);
+    }
+
+    #[Route('/biblio150325', name: 'app_images_biblio150325')]
+    public function displayImagesBiblio150325(): Response
+    {
+        return $this->render('images/images_biblio150325.html.twig', [
+        ]);
+    }
+
+    #[Route('/manif080325', name: 'app_images_manif080325')]
+    public function displayImagesManif080325(): Response
+    {
+        return $this->render('images/images_manif080325.html.twig', [
+        ]);
+    }
+    
     #[Route('/soutien', name: 'app_images_soutien041024')]
     public function displayImagesSoutien(): Response
     {

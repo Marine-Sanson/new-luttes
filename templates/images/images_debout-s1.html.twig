@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Images - 30 mars 2025{% endblock %}
+
+{% block body %}
+
+        <section class="container row d-flex justify-content-center my-3 mx-auto">
+			
+			<div class="col-11 col-lg-9 row mt-3">
+				<h1 class="text-center fw-bolder fs-3 mt-3">Projet Debout (Saison 1) - 30 mars 2025</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
+
+                <p class="text-center">Nous avons eu le grand honneur d'être invitées par Frédérique Mingant et Delphine Battour pour chanter entre les lectures de l'intégralité des textes de ce projet autours des luttes pour les droits des femmes dans les années 1970. Détails sur le projet : <a href="https://www.compagnie1310.com/about-4" target="_blank">Debout</a></p>
+            </div>
+
+			<div class="mt-5 col-11 mx-auto">
+                <h2 class="text-center fs-4 mt-3">Vidéos :</h2>
+
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 48 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Répétition générale Clémence</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 49 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Répétition générale Ignoranti</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 50 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Clémence</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 51 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Paso del Ebro - partie 1</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 52 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Paso del Ebro - partie 2</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 53 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Non tu n'as pas de nom - partie 1</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 54 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Non tu n'as pas de nom - partie 2</button>
+                </a>
+                <a href="{{ path('app_videoConcertPaysage', { videoId: 55 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Ignoranti - partie 1</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 56 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Ignoranti - partie 2</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 57 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Hymnes des Femmes</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 58 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Fin</button>
+                </a>
+
+
+            </div>
+
+		</section>
+
+{% endblock %}

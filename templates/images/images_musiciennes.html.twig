@@ -4,39 +4,45 @@
 
 {% block body %}
 
-        <section class="container row d-flex justify-content-center mt-3 mx-auto">
+        <section class="container row d-flex justify-content-center my-3 mx-auto">
 			
 			<div class="col-11 col-lg-9 row mt-3">
 				<h1 class="text-center fw-bolder fs-3 mt-3">Festival Musicienne.s - 01/06/2023</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
 
                 <p class="text-center mt-3">A la ferme de Quincé pour le festival Musicienne.s. Plus de détails <a href="https://www.instagram.com/musicienne.s/" target="_blank">ici</a></p>
 
                 <p class="text-center fst-italic fs-6">Crédit photos : David Brunet / Le Mensuel de Rennes</p>
+            </div>
 
-                <div class="row-lg mx-auto d-flex">
-                    <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-1.jpg') }}">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-2.jpg') }}">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-4.jpg') }}">
-                    </div>
+			<div class="col-11 col-lg-9 row mt-5">
+                <div class="d-lg-flex justify-content-lg-around">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-1.jpg') }}">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-2.jpg') }}">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-4.jpg') }}">
                 </div>
+            </div>
 
-                <div class="row-lg mx-auto d-flex">
-                    <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-5.jpg') }}">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-6.jpg') }}">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-8.jpg') }}">
-                    </div>
-                </div>
 
-                <div class="row-lg mx-auto d-flex">
-                    <div class="d-lg-flex justify-content-lg-around">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-9.jpg') }}">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-10.jpg') }}">
-                        <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-11.jpg') }}">
-                    </div>
+			<div class="col-11 col-lg-9 row mt-5">
+                <div class="d-lg-flex justify-content-lg-around">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-5.jpg') }}">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-6.jpg') }}">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-8.jpg') }}">
                 </div>
-			</div>
+            </div>
+
+			<div class="col-11 col-lg-9 row mt-5">
+                <div class="d-lg-flex justify-content-lg-around">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-9.jpg') }}">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-10.jpg') }}">
+                    <img class="mwidth30 mt-5 col" src="{{ asset('img/musiciennes/DBR_Les luttes enchantées-11.jpg') }}">
+                </div>
+            </div>
 
 		</section>
 

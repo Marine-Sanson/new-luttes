@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Luttes Enchantées - Images - 08 mars 2025{% endblock %}
+
+{% block body %}
+
+        <section class="container row d-flex justify-content-center my-3 mx-auto">
+			
+			<div class="col-11 col-lg-9 row mt-3">
+				<h1 class="text-center fw-bolder fs-3 mt-3">Concert avant la manif - 08 mars 2025</h1>
+                <div class="row text-right">
+                    <a href="{{ path('app_images_concerts') }}" class="text-end text-decoration-none m-auto col">
+                    <button type="button" class="btn btn-sm btn-primary rounded">Retour</button>
+                    </a>
+                </div>
+
+            </div>
+
+			<div class="mt-5 col-11 mx-auto">
+                <h2 class="text-center fs-4 mt-3">Vidéos :</h2>
+
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 32 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Who are the witches</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 33 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">La lega</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 34 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Non tu n'as pas de nom</button>
+                </a>
+                <a href="{{ path('app_videoConcertPortrait', { videoId: 35 }) }}" class="text-center text-decoration-none col-md my-auto mx-auto">
+                    <button type="button" class="btn btn-sm btn-primary rounded my-2 mx-auto">Autre vidéo de Non tu n'as pas de nom</button>
+                </a>
+                
+            </div>
+
+			<div class="col-11 col-lg-9 row mt-5">
+                <h2 class="text-center fs-4 mt-3">Photos :</h2>
+
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-1.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-2.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-3.jpg') }}">
+                    </div>
+                </div>
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-4.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-5.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-6.jpg') }}">
+                    </div>
+                </div>
+                <div class="row-lg mx-auto d-flex">
+                    <div class="d-lg-flex justify-content-lg-around">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-7.jpg') }}">
+                        <img class="mwidth30 mt-5 col" src="{{ asset('img/manif080325/manif080325-8.jpg') }}">
+                    </div>
+                </div>
+
+            </div>
+
+		</section>
+
+{% endblock %}
